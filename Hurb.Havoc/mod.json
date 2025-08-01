@@ -3,7 +3,7 @@
     "Description": "Custom Ogre",
     "LoadPriority": 1,
     "RequiredOnClient": true,
-    "Version": "0.5.5",
+    "Version": "0.5.6",
 
     "Scripts": [
         {
@@ -50,6 +50,10 @@
             "RunOn": "( CLIENT || SERVER ) && MP"
         },
         {
+            "Path": "weapons/mp_titanweapon_burst_mine.nut",
+            "RunOn": "( CLIENT || SERVER ) && MP"
+        },
+        {
             "Path": "weapons/mp_titanweapon_blast_shield.nut",
             "RunOn": "( CLIENT || SERVER ) && MP"
         },
@@ -60,10 +64,6 @@
         {
             "Path": "weapons/ripple_vortex_custom.nut",
             "RunOn": "( CLIENT || SERVER ) && MP"
-		},
-        {
-			"Path": "client/ripple_basic_image_bar.gnut",
-			"RunOn": "CLIENT && MP"
 		},
         {
             "Path": "havoc_loadout_util.nut",

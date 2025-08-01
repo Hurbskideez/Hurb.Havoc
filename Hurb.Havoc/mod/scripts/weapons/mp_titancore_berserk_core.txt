@@ -31,8 +31,8 @@ WeaponData
 
 	MP_BASE
 	{
-		"core_duration"								"12.0" //Needs to match charge_cooldown_delay
-		"charge_cooldown_delay"   					"12.0"
+		"core_duration"								"1200.0" //Needs to match charge_cooldown_delay
+		"charge_cooldown_delay"   					"1200.0"
 		"charge_cooldown_time"						"13.0"
 	}
 

@@ -25,8 +25,8 @@ WeaponData
 	"OnWeaponVortexHitProjectile"					"OnWeaponVortexHitProjectile_titanweapon_blast_shield"
 	"OnWeaponPrimaryAttack"							"OnWeaponPrimaryAttack_titanweapon_blast_shield"
 	"OnWeaponNpcPrimaryAttack"						"OnWeaponNpcPrimaryAttack_titanweapon_blast_shield"
-	"OnClientAnimEvent"								"OnClientAnimEvent_titanweapon_blast_shield"
 	"OnWeaponChargeBegin"							"OnWeaponChargeBegin_titanweapon_blast_shield"
+	"OnWeaponChargeEnd"								"OnWeaponChargeEnd_titanweapon_blast_shield"
 	"OnWeaponAttemptOffhandSwitch"					"OnWeaponAttemptOffhandSwitch_titanweapon_blast_shield"
 	"OnWeaponOwnerChanged"							"OnWeaponOwnerChanged_titanweapon_blast_shield"
 
@@ -78,8 +78,11 @@ WeaponData
 	"charge_time"									"4.0"
 	"charge_cooldown_time"							"8.0"
 	"charge_cooldown_delay"   						"1.0"
-	"charge_end_forces_fire"  						"1"
+	"charge_end_forces_fire"  						"0"
 	"charge_remain_full_when_fired"					"1"
+
+	//"charge_sound_1p"								"Weapon_EnergySyphon_Charge_1P"
+	//"charge_sound_3p"								"Weapon_EnergySyphon_Charge_3P"
 
 	// Behavior
 	"fire_rate"   									"1.5"
@@ -224,12 +227,17 @@ WeaponData
 	// Crosshair
 	"red_crosshair_range" 							"1400"
 
+	"custom_float_0" 								"1.5"
+
 	Mods
 	{
-
+		charge_full
+		{
+			"is_burn_mod" 							"1"
+		}
 	}
 
-	active_crosshair_count				"2"
+	active_crosshair_count				"4"
 	rui_crosshair_index					"0"
 
 	RUI_CrosshairData
@@ -250,7 +258,17 @@ WeaponData
 		Crosshair_1
 		{
 			"ui"						"ui/crosshair_heat_shield"
-			"base_spread"				"3.0"
+			"base_spread"				"0.0"
+			Args
+			{
+				isFiring				weapon_is_firing
+			}
+		}
+
+		Crosshair_2
+		{
+			"ui"						"ui/crosshair_shotgun"
+			"base_spread"				"4.0"
 			Args
 			{
 				isFiring				weapon_is_firing
@@ -259,11 +277,25 @@ WeaponData
 
 		Crosshair_3
 		{
-			"ui"						"ui/crosshair_titan_predator_power_shot_close"
-			"base_spread"				"-4.0"
+			"ui"                        "ui/crosshair_grapple_charge"
+            "base_spread"                "0.0"
+            Args
+            {
+                teamColor				crosshair_team_color
+                isFiring                weapon_is_firing
+                chargeStartTime			weapon_script_time_0
+                chargeMaxTime			eWeaponVar.custom_float_0
+				crosshairScaleX          crosshair_movement_x
+            }
+		}
+
+		Crosshair_4
+		{
+			"ui"						"ui/crosshair_tactical"
 			Args
 			{
-				isFiring				weapon_is_firing
+			    ammoFrac                weapon_script_time_0
+			    dryfireTime             "weapon_latest_dryfire_time"
 			}
 		}
 	}

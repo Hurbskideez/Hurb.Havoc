@@ -131,11 +131,12 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 			AddAnimEvent( titan, "shift_core_use_meter", Berserk_Core_UseMeter_NPC )
 		}
 
-		entity mainWeapon = titan.GetMainWeapons()[0]
-		entity offensiveWeapon = titan.GetOffhandWeapon( OFFHAND_RIGHT )
+		titan.GetOffhandWeapon( OFFHAND_MELEE ).AddMod( "berserker" )
 
-		mainWeapon.AddMod("berserk_core")
-		offensiveWeapon.AddMod("berserk_core")
+		titan.SetActiveWeaponByName( "melee_titan_punch_havoc" )
+
+		entity mainWeapon = titan.GetMainWeapons()[0]
+		mainWeapon.AllowUse( false )
 
 		int endlessStatusEffectHandle = StatusEffect_AddEndless( titan, eStatusEffect.speed_boost, 0.25 )
 		thread BerserkThink( titan, endlessStatusEffectHandle )
@@ -254,13 +255,18 @@ void function RestorePlayerWeapons( entity player )
 	{
 		entity titan = soul.GetTitan()
 
-		entity mainWeapon = titan.GetMainWeapons()[0]
-		entity offensiveWeapon = titan.GetOffhandWeapon( OFFHAND_RIGHT )
+		entity meleeWeapon = titan.GetOffhandWeapon( OFFHAND_MELEE )
+		if ( IsValid( meleeWeapon ) )
+		{
+			meleeWeapon.RemoveMod( "berserker" )
+		}
 
-		mainWeapon.RemoveMod("berserk_core")
-		offensiveWeapon.RemoveMod("berserk_core")
-
-		titan.Signal( "StopEndlessStim" )
+		array<entity> mainWeapons = titan.GetMainWeapons()
+		if ( mainWeapons.len() > 0 )
+		{
+			entity mainWeapon = titan.GetMainWeapons()[0]
+			mainWeapon.AllowUse( true )
+		}
 
 		if ( titan.IsNPC() )
 		{

@@ -87,12 +87,12 @@ void function BeginEmpWave( entity projectile, WeaponPrimaryAttackParams attackP
 	projectile.NotSolid()
 	projectile.e.onlyDamageEntitiesOnce = true
 	EmitSoundOnEntity( projectile, "flamewall_start_1p" )
-	waitthread WeaponAttackWaveWithDelay( projectile, 0, projectile, attackParams.pos, attackParams.dir, CreateEmpWaveSegment, 0.2 )
+	waitthread WeaponAttackWaveWithDelay( projectile, 0, projectile, attackParams.pos, attackParams.dir, CreateShockWaveSegment, 0.2 )
 	StopSoundOnEntity( projectile, "flamewall_start_1p" )
 	projectile.Destroy()
 }
 
-bool function CreateEmpWaveSegment( entity projectile, int projectileCount, entity inflictor, entity movingGeo, vector pos, vector angles, int waveCount )
+bool function CreateShockWaveSegment( entity projectile, int projectileCount, entity inflictor, entity movingGeo, vector pos, vector angles, int waveCount )
 {
 	projectile.SetOrigin( pos )
 
@@ -117,6 +117,41 @@ bool function CreateEmpWaveSegment( entity projectile, int projectileCount, enti
 		titanDamage,
 		220, // inner radius
 		250, // outer radius
+		SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT,
+		0, // distanceFromAttacker
+		5000, // explosionForce
+		DF_ELECTRICAL | DF_STOPS_TITAN_REGEN | DF_GIB,
+		eDamageSourceId.mp_titanweapon_shockwave )
+
+	foreach( mod in projectile.ProjectileGetMods())
+		if (mod == "aftershocks")
+			thread CreateMicroShockWaveSegment(pos, projectile, projectile.GetOwner(), inflictor, angles, 2.0, float(projectile.GetProjectileWeaponSettingInt(eWeaponVar.damage_near_value)), float(projectile.GetProjectileWeaponSettingInt(eWeaponVar.damage_near_value_titanarmor)))
+
+	return true
+}
+
+bool function CreateMicroShockWaveSegment(vector pos, entity projectile, entity owner, entity inflictor, vector angles, float delay, float pDamage, float tDamage)
+{
+	wait(delay)
+  	float damageScalar = 0.6 //50% damage on Aftershocks, no ramp up, move me to the top later
+	int fxId = GetParticleSystemIndex(SHOCKWAVE_EFFECT) //Change me later
+
+  	StartParticleEffectInWorld( fxId, pos, angles )
+
+  	PlayImpactFXTable( pos, owner, "exp_shockwave_small", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
+  	PlayImpactFXTable( pos, owner, "exp_shockwave_large", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
+
+	int pilotDamage = int( pDamage * damageScalar )
+	int titanDamage = int( pDamage * damageScalar )
+
+	RadiusDamage(
+		pos,
+		owner, //attacker
+		inflictor, //inflictor
+		pilotDamage,
+		titanDamage,
+		120, // inner radius
+		150, // outer radius
 		SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT,
 		0, // distanceFromAttacker
 		5000, // explosionForce

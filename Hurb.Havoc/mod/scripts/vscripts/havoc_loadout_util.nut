@@ -26,11 +26,12 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 		{
 			titan.GetMainWeapons()[0].SetMods(["pressurised_chamber"])
         }
-		/*if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_FEEDBACK"] ) )
+		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_AMMO"] ) )
 		{
-			titan.GetMainWeapons()[0].SetMods(["static_feedback"])
+			titan.GetMainWeapons()[0].SetMods(["extended_ammo"])
+			titan.GetMainWeapons()[0].SetWeaponPrimaryClipCount( titan.GetMainWeapons()[0].GetWeaponSettingInt( eWeaponVar.ammo_clip_size ) )
         }
-        if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_SMOKE"] ) )
+        /*if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_SMOKE"] ) )
 		{
 			titan.GetOffhandWeapon(OFFHAND_EQUIPMENT).SetMods(["bring_the_thunder"])
         }

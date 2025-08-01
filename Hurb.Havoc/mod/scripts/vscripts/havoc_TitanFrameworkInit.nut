@@ -56,15 +56,31 @@ void function HavocUIInit()
 		Blastshield.image = $"havoc/hud/polarize_wall"
 		Havoc.Left = Blastshield
 
-		ModdedTitanWeaponAbilityData ArcMine
-		ArcMine.custom = true
-		ArcMine.displayName = "#WPN_TITAN_ARC_MINE"
-		ArcMine.weaponName = "mp_titanweapon_arc_mine"
-		ArcMine.description = "#WPN_TITAN_ARC_MINE_DESC"
-		ArcMine.image = $"havoc/menu/arc_mine_menu"
-		Havoc.Mid = ArcMine
+		ModdedTitanWeaponAbilityData BurstMine
+		BurstMine.custom = true
+		BurstMine.displayName = "#WPN_TITAN_BURST_MINE"
+		BurstMine.weaponName = "mp_titanweapon_burst_mine"
+		BurstMine.description = "#WPN_TITAN_BURST_MINE_DESC"
+		BurstMine.image = $"havoc/menu/arc_mine_menu"
+		Havoc.Mid = BurstMine
+
+		Havoc.Melee = "melee_titan_punch_havoc"
 
 		//========================================//-KITS-//========================================//
+		ModdedPassiveData Empty
+		Empty.Name = "None"
+		Empty.description = "No Kit."
+		//PressurisedChamber.image = $""
+		Empty.customIcon = true
+		Havoc.passive2Array.append(Empty)
+
+		ModdedPassiveData StuffedCylinder
+		StuffedCylinder.Name = "#GEAR_HAVOC_AMMO"
+		StuffedCylinder.description = "#GEAR_HAVOC_AMMO_DESC"
+		//PressurisedChamber.image = $""
+		StuffedCylinder.customIcon = true
+		Havoc.passive2Array.append(StuffedCylinder)
+
 		ModdedPassiveData PressurisedChamber
 		PressurisedChamber.Name = "#GEAR_HAVOC_HYDRAULIC"
 		PressurisedChamber.description = "#GEAR_HAVOC_HYDRAULIC_DESC"

@@ -426,6 +426,10 @@ WeaponData
 
 	Mods
 	{
+		extended_ammo
+		{
+			"ammo_clip_size"   								"12"
+		}
 		berserk_core
 		{
 			"fire_rate"										"*1.25"
@@ -443,11 +447,11 @@ WeaponData
 		pressurised_chamber
 		{
 			"charge_time" 									"0.7"
-			"charge_cooldown_time"                          "0.2"
-			"charge_cooldown_delay"                         "0.1"
+			"charge_cooldown_time"                          "0.3"
+			"charge_cooldown_delay"                         "0.2"
 			"charge_end_forces_fire"                        "1"
 			"charge_remain_full_when_fired"                 "1"
-
+			
 			active_crosshair_count                    "2"
 		}
 

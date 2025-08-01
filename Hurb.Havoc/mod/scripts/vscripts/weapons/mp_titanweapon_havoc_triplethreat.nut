@@ -25,7 +25,7 @@ global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
 //global const TRIPLE_THREAT_MIN_MINE_FUSE_TIME = 8.2
 //global const TRIPLE_THREAT_MAX_MINE_FUSE_TIME = 8.8
-global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 1.0 //After landing
+global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 0.5 //After landing
 //global const TRIPLE_THREAT_MINE_FIELD_TITAN_ONLY = false
 //global const TRIPLE_THREAT_MINE_FIELD_MAX_MINES = 9
 //global const TRIPLE_THREAT_MINE_FIELD_LAUNCH_VELOCITY = 1100
@@ -89,16 +89,22 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 	if( !IsValid( projectile ) )
 		return
 
-	if( IsMagneticTarget( hitEnt ) )
+
+	if (hitEnt.GetTeam() != projectile.GetTeam() && !hitEnt.IsWorld())
 	{
-		if( hitEnt.GetTeam() != projectile.GetTeam() )
-		{
-			local normal = Vector( 0, 0, 1 )
-			if( "collisionNormal" in projectile.s )
-				normal = projectile.s.collisionNormal
-			projectile.GrenadeExplode( normal )
-		}
+		local normal = Vector( 0, 0, 1 )
+		if( "collisionNormal" in projectile.s )
+			normal = projectile.s.collisionNormal
+		projectile.GrenadeExplode( normal )
 	}
+
+	/*array<string> mods = projectile.ProjectileGetMods()
+	if ( mods.contains( "proximity_detonate" ) )
+	{
+		#if SERVER
+			thread Triple_ThreatProximityTrigger( projectile )
+		#endif
+	}*/
 }
 
 bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon )

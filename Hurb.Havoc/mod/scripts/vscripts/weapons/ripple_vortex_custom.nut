@@ -4,9 +4,9 @@ untyped
 global function BlastShield_EnableVortexSphere
 global function GetBlastShieldCurrentColor
 
-const BLAST_SHIELD_COLOR_CHARGE_FULL		= <255, 200, 80>	// white cyan
-const BLAST_SHIELD_COLOR_CHARGE_MED		= <235, 150, 45>	// orange
-const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <225, 60, 60>	// red
+const BLAST_SHIELD_COLOR_CHARGE_FULL		= <125, 90, 10>	// white cyan
+const BLAST_SHIELD_COLOR_CHARGE_MED		= <180, 75, 20>	// orange
+const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <210, 75, 75>	// red
 
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_FULL2MED	= 0.75  // from zero to this fraction, fade between full and medium charge colors
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_MED2EMPTY	= 0.95  // from "full2med" to this fraction, fade between medium and empty charge colors
@@ -106,7 +106,7 @@ function VortexSphereColorUpdate( entity weapon, sphereClientFXHandle = null )
 	entity weaponOwner = weapon.GetWeaponOwner()
 	while( IsValid( weapon ) && IsValid( weaponOwner ) )
 	{
-		vector colorVec = GetBlastShieldCurrentColor( weapon.GetWeaponChargeFraction() )
+		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge(weapon))
 
 		// update the world entity that is linked to the world FX playing on the server
 		#if SERVER
