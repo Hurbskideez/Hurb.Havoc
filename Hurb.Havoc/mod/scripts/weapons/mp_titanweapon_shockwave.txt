@@ -59,11 +59,11 @@ WeaponData
 
 	// Ammo
 	"ammo_display"									"bar"
-	"ammo_stockpile_max"							"800"
-	"ammo_clip_size"   								"800"
-	"ammo_default_total"							"800"
-	"ammo_per_shot"									"800"
-	"ammo_min_to_fire"								"800"
+	"ammo_stockpile_max"							"600"
+	"ammo_clip_size"   								"600"
+	"ammo_default_total"							"600"
+	"ammo_per_shot"									"600"
+	"ammo_min_to_fire"								"600"
 
 	"reload_enabled"								"0"
 

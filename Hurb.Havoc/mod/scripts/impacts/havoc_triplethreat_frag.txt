@@ -1,0 +1,164 @@
+// "Gamematerial" "effect_name"
+
+ImpactTable
+{
+	Info
+	{
+		"whizby_sound_from_player"	"none"
+		"whizby_sound_from_AI"		"none"
+	}
+
+	FX
+	{
+		"C" "P_impact_exp_triplethreat_full"
+		"D" "P_impact_exp_triplethreat_full"
+		"E" "P_impact_exp_triplethreat_full"
+
+		"F" "P_impact_exp_triplethreat_full"
+		"G" "P_impact_exp_triplethreat_full"
+		"H" "P_impact_exp_triplethreat_full"
+
+		"J" "P_impact_exp_triplethreat_full"
+		"K" "P_impact_exp_triplethreat_full"
+		"L" "P_impact_exp_triplethreat_full"
+		"M" "P_impact_exp_triplethreat_full"
+		"N" "P_impact_exp_triplethreat_full"
+		"O" "P_impact_exp_triplethreat_full"
+		"P" "P_impact_exp_triplethreat_full"
+
+		"R" "P_impact_exp_triplethreat_full"
+		"S" "P_impact_exp_triplethreat_full"
+		"T" "P_impact_exp_triplethreat_full"
+		"U" "P_impact_exp_triplethreat_full"
+
+		"V" "P_impact_exp_triplethreat_full"
+		"W" "P_impact_exp_triplethreat_full"
+
+		"Y" "P_impact_exp_triplethreat_full"
+		"Z" "P_impact_exp_triplethreat_full"
+
+		"0" "P_impact_exp_triplethreat_full"
+		"1" "P_impact_exp_triplethreat_full"
+		"2" "P_impact_exp_triplethreat_full"
+		"3" "P_impact_exp_triplethreat_full"
+		"4" "P_impact_exp_triplethreat_full"
+		"5" "P_impact_exp_triplethreat_full"
+		"6" "P_impact_exp_triplethreat_full"
+		"7" "P_impact_exp_triplethreat_full"
+		"8" "P_impact_exp_triplethreat_full"
+		"9" "impact_puddle"
+
+		"airburst" "P_impact_exp_triplethreat_full"
+		"critical_hit" "P_impact_exp_triplethreat_full"
+	}
+
+	Sound
+	{
+		"C" "bt_execution_kickshoot"
+		"D" "bt_execution_kickshoot"
+		"E" "bt_execution_kickshoot"
+
+		"F" "bt_execution_kickshoot"
+		"G" "bt_execution_kickshoot"
+		"H" "bt_execution_kickshoot"
+
+		"J" "bt_execution_kickshoot"
+		"K" "bt_execution_kickshoot"
+		"L" "bt_execution_kickshoot"
+		"M" "bt_execution_kickshoot"
+		"N" "bt_execution_kickshoot"
+		"O" "bt_execution_kickshoot"
+		"P" "bt_execution_kickshoot"
+
+		"R" "bt_execution_kickshoot"
+		"S" "bt_execution_kickshoot"
+		"T" "bt_execution_kickshoot"
+		"U" "bt_execution_kickshoot"
+
+		"V" "bt_execution_kickshoot"
+		"W" "bt_execution_kickshoot"
+		"X"	"TitanBubbleShield.Explosive.BulletImpact_3P_vs_3P"
+		"Y" "bt_execution_kickshoot"
+		"Z" "bt_execution_kickshoot"
+
+		//"splash" "Water.BulletImpact"
+		//"slime_splash" "Water.BulletImpact"
+
+		"airburst" "bt_execution_kickshoot"
+		"shieldhit" "TitanShield.Explosive.BulletImpact_3P_vs_3P"
+	}
+
+	Sound_attacker
+	{
+		"C" "bt_execution_kickshoot"
+		"D" "bt_execution_kickshoot"
+		"E" "bt_execution_kickshoot"
+
+		"F" "bt_execution_kickshoot"
+		"G" "bt_execution_kickshoot"
+		"H" "bt_execution_kickshoot"
+
+		"J" "bt_execution_kickshoot"
+		"K" "bt_execution_kickshoot"  // mud?
+		"L" "bt_execution_kickshoot"
+		"M" "bt_execution_kickshoot"
+		"N" "bt_execution_kickshoot"	// sand?
+		"O" "bt_execution_kickshoot"
+		"P" "bt_execution_kickshoot"
+
+		"R" "bt_execution_kickshoot"
+		"S" "bt_execution_kickshoot"
+		"T" "bt_execution_kickshoot"
+		"U" "bt_execution_kickshoot"
+
+		"V" "bt_execution_kickshoot"
+		"W" "bt_execution_kickshoot"
+		"X"	"TitanBubbleShield.Explosive.BulletImpact_1P_vs_3P"
+		"Y" "bt_execution_kickshoot"
+		"Z" "bt_execution_kickshoot"
+
+		//"splash" "Water.BulletImpact"
+		//"slime_splash" "Water.BulletImpact"
+
+		"airburst" "bt_execution_kickshoot"
+		"shieldhit" "TitanShield.Explosive.BulletImpact_1P_vs_3P"
+	}
+
+	Sound_victim
+	{
+		"C" "bt_execution_kickshoot"
+		"D" "bt_execution_kickshoot"
+		"E" "bt_execution_kickshoot"
+
+		"F" "bt_execution_kickshoot"
+		"G" "bt_execution_kickshoot"
+		"H" "bt_execution_kickshoot"
+
+		"J" "bt_execution_kickshoot"
+		"K" "bt_execution_kickshoot"
+		"L" "bt_execution_kickshoot"
+		"M" "bt_execution_kickshoot"
+		"N" "bt_execution_kickshoot"
+		"O" "bt_execution_kickshoot"
+		"P" "bt_execution_kickshoot"
+
+		"R" "bt_execution_kickshoot"
+		"S" "bt_execution_kickshoot"
+		"T" "bt_execution_kickshoot"
+		"U" "bt_execution_kickshoot"
+
+		"V" "bt_execution_kickshoot"
+		"W" "bt_execution_kickshoot"
+		"X"	"TitanBubbleShield.Explosive.BulletImpact_3P_vs_3P"
+		"Y" "bt_execution_kickshoot"
+		"Z" "bt_execution_kickshoot"
+
+		//"splash" "Water.BulletImpact"
+		//"slime_splash" "Water.BulletImpact"
+
+		"airburst" "bt_execution_kickshoot"
+		"shieldhit" "TitanShield.Explosive.BulletImpact_3P_vs_1P"
+	}
+
+}
+

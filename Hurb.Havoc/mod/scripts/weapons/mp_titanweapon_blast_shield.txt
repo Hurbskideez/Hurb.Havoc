@@ -82,14 +82,14 @@ WeaponData
 	"charge_remain_full_when_fired"					"1"
 
 	// Behavior
-	"fire_rate"   									"3"
+	"fire_rate"   									"1.5"
 	"zoom_time_in"									"0.125"
 	"zoom_time_out"   								"0.125"
 	"zoom_fov"										"75"
-	"holster_time"									".4"
-	"deploy_time" 									".4"
-	"lower_time"  									".4"
-	"raise_time"  									".3"
+	"holster_time"									".2"
+	"deploy_time" 									".2"
+	"lower_time"  									".2"
+	"raise_time"  									".2"
 	"play_offhand_charging_anim"  					"1"
 	"offhand_blocks_sprint"							"1"
 	"allow_empty_fire"								"1"
@@ -99,7 +99,7 @@ WeaponData
 	"trigger_snipercam"   							"0"
 	"allow_headshots" 								"0"
 
-	"vortex_refire_behavior"  						"absorb"
+	"vortex_refire_behavior"  						"mp_titanweapon_vortex_shield"
 
 	// Spread
 	"spread_stand_hip"								"16.0"

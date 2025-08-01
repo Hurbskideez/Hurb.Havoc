@@ -215,10 +215,6 @@ void function ArcMineOnDamage( entity ent, var damageInfo )
 	entity attacker = DamageInfo_GetAttacker( damageInfo )
 	entity inflictor = DamageInfo_GetInflictor( damageInfo )
 	vector origin = DamageInfo_GetDamagePosition( damageInfo )
-	int flags = DamageInfo_GetDamageFlags( damageInfo )
-
-	printt(flags)
-
 
 	if ( ent.IsPlayer() || ent.IsNPC() )
 	{

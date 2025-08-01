@@ -5,32 +5,32 @@ ImpactTable
 {
 	FX
 	{
-		"C" "exp_xlg_slime_CH_spray2" 	// Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
-		"D" "exp_xlg_slime_CH_spray2"   //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
-		"E" "exp_xlg_slime_CH_spray2"	// metal_titan
+		"C" "exp_xlg_slime_CH_spray2" // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
+		"D" "exp_xlg_slime_CH_spray2"     //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
+		"E" "exp_xlg_slime_CH_spray2"	  // metal_titan
 
-		"F" "exp_xlg_slime_CH_spray2" 	//flesh
-		"G" "exp_xlg_slime_CH_spray2"	//metalgrate, chainlink, chain
-		"H" "exp_xlg_slime_CH_spray2" 	//alienflesh
+		"F" "exp_xlg_slime_CH_spray2" //flesh
+		"G" "exp_xlg_slime_CH_spray2"	  //metalgrate, chainlink, chain
+		"H" "exp_xlg_slime_CH_spray2" //alienflesh
 
-		"J" "exp_xlg_slime_CH_spray2"	//grass
-		"K" "exp_xlg_slime_CH_spray2"	//Mud
-		"L" "exp_xlg_slime_CH_spray2" 	//plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
-		"M" "exp_xlg_slime_CH_spray2" 	//Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
-		"N" "P_impact_exp_lrg_slime" 	//Slime
-		"O" "exp_xlg_slime_CH_spray2" 	//Foliage
-		"P" "exp_xlg_slime_CH_spray2" 	//Computer
+		"J" "exp_xlg_slime_CH_spray2"	  //grass
+		"K" "exp_xlg_slime_CH_spray2"		//Mud
+		"L" "exp_xlg_slime_CH_spray2" //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
+		"M" "exp_xlg_slime_CH_spray2" //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
+		"N" "P_impact_exp_lrg_slime" //Slime
+		"O" "exp_xlg_slime_CH_spray2" //Foliage
+		"P" "exp_xlg_slime_CH_spray2" //Computer
 
-		"R" "exp_xlg_slime_CH_spray2" 	//metalpanel, grenade, canister
-		"S" "P_impact_exp_lrg_water" 	//water, slime
-		"T" "exp_xlg_slime_CH_spray2" 	//tile
-		"U" "exp_xlg_slime_CH_spray2"	//glass_breakable
+		"R" "exp_xlg_slime_CH_spray2" //metalpanel, grenade, canister
+		"S" "P_impact_exp_lrg_water" //water, slime
+		"T" "exp_xlg_slime_CH_spray2" //tile
+		"U" "exp_xlg_slime_CH_spray2"						//glass_breakable
 
-		"V" "exp_xlg_slime_CH_spray2" 	//Metal Vent
-		"W" "exp_xlg_slime_CH_spray2" 	//Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
+		"V" "exp_xlg_slime_CH_spray2" //Metal Vent
+		"W" "exp_xlg_slime_CH_spray2" //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
 
-		"Y" "exp_xlg_slime_CH_spray2" 	//glass, brokenglass, glassbottle, pottery
-		"Z" "exp_xlg_slime_CH_spray2"  	//sand
+		"Y" "exp_xlg_slime_CH_spray2" //glass, brokenglass, glassbottle, pottery
+		"Z" "exp_xlg_slime_CH_spray2"  //sand
 
 		"0" "exp_xlg_slime_CH_spray2"
 		"1" "exp_xlg_slime_CH_spray2"
@@ -41,7 +41,7 @@ ImpactTable
 		"6" "exp_xlg_slime_CH_spray2"
 		"7" "exp_xlg_slime_CH_spray2"
 		"8" "exp_xlg_slime_CH_spray2"
-		"9" "exp_xlg_slime_CH_spray2" 	//puddle
+		"9" "exp_xlg_slime_CH_spray2" //puddle
 	}
 	Sound
 	{

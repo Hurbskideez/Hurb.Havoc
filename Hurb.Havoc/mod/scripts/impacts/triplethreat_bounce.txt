@@ -5,46 +5,46 @@ ImpactTable
 {
 	FX
 	{
-		"C" "P_impact_exp_med_concrete_grnd" 		// Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
-		"D" "P_impact_exp_med_dirt_grnd"     		//Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
-		"E" "impact_metal_titan"					// metal_titan
+		"C" "impact_concrete" // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
+		"D" "impact_dirt"     //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
+		"E" "impact_metal_titan"	  // metal_titan
 
-		"F" "impact_flesh" 			//flesh
-		"G" "impact_metal_large"	//metalgrate, chainlink, chain
-		"H" "impact_alienflesh" 	//alienflesh
+		"F" "impact_flesh" //flesh
+		"G" "impact_metal_large"	  //metalgrate, chainlink, chain
+		"H" "impact_alienflesh" //alienflesh
 
-		"J" "P_impact_exp_med_dirt_grnd"	  		//grass
-		"K" "impact_mud_large"			//Mud
-		"L" "impact_plastic_large" 		//plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
-		"M" "impact_metal_large" 	//Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
-		"N" "P_impact_exp_med_slime" 		//Slime
-		"O" "P_impact_exp_med_dirt_grnd" 			//Foliage
-		"P" "impact_metal_large" 	//Computer
+		"J" "impact_dirt"	  //grass
+		"K" "impact_mud"		//Mud
+		"L" "impact_plastic" //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
+		"M" "impact_metal_large" //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
+		"N" "P_impact_slime" //Slime
+		"O" "impact_dirt" //Foliage
+		"P" "impact_metal_large" //Computer
 
-		"R" "P_impact_exp_med_concrete_grnd" //metalpanel, grenade, canister
-		"S" "P_impact_exp_med_water" 	//water, slime
-		"T" "P_impact_exp_med_concrete_grnd" //tile
-		"U" "impact_glass"			//glass_breakable
+		"R" "impact_concrete_large" //metalpanel, grenade, canister
+		"S" "P_impact_water_LG" //water, slime
+		"T" "impact_concrete_large" //tile
+		"U" "impact_glass"	//glass_breakable
 
-		"V" "impact_metal_large" 	//Metal Vent
-		"W" "impact_wood_large" 	//Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
+		"V" "impact_metal_large" //Metal Vent
+		"W" "impact_wood_large" //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
 
-		"Y" "impact_glass" 			//glass, brokenglass, glassbottle, pottery
-		"Z" "P_impact_exp_med_sand_grnd"  		//sand
+		"Y" "impact_glass" //glass, brokenglass, glassbottle, pottery
+		"Z" "impact_sand_LG"  //sand
 
-		"0" "P_impact_exp_med_dirt_grnd"
-		"1" "P_impact_exp_med_concrete_grnd"
-		"2" "P_impact_exp_med_dirt_grnd"
-		"3" "P_impact_exp_med_concrete_grnd"
-		"4" "P_impact_exp_med_concrete_grnd"
-		"5" "P_impact_exp_med_concrete_grnd"
-		"6" "P_impact_exp_med_concrete_grnd"
-		"7" "P_impact_exp_med_concrete_grnd"
-		"8" "P_impact_exp_med_concrete_grnd"
-		"9" "impact_puddle"
+		"0" "impact_dirt_large"
+		"1" "impact_concrete_large"
+		"2" "impact_dirt_large"
+		"3" "impact_concrete_large"
+		"4" "impact_concrete_large"
+		"5" "impact_concrete_large"
+		"6" "impact_concrete_large"
+		"7" "impact_concrete_large"
+		"8" "impact_concrete_large"
+		"9" "impact_puddle" //puddle
 
-		"splash" "P_impact_water_LG"
-		"slime_splash" "P_impact_water_LG"
+		"splash" "P_impact_water"
+		"slime_splash" "P_impact_slime"
 		"airburst" "none"  //No Surface
 		"shieldhit" "none" //Invisible armor
 		"holohit" "none" //Holopilot entity

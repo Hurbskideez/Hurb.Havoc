@@ -39,9 +39,6 @@ WeaponData
 	"playermodel" 									"models/weapons/titan_havoc_triple_threat/w_titan_havoc_triple_threat.mdl"
 	"holstermodel"  									"models/weapons/titan_havoc_triple_threat/w_titan_havoc_triple_threat.mdl"
 
-	"projectilemodel" 								"models/weapons/bullets/triple_threat_projectile.mdl"
-
-
 	MP_BASE
 	{
 		"damage_near_distance"							"1500"
@@ -76,35 +73,33 @@ WeaponData
 	}
 
 	// Effects
-	"tracer_effect"   								"weapon_tracers_40mm"
-	"tracer_effect_first_person"					"weapon_tracers_40mm"
-	"impact_effect_table" 							"exp_havoc_triplethreat_grenade"
-	"bounce_effect_table"							"bounce_havoc_triplethreat"
+	"tracer_effect"   								"weapon_tracers_titandestroyer"
+	"impact_effect_table" 							"havoc_triplethreat_frag"
+	"bounce_effect_table"							"triplethreat_bounce"
 	"projectile_trail_effect_0" 					"wpn_grenade_TT"
+	"projectile_adjust_to_gun_barrel"				"1"
+	"projectile_airburst_on_death"					"1"
+
 	"vortex_absorb_effect"							"wpn_vortex_projectile_trip_FP"
 	"vortex_absorb_effect_third_person"				"wpn_vortex_projectile_trip"
 	"vortex_absorb_sound"							"Vortex_Shield_AbsorbRocket"
 	"vortex_absorb_sound_1p_vs_3p"					"Vortex_Shield_AbsorbRocket_1P_VS_3P"
-	"vortex_drain"									"0.0"
-	"projectile_adjust_to_gun_barrel"				"1"
+
+	"projectilemodel" 								"models/weapons/bullets/triple_threat_projectile.mdl"
+
+	"sound_dryfire"									"titan_dryfire"
+	"fire_sound_1_player_1p"					"bt_eye_cache_pickup_eye_airrelease"
+	"fire_sound_1_player_3p"					"bt_eye_cache_pickup_eye_airrelease"
+	"fire_sound_1_npc"								"bt_weapon_draw"
+	"sound_zoom_in"									"Weapon_Triple_Threat.ALT_On"
+	"sound_zoom_out"								"Weapon_Triple_Threat.ALT_Off"
+
+	"low_ammo_sound_name_1"							"MGL_LowAmmo_Shot1"
+	"low_ammo_sound_name_2"							"MGL_LowAmmo_Shot2"
 
 	"fx_muzzle_flash_view"							"wpn_muzzleflash_xo_triple_fp"
 	"fx_muzzle_flash_world"							"wpn_muzzleflash_xo_triple"
 	"fx_muzzle_flash_attach"						"muzzle_flash"
-
-	// Sound
-	"sound_dryfire"									"titan_dryfire"
-	"fire_sound_1_player_1p"					"bt_eye_cache_pickup_eye_airrelease"
-	"fire_sound_1_player_3p"					"Tick_TraverseJets_Fire_3p"
-	"fire_sound_1_npc"								"Tick_TraverseJets_Fire_3p"
-
-	"sound_zoom_in"									"Weapon_Triple_Threat.ALT_On"
-	"sound_zoom_out"								"Weapon_Triple_Threat.ALT_Off"
-
-	"low_ammo_sound_name_1"							"mgl_lowammo_shot1"
-	"low_ammo_sound_name_2"							"mgl_lowammo_shot2"
-
-	"sound_dryfire"									"titan_dryfire"
 
 	// Damage - When Used by Players
 	"damage_type" 									"burn"
@@ -117,10 +112,10 @@ WeaponData
 	"explosionradius" 								"350"
 
 	"impulse_force"   								"20000"
-	"explosion_shake_radius"						"400"
+	"explosion_shake_radius"						"300"
 	"explosion_shake_amplitude"						"10"
-	"explosion_shake_frequency"						"45"
-	"explosion_shake_duration"						"0.6"
+	"explosion_shake_frequency"						"50"
+	"explosion_shake_duration"						"0.55"
 
 	"critical_hit_damage_scale"						"1.5"
 
@@ -441,22 +436,17 @@ WeaponData
 			"reloadempty_time_late1"						"/1.5"
 			"reloadempty_time_late2"						"/1.5"
 		}
+		proximity_detonate
+		{
+			//nades detonate early when something is nearby
+		}
 		pressurised_chamber
 		{
 			"charge_time" 									"0.7"
 			"charge_cooldown_time"                          "0.2"
-			"charge_cooldown_delay"                         "0.2"
+			"charge_cooldown_delay"                         "0.1"
 			"charge_end_forces_fire"                        "1"
 			"charge_remain_full_when_fired"                 "1"
-
-			"charge_sound_1p"								"bt_eye_insert"
-			"charge_sound_3p"								"bt_melee_gun_slam_left"
-			"charge_sound_stop_when_full"					"1"
-			"charge_sound_seek_to_charge_fraction"			"0"
-			"charge_drain_sound_1p"							"weapon_stickylauncher_ventcooldown"
-			"charge_drain_sound_3p"							"weapon_stickylauncher_ventcooldown"
-			"charge_drain_sound_stop_when_empty"			"1"
-			"charge_drain_sound_seek_to_charge_fraction"	"1"
 
 			active_crosshair_count                    "2"
 		}
@@ -486,7 +476,7 @@ WeaponData
             Args
             {
                 isFiring                weapon_is_firing
-                adsFrac                 player_zoomFrac
+                adsFrac                 player_chargeFrac
             }
         }
 

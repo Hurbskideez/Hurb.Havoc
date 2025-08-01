@@ -5,32 +5,32 @@ ImpactTable
 {
 	FX
 	{
-		"C" "xo_landing_concrete"    // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
-		"D" "xo_landing_dirt"        //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
-		"E" "xo_landing_metal"		 // metal_titan
+		"C" "xo_landing_concrete" // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
+		"D" "xo_landing_dirt"     //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
+		"E" "xo_landing_metal"	  // metal_titan
 
-		"F" "xo_landing_concrete"	 //flesh
-		"G" "xo_landing_concrete"	 //metalgrate, chainlink, chain
-		"H" "xo_landing_concrete" 	 //alienflesh
+		"F" "xo_landing_concrete" //flesh
+		"G" "xo_landing_concrete"	  //metalgrate, chainlink, chain
+		"H" "xo_landing_concrete" //alienflesh
 
-		"J" "xo_landing_dirt"	   	 //grass
-		"K" "xo_landing_dirt"		 //Mud
-		"L" "xo_landing_concrete" 	 //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
-		"M" "xo_landing_concrete" 	 //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
+		"J" "xo_landing_dirt"	  //grass
+		"K" "xo_landing_dirt"		//Mud
+		"L" "xo_landing_concrete" //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
+		"M" "xo_landing_concrete" //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
 		"N" "P_impact_exp_med_slime" //Slime
-		"O" "xo_landing_dirt" 		 //Foliage
-		"P" "xo_landing_metal" 		 //Computer
+		"O" "xo_landing_dirt" //Foliage
+		"P" "xo_landing_metal" //Computer
 
-		"R" "xo_landing_concrete" 	 //metalpanel, grenade, canister
+		"R" "xo_landing_concrete" //metalpanel, grenade, canister
 	  	"S" "P_impact_exp_med_water" //water, slime
-		"T" "xo_landing_concrete" 	 //tile
-		"U" "xo_landing_concrete"	 //glass_breakable
+		"T" "xo_landing_concrete" //tile
+		"U" "xo_landing_concrete"						//glass_breakable
 
-		"V" "xo_landing_metal" 		 //Metal Vent
-		"W" "xo_landing_concrete" 	 //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
+		"V" "xo_landing_metal" //Metal Vent
+		"W" "xo_landing_concrete" //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
 
-		"Y" "xo_landing_metal" 		 //glass, brokenglass, glassbottle, pottery
-		"Z" "xo_landing_concrete"  	 //sand
+		"Y" "xo_landing_metal" //glass, brokenglass, glassbottle, pottery
+		"Z" "xo_landing_concrete"  //sand
 
 		"0" "xo_landing_concrete"
 		"1" "xo_landing_concrete"
@@ -41,7 +41,7 @@ ImpactTable
 		"6" "xo_landing_concrete"
 		"7" "xo_landing_concrete"
 		"8" "xo_landing_concrete"
-		"9" "xo_landing_concrete" 	 //puddle
+		"9" "xo_landing_concrete" //puddle
 	}
 	Sound
 	{

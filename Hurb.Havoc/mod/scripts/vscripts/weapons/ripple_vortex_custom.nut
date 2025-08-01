@@ -4,9 +4,9 @@ untyped
 global function BlastShield_EnableVortexSphere
 global function GetBlastShieldCurrentColor
 
-const BLAST_SHIELD_COLOR_CHARGE_FULL		= <160, 90, 60>	// brown
-const BLAST_SHIELD_COLOR_CHARGE_MED		= <200, 150, 100>	// orange
-const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <200, 120, 120>	// red
+const BLAST_SHIELD_COLOR_CHARGE_FULL		= <255, 200, 80>	// white cyan
+const BLAST_SHIELD_COLOR_CHARGE_MED		= <235, 150, 45>	// orange
+const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <225, 60, 60>	// red
 
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_FULL2MED	= 0.75  // from zero to this fraction, fade between full and medium charge colors
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_MED2EMPTY	= 0.95  // from "full2med" to this fraction, fade between medium and empty charge colors

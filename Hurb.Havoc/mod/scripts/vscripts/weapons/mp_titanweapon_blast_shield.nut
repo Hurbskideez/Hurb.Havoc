@@ -146,7 +146,7 @@ void function BlastShield_UICreateOrClean( entity player )
 	if ( !BlastShield_CanDoUI( player ) )
 		return
 
-	if ( player.IsTitan() )
+	if ( true )
 	{
 		Tremor_BarTopoData bg = Tremor_BasicImageBar_CreateRuiTopo( < 0, 0, 0 >, < 0.0, 0.085, 0.0 >, 0.105, 0.015, Tremor_eDirection.right )
 		RuiSetFloat3( bg.imageRuis[0], "basicImageColor", < 0, 0, 0 > )
@@ -336,7 +336,7 @@ var function OnWeaponPrimaryAttack_titanweapon_blast_shield( entity weapon, Weap
 	FadeOutSoundOnEntity( weapon, "heat_shield_1p_start", 0.15 )
 	FadeOutSoundOnEntity( weapon, "heat_shield_3p_start", 0.15 )
 
-	return 1
+	return true
 }
 
 #if SERVER
@@ -354,11 +354,7 @@ void function OnClientAnimEvent_titanweapon_blast_shield( entity weapon, string 
 {
 	if ( name == "muzzle_flash" )
 	{
-		asset fpEffect
-		if ( weapon.GetWeaponSettingBool( eWeaponVar.is_burn_mod ) )
-			fpEffect = $"wpn_muzzleflash_vortex_mod_CP_FP"
-		else
-			fpEffect = $"wpn_muzzleflash_vortex_titan_CP_FP"
+		asset fpEffect = $"wpn_muzzleflash_vortex_titan_CP_FP"
 
 		int handle
 		if ( GetLocalViewPlayer() == weapon.GetWeaponOwner() )

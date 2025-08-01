@@ -100,9 +100,9 @@ WeaponData
 	"zoom_fov"										"50"
 	"reload_time" 									"0"
 	"holster_time"									"0.65"
-	"deploy_time" 									"0.3"
+	"deploy_time" 									"0.2"
 	"lower_time"  									"0.65"
-	"raise_time"  									"0.3"
+	"raise_time"  									"0.2"
 	"vortex_refire_behavior"  						"grenade"
 	"allow_empty_fire"								"0"
 	"reload_enabled"  								"0"
@@ -118,9 +118,9 @@ WeaponData
 	"grenade_bounce_randomness"						"0.2"
 	"grenade_bounce_extra_vertical_randomness"		"0.2"
 	"grenade_roll_vel_frac_per_second"				"0.1"
-	"projectile_launch_speed"						"4000"
+	"projectile_launch_speed"						"5000"
 	"projectile_launch_pitch_offset"				"1"
-	"projectile_gravity_scale"						"1.6"
+	"projectile_gravity_scale"						"2.6"
 
 	// Spread
 	"spread_stand_hip"  							"0"

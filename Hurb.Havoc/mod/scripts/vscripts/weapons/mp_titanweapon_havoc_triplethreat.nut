@@ -15,8 +15,8 @@ const FX_MINE_TRAIL = $"Rocket_Smoke_Large"
 const FX_MINE_LIGHT = $"tower_light_red"
 const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
-const MIN_FUSE_TIME = 2.0
-const MAX_FUSE_TIME = 2.5
+const MIN_FUSE_TIME = 2.3
+const MAX_FUSE_TIME = 2.7
 //const TRIPLE_THREAT_MAGNETIC_FORCE = 2400
 //const MIN_ROLLING_ROUNDS_FUSE_TIME = 3.2
 //const MAX_ROLLING_ROUNDS_FUSE_TIME = 3.7
@@ -25,11 +25,11 @@ global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
 //global const TRIPLE_THREAT_MIN_MINE_FUSE_TIME = 8.2
 //global const TRIPLE_THREAT_MAX_MINE_FUSE_TIME = 8.8
-//global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 1.15 //After landing
+global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 1.0 //After landing
 //global const TRIPLE_THREAT_MINE_FIELD_TITAN_ONLY = false
 //global const TRIPLE_THREAT_MINE_FIELD_MAX_MINES = 9
 //global const TRIPLE_THREAT_MINE_FIELD_LAUNCH_VELOCITY = 1100
-//global const TRIPLE_THREAT_PROX_MINE_RANGE = 200
+global const TRIPLE_THREAT_PROX_MINE_RANGE = 300
 
 const TRIPLE_THREAT_MAX_BOLTS = 3
 
@@ -99,28 +99,11 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 			projectile.GrenadeExplode( normal )
 		}
 	}
-	else if( "becomeProxMine" in projectile.s && projectile.s.becomeProxMine == true )
-	{
-		table collisionParams =
-		{
-			pos = pos,
-			normal = normal,
-			hitEnt = hitEnt,
-			hitbox = hitbox
-		}
-
-		PlantStickyEntity( projectile, collisionParams )
-		projectile.s.collisionNormal <- normal
-		#if SERVER
-			thread Triple_ThreatProximityTrigger( projectile )
-		#endif
-	}
-
 }
 
 bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon )
 {
-//	weapon.EmitWeaponSound("bt_melee_gun_slam_left")
+	weapon.EmitWeaponSound("MegaTurret_Laser_ChargeUp_3P")
 
 	#if CLIENT
 		if ( !IsFirstTimePredicted() )
@@ -132,7 +115,7 @@ bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon
 
 void function OnWeaponChargeEnd_titanweapon_triple_threat_havoc( entity weapon )
 {
-//	weapon.StopWeaponSound("bt_melee_gun_slam_left")
+	weapon.StopWeaponSound("MegaTurret_Laser_ChargeUp_3P")
 	#if CLIENT
 		if ( !IsFirstTimePredicted() )
 			return
@@ -149,7 +132,7 @@ function Triple_ThreatProximityTrigger( entity nade )
 	nade.EndSignal( "OnDestroy" )
 	EmitSoundOnEntity( nade, "Wpn_TripleThreat_Grenade_MineAttach" )
 
-//	wait TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME
+	wait TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME
 
 	EmitSoundOnEntity( nade, "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
 	local rangeCheck = PROX_MINE_RANGE
@@ -260,6 +243,13 @@ function FireTriple_ThreatGrenade( entity weapon, origin, fwd, velocity, playerF
 		#else
 			SetTeam( nade, weaponOwner.GetTeam() )
 		#endif
+
+		if (weapon.HasMod("proximity_detonate") )
+		{
+			#if SERVER
+				thread Triple_ThreatProximityTrigger( nade )
+			#endif
+		}
 
 		return nade
 	}
