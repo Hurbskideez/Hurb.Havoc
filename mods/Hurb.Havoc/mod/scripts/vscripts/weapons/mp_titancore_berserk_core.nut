@@ -154,6 +154,7 @@ void function BerserkThink( entity player, int endlessStatusEffectHandle )
 {
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "OnChangedPlayerClass" )
+	player.EndSignal( "CoreEnd" )
 	if ( endlessStatusEffectHandle != 0 )
 		player.EndSignal( "StopEndlessStim" )
 
