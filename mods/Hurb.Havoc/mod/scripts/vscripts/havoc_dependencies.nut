@@ -9,7 +9,7 @@ struct
 
 void function Havoc_CheckDependencies()
 {
-    #if ARCHON_HAS_TITANFRAMEWORK
+    #if HAVOC_HAS_TITANFRAMEWORK
 
     #elseif UI
         Havoc_CreateDependencyDialog()
