@@ -1,0 +1,4 @@
+{
+    "EventId": [ "bt_execution_kickshoot" ],
+    "AudioSelectionStrategy": "sequential"
+}

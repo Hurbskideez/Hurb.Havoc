@@ -1,0 +1,165 @@
+// "Gamematerial" "effect_name"
+
+
+ImpactTable
+{
+	FX
+	{
+		"C" "impact_concrete" // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
+		"D" "impact_dirt"     //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
+		"E" "impact_metal_titan"	  // metal_titan
+
+		"F" "impact_flesh" //flesh
+		"G" "impact_metal_large"	  //metalgrate, chainlink, chain
+		"H" "impact_alienflesh" //alienflesh
+
+		"J" "impact_dirt"	  //grass
+		"K" "impact_mud"		//Mud
+		"L" "impact_plastic" //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
+		"M" "impact_metal_large" //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
+		"N" "P_impact_slime" //Slime
+		"O" "impact_dirt" //Foliage
+		"P" "impact_metal_large" //Computer
+
+		"R" "impact_concrete_large" //metalpanel, grenade, canister
+		"S" "P_impact_water_LG" //water, slime
+		"T" "impact_concrete_large" //tile
+		"U" "impact_glass"	//glass_breakable
+
+		"V" "impact_metal_large" //Metal Vent
+		"W" "impact_wood_large" //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
+
+		"Y" "impact_glass" //glass, brokenglass, glassbottle, pottery
+		"Z" "impact_sand_LG"  //sand
+
+		"0" "impact_dirt_large"
+		"1" "impact_concrete_large"
+		"2" "impact_dirt_large"
+		"3" "impact_concrete_large"
+		"4" "impact_concrete_large"
+		"5" "impact_concrete_large"
+		"6" "impact_concrete_large"
+		"7" "impact_concrete_large"
+		"8" "impact_concrete_large"
+		"9" "impact_puddle" //puddle
+
+		"splash" "P_impact_water"
+		"slime_splash" "P_impact_slime"
+		"airburst" "none"  //No Surface
+		"shieldhit" "none" //Invisible armor
+		"holohit" "none" //Holopilot entity
+		"critical_hit" "none" //titan weekspots
+
+		"headshot_flesh" "none" //Human headshot
+		"headshot_mechanical" "none" //Robotic Headshot
+	}
+
+	Sound
+	{
+		"C" "Boomtown_GruntCage_DoorOpen"
+		"D" "Boomtown_GruntCage_DoorOpen"
+		"E" "Boomtown_GruntCage_DoorOpen"
+
+		"F" "Boomtown_GruntCage_DoorOpen"
+		"G" "Boomtown_GruntCage_DoorOpen"
+		"H" "Boomtown_GruntCage_DoorOpen"
+
+		"J" "Boomtown_GruntCage_DoorOpen"
+		"K" "Boomtown_GruntCage_DoorOpen"
+		"L" "Boomtown_GruntCage_DoorOpen"
+		"M" "Boomtown_GruntCage_DoorOpen"
+		"N" "Boomtown_GruntCage_DoorOpen"
+		"O" "Boomtown_GruntCage_DoorOpen"
+		"P" "Boomtown_GruntCage_DoorOpen"
+
+		"R" "Boomtown_GruntCage_DoorOpen"
+		"S" "Boomtown_GruntCage_DoorOpen"
+		"T" "Boomtown_GruntCage_DoorOpen"
+		"U" "Boomtown_GruntCage_DoorOpen"
+
+		"V" "Boomtown_GruntCage_DoorOpen"
+		"W" "Boomtown_GruntCage_DoorOpen"
+		"X" "Boomtown_GruntCage_DoorOpen"
+		"Y" "Boomtown_GruntCage_DoorOpen"
+		"Z" "Boomtown_GruntCage_DoorOpen"
+
+		"splash" "Boomtown_GruntCage_DoorOpen"
+		//"slime_splash" "Boomtown_GruntCage_DoorOpen"
+
+		"airburst" "Boomtown_GruntCage_DoorOpen"
+		"shieldhit" "Boomtown_GruntCage_DoorOpen"
+	}
+
+	Sound_attacker
+	{
+		"C" "Boomtown_GruntCage_DoorOpen"
+		"D" "Boomtown_GruntCage_DoorOpen"
+		"E" "Boomtown_GruntCage_DoorOpen"
+
+		"F" "Boomtown_GruntCage_DoorOpen"
+		"G" "Boomtown_GruntCage_DoorOpen"
+		"H" "Boomtown_GruntCage_DoorOpen"
+
+		"J" "Boomtown_GruntCage_DoorOpen"
+		"K" "Boomtown_GruntCage_DoorOpen"
+		"L" "Boomtown_GruntCage_DoorOpen"
+		"M" "Boomtown_GruntCage_DoorOpen"
+		"N" "Boomtown_GruntCage_DoorOpen"
+		"O" "Boomtown_GruntCage_DoorOpen"
+		"P" "Boomtown_GruntCage_DoorOpen"
+
+		"R" "Boomtown_GruntCage_DoorOpen"
+		"S" "Boomtown_GruntCage_DoorOpen"
+		"T" "Boomtown_GruntCage_DoorOpen"
+		"U" "Boomtown_GruntCage_DoorOpen"
+
+		"V" "Boomtown_GruntCage_DoorOpen"
+		"W" "Boomtown_GruntCage_DoorOpen"
+		"X" "Boomtown_GruntCage_DoorOpen"
+		"Y" "Boomtown_GruntCage_DoorOpen"
+		"Z" "Boomtown_GruntCage_DoorOpen"
+
+		"splash" "Boomtown_GruntCage_DoorOpen"
+		//"slime_splash" "Water.BulletImpact"
+
+		"airburst" "Boomtown_GruntCage_DoorOpen"
+		"shieldhit" "Boomtown_GruntCage_DoorOpen"
+	}
+
+	Sound_victim
+	{
+		"C" "Boomtown_GruntCage_DoorOpen"
+		"D" "Boomtown_GruntCage_DoorOpen"
+		"E" "Boomtown_GruntCage_DoorOpen"
+
+		"F" "Boomtown_GruntCage_DoorOpen"
+		"G" "Boomtown_GruntCage_DoorOpen"
+		"H" "Boomtown_GruntCage_DoorOpen"
+
+		"J" "Boomtown_GruntCage_DoorOpen"
+		"K" "Boomtown_GruntCage_DoorOpen"
+		"L" "Boomtown_GruntCage_DoorOpen"
+		"M" "Boomtown_GruntCage_DoorOpen"
+		"N" "Boomtown_GruntCage_DoorOpen"
+		"O" "Boomtown_GruntCage_DoorOpen"
+		"P" "Boomtown_GruntCage_DoorOpen"
+
+		"R" "Boomtown_GruntCage_DoorOpen"
+		"S" "Boomtown_GruntCage_DoorOpen"
+		"T" "Boomtown_GruntCage_DoorOpen"
+		"U" "Boomtown_GruntCage_DoorOpen"
+
+		"V" "Boomtown_GruntCage_DoorOpen"
+		"W" "Boomtown_GruntCage_DoorOpen"
+		"X" "Boomtown_GruntCage_DoorOpen"
+		"Y" "Boomtown_GruntCage_DoorOpen"
+		"Z" "Boomtown_GruntCage_DoorOpen"
+
+		"splash" "Boomtown_GruntCage_DoorOpen"
+		//"slime_splash" "Water.BulletImpact"
+
+		"airburst" "Boomtown_GruntCage_DoorOpen"
+		"shieldhit" "Boomtown_GruntCage_DoorOpen"
+	}
+
+}
