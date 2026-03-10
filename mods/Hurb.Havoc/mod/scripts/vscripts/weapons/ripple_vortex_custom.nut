@@ -4,9 +4,14 @@ untyped
 global function BlastShield_EnableVortexSphere
 global function GetBlastShieldCurrentColor
 
-const BLAST_SHIELD_COLOR_CHARGE_FULL		= <125, 90, 10>	// white cyan
-const BLAST_SHIELD_COLOR_CHARGE_MED		= <180, 75, 20>	// orange
-const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <210, 75, 75>	// red
+const BLAST_SHIELD_COLOR_CHARGE_FULL		= <68, 48, 4>	// white cyan
+const BLAST_SHIELD_COLOR_CHARGE_MED		= <68, 48, 4>	// orange
+const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <68, 48, 4>	// red
+
+//new colours for Wip colour thing
+//180, 160, 120 off-white for higher end of flash
+//125, 90, 10 brighter yellow for lower end of flash
+//68, 48, 4 default shield colour while charging
 
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_FULL2MED	= 0.75  // from zero to this fraction, fade between full and medium charge colors
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_MED2EMPTY	= 0.95  // from "full2med" to this fraction, fade between medium and empty charge colors

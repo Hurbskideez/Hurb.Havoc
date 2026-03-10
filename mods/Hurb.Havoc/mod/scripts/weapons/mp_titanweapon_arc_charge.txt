@@ -6,17 +6,17 @@ WeaponData
 	"shortprintname"								"#WPN_TITAN_SHOULDER_STICKY_SHORT"
 	"longdesc"										"#WPN_TITAN_SHOULDER_STICKY_LONGDESC"
 
-	"menu_icon"										"havoc/menu/arc_mine_menu"
-	"hud_icon"										"havoc/hud/arc_mine"
+	"menu_icon"										"havoc/menu/arc_charge_menu"
+	"hud_icon"										"havoc/hud/arc_charge"
 
 	"weaponClass" 									"titan"
 	"weaponType"									"tactical"
 	"fire_mode"   									"offhand_instant"
 	"minimap_reveal_distance"						"32000"
 
-	"OnProjectileCollision"  						"OnProjectileCollision_titanweapon_arc_mine"
-	"OnWeaponPrimaryAttack"							"OnWeaponPrimaryAttack_titanweapon_arc_mine"
-	"OnWeaponAttemptOffhandSwitch"					"OnWeaponAttemptOffhandSwitch_titanweapon_arc_mine"
+	"OnProjectileCollision"  						"OnProjectileCollision_titanweapon_arc_charge"
+	"OnWeaponPrimaryAttack"							"OnWeaponPrimaryAttack_titanweapon_arc_charge"
+	"OnWeaponAttemptOffhandSwitch"					"OnWeaponAttemptOffhandSwitch_titanweapon_arc_charge"
 
 	"projectile_ignores_vortex"						"fall_vortex"
 
@@ -27,7 +27,8 @@ WeaponData
 	// Effects
 	"tracer_effect"   								"weapon_tracers_red_laser"
 	"impact_effect_table" 							"exp_emp"
-	"projectile_trail_effect_0" 					"wpn_grenade_frag_blue"
+	"projectile_trail_effect_0" 					"P_wpn_grenade_smoke_trail"
+//	"projectile_trail_effect_1" 					"P_arcTrap_light"
 	"vortex_absorb_effect"							"wpn_vortex_projectile_frag_FP"
 	"vortex_absorb_effect_third_person"						"wpn_vortex_projectile_frag"
 	"vortex_absorb_sound"							"Vortex_Shield_AbsorbBulletLarge"
@@ -93,8 +94,6 @@ WeaponData
 
 	// Behavior
 	"fire_rate"   									"4.5"
-	"burst_fire_count"                              "3"
-	"burst_fire_delay"                              "0.0"
 	"zoom_time_in"									"0.1"
 	"zoom_time_out"   								"0.1"
 	"zoom_fov"										"50"
@@ -118,7 +117,7 @@ WeaponData
 	"grenade_bounce_randomness"						"0.2"
 	"grenade_bounce_extra_vertical_randomness"		"0.2"
 	"grenade_roll_vel_frac_per_second"				"0.1"
-	"projectile_launch_speed"						"5000"
+	"projectile_launch_speed"						"3200"
 	"projectile_launch_pitch_offset"				"1"
 	"projectile_gravity_scale"						"2.6"
 
@@ -208,13 +207,14 @@ WeaponData
 
 	Mods
 	{
-		instant_burst_helper
+		twin_charge
 		{
-			"ammo_min_to_fire"						"100"
-		}
-		magnetic_mines
-		{
-
+			"ammo_display"									"bar"
+			"ammo_stockpile_max"							"600"
+			"ammo_clip_size"   								"600"
+			"ammo_default_total"							"600"
+			"ammo_per_shot"									"300"
+			"ammo_min_to_fire"								"300"
 		}
 	}
 

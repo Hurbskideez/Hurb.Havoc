@@ -1,15 +1,15 @@
 untyped
 
-global function MpTitanweaponArcMine_Init
-global function OnWeaponPrimaryAttack_titanweapon_arc_mine
-global function OnProjectileCollision_titanweapon_arc_mine
-global function OnWeaponAttemptOffhandSwitch_titanweapon_arc_mine
+global function MpTitanweaponArcCharge_Init
+global function OnWeaponPrimaryAttack_titanweapon_arc_charge
+global function OnProjectileCollision_titanweapon_arc_charge
+global function OnWeaponAttemptOffhandSwitch_titanweapon_arc_charge
 
 #if SERVER
-global function OnWeaponNpcPrimaryAttack_titanweapon_arc_mine
+global function OnWeaponNpcPrimaryAttack_titanweapon_arc_charge
 #endif // #if SERVER
 
-const FUSE_TIME = 2.5 //Applies once the grenade has stuck to a player.
+const FUSE_TIME = 0.5 //Applies once the grenade has stuck to a player.
 const FUSE_TIME_EXTENDED = 5 //Applies once the grenade has stuck to a surface.
 const MINE_TRIGGER_DELAY = 0.5
 
@@ -18,15 +18,15 @@ const STICKY_MINE_FIELD_ACTIVATION_TIME = 0.5 //After landing
 const FX_EMP_BODY_HUMAN			= $"P_emp_body_human"
 const FX_EMP_BODY_TITAN			= $"P_emp_body_titan"
 
-function MpTitanweaponArcMine_Init()
+function MpTitanweaponArcCharge_Init()
 {
-	PrecacheWeapon("mp_titanweapon_arc_mine")
+	PrecacheWeapon("mp_titanweapon_arc_charge")
 	#if SERVER
-		AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_arc_mine, ArcMineOnDamage )
+		AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_arc_charge, ArcChargeOnDamage )
 	#endif
 }
 
-var function OnWeaponPrimaryAttack_titanweapon_arc_mine( entity weapon, WeaponPrimaryAttackParams attackParams )
+var function OnWeaponPrimaryAttack_titanweapon_arc_charge( entity weapon, WeaponPrimaryAttackParams attackParams )
 {
 	entity player = weapon.GetWeaponOwner()
 
@@ -41,11 +41,11 @@ var function OnWeaponPrimaryAttack_titanweapon_arc_mine( entity weapon, WeaponPr
 		FireGrenade( weapon, attackParams )
 	}
 
-	return weapon.GetWeaponInfoFileKeyField( "ammo_per_shot" ) / 3
+	return weapon.GetWeaponInfoFileKeyField( "ammo_per_shot" )
 }
 
 #if SERVER
-var function OnWeaponNpcPrimaryAttack_titanweapon_arc_mine( entity weapon, WeaponPrimaryAttackParams attackParams )
+var function OnWeaponNpcPrimaryAttack_titanweapon_arc_charge( entity weapon, WeaponPrimaryAttackParams attackParams )
 {
 	weapon.EmitWeaponNpcSound( LOUD_WEAPON_AI_SOUND_RADIUS_MP, 0.2 )
 
@@ -53,7 +53,7 @@ var function OnWeaponNpcPrimaryAttack_titanweapon_arc_mine( entity weapon, Weapo
 }
 #endif // #if SERVER
 
-bool function OnWeaponAttemptOffhandSwitch_titanweapon_arc_mine( entity weapon )
+bool function OnWeaponAttemptOffhandSwitch_titanweapon_arc_charge( entity weapon )
 {
 	int ammoPerShot = weapon.GetAmmoPerShot()
 	int currAmmo = weapon.GetWeaponPrimaryClipCount()
@@ -73,6 +73,9 @@ function FireGrenade( entity weapon, WeaponPrimaryAttackParams attackParams, isN
 
 	if ( nade )
 	{
+		if(weapon.HasMod("magnetic_mines"))
+			nade.InitMagnetic( 1000.0, "Explo_MGL_MagneticAttract" )
+
 		#if SERVER
 			EmitSoundOnEntity( nade, "Weapon_softball_Grenade_Emitter" )
 			Grenade_Init( nade, weapon )
@@ -83,11 +86,15 @@ function FireGrenade( entity weapon, WeaponPrimaryAttackParams attackParams, isN
 	}
 }
 
-void function OnProjectileCollision_titanweapon_arc_mine( entity projectile, vector pos, vector normal, entity hitEnt, int hitbox, bool isCritical )
+void function OnProjectileCollision_titanweapon_arc_charge( entity projectile, vector pos, vector normal, entity hitEnt, int hitbox, bool isCritical )
 {
-	bool didStick = PlantSuperStickyGrenade( projectile, pos, normal, hitEnt, hitbox )
+	if ( hitEnt && !hitEnt.IsWorld() )
+		return
+
+	bool didStick = PlantStickyGrenade( projectile, pos, normal, hitEnt, hitbox )
 	if ( !didStick )
 		return
+
 	projectile.s.collisionNormal <- normal
 
 	//This is what happens when you try to put a disc on something with a spherical hitbox
@@ -101,84 +108,51 @@ void function OnProjectileCollision_titanweapon_arc_mine( entity projectile, vec
 
 	#if SERVER
 		EmitSoundOnEntity( projectile, "weapon_softball_grenade_attached_3P" )
-		if ( hitEnt.IsPlayer() || hitEnt.IsNPC() )
-		{
-			thread UpdateArcMineField(weaponOwner, projectile, origin, FUSE_TIME)
-			thread DetonateStickyAfterTime( projectile, FUSE_TIME, normal )
-		}
-		else
-		{
-			thread UpdateArcMineField(weaponOwner, projectile, origin, FUSE_TIME_EXTENDED)
-			thread DetonateStickyAfterTime( projectile, FUSE_TIME_EXTENDED, normal )
-			thread ArcMineProximityTrigger( projectile )
-		}
+
+			thread UpdateArcChargeField(weaponOwner, projectile, origin, 5, 0.85)
+			//thread DetonateStickyAfterTime( projectile, 0.85*5, normal )
 	#endif
 }
 
 #if SERVER
-void function UpdateArcMineField( entity owner, entity pylon, vector origin, float duration )
+void
+function UpdateArcChargeField(entity owner, entity projectile, vector origin, int burstCount, float delay)
 {
-  pylon.EndSignal( "OnDestroy" )
-  float endTime = Time() + duration
+	projectile.EndSignal( "OnDestroy" )
+	float duration = delay * burstCount
+	float endTime = Time() + duration
 
-	while ( Time() < endTime )
-	{
-		WaitFrame()
-		origin = pylon.GetOrigin()
-		ArcMineFieldDamage( owner, pylon, origin )
+  	for(int i = 0; i < burstCount; i++) {
+		wait(delay)
+		origin = projectile.GetOrigin()
+		ArcChargeFieldDamage( owner, projectile, origin )
+
+		var impact_effect_table = projectile.ProjectileGetWeaponInfoFileKeyField( "impact_effect_table" )
+		if ( impact_effect_table != null )
+		{
+			string fx = expect string( impact_effect_table )
+			PlayImpactFXTable( origin, projectile.GetOwner(), fx )
+		}
 	}
+	projectile.SetProjectilTrailEffectIndex( 1 )
+	projectile.Dissolve( ENTITY_DISSOLVE_CHAR, < 0, 0, 0 >, 0 )
 }
 
-function ArcMineFieldDamage( entity owner, entity pylon, vector origin )
+function ArcChargeFieldDamage( entity owner, entity pylon, vector origin )
 {
     RadiusDamage(
         origin,									// center
         owner,									// attacker
         pylon,									// inflictor
-        25,					// damage
-        10,					// damageHeavyArmor
-        10,		// innerRadius
-        25,				// outerRadius
-        SF_ENVEXPLOSION_NO_DAMAGEOWNER,			// flags
+        250,					// damage
+        1000,					// damageHeavyArmor
+        100,		// innerRadius
+        250,				// outerRadius
+        0,			// flags
         0,										// distanceFromAttacker
         0,					                    // explosionForce
         DF_ELECTRICAL | DF_STOPS_TITAN_REGEN,	// scriptDamageFlags
-        eDamageSourceId.mp_titanweapon_arc_mine )			// scriptDamageSourceIdentifier
-}
-
-function ArcMineProximityTrigger( entity nade )
-{
-	//Hack, shouldn't be necessary with the IsValid check in OnProjectileCollision.
-	if( !IsValid( nade ) )
-		return
-
-	nade.EndSignal( "OnDestroy" )
-	EmitSoundOnEntity( nade, "Wpn_TripleThreat_Grenade_MineAttach" )
-
-	wait STICKY_MINE_FIELD_ACTIVATION_TIME
-
-	EmitSoundOnEntity( nade, "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
-	local rangeCheck = PROX_MINE_RANGE
-	while( 1 )
-	{
-		local origin = nade.GetOrigin()
-		int team = nade.GetTeam()
-
-		local entityArray = GetScriptManagedEntArrayWithinCenter( level._proximityTargetArrayID, team, origin, PROX_MINE_RANGE )
-		foreach( entity ent in entityArray )
-		{
-			if ( IsAlive( ent ) )
-			{
-				wait MINE_TRIGGER_DELAY
-				vector normal = Vector( 0, 0, 1 )
-				if( "collisionNormal" in nade.s )
-					normal = expect vector( nade.s.collisionNormal )
-				nade.GrenadeExplode( normal )
-				return
-			}
-		}
-		WaitFrame()
-	}
+        eDamageSourceId.mp_titanweapon_arc_charge )			// scriptDamageSourceIdentifier
 }
 #endif // SERVER
 
@@ -193,7 +167,7 @@ void function DetonateStickyAfterTime( entity projectile, float delay, vector no
 #endif
 
 #if SERVER
-void function ArcMineOnDamage( entity ent, var damageInfo )
+void function ArcChargeOnDamage( entity ent, var damageInfo )
 {
 	vector pos = DamageInfo_GetDamagePosition( damageInfo )
 	entity attacker = DamageInfo_GetAttacker( damageInfo )

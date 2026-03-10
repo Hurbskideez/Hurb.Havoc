@@ -23,8 +23,8 @@ WeaponData
 	//"OnWeaponPrimaryAttack"							"OnWeaponPrimaryAttack_titanmelee_havoc_berserker"
 
 	// Models
-	"viewmodel"   									"models/weapons/titan_sword/atpov_titan_sword.mdl"
-	"playermodel" 									"models/weapons/titan_sword/w_titan_sword.mdl"
+	"viewmodel"   									"models/weapons/titan_havocmelee/atpov_havocmelee.mdl"
+	"playermodel" 									"models/weapons/empty_handed/w_empty_handed_titan.mdl"
 
 	SP_BASE
 	{
@@ -55,7 +55,7 @@ WeaponData
 	"melee_rumble_on_hit"							"titan_melee_hit"
 	"melee_rumble_on_hit_partial"					"titan_melee_hit_partial"
 	"melee_freezelook_on_hit"						"0.25"
-	"melee_anim_1p_number"							"2"								// ACT_VM_MELEE_ATTACK1, 2, or 3
+	"melee_anim_1p_number"							"1"								// ACT_VM_MELEE_ATTACK1, 2, or 3
 	"melee_anim_3p"									"ACT_GESTURE_MELEE_ATTACK1"
 	"damage_flags"									"DF_MELEE | DF_GIB"
 	"impact_effect_table"							"melee_titan"
@@ -149,22 +149,22 @@ WeaponData
 	{
 		berserker
 		{
-            "fire_mode"											"offhand_melee_hybrid"
-            "attack_button_presses_melee"						"1"
-            "melee_angle"										"45"
-			//"activitymodifier"									"melee_titan_sword_super_charged"
-			//"offhand_transition_has_attach_detach_anim_events"	"0"
+			"fire_rate" 										"0.8"
+      "fire_mode"											"offhand_melee_hybrid"
+      "attack_button_presses_melee"						"1"
+      "melee_angle"										"45"
+			"offhand_transition_has_attach_detach_anim_events"	"0"
 
-			"melee_attack_animtime"						"1.0"
-			"melee_raise_recovery_animtime_normal"		"5.07"
-			"melee_raise_recovery_animtime_quick"		"5.07"
+			"melee_attack_animtime"						"1.1"
+			"melee_raise_recovery_animtime_normal"		"0.5"
+			"melee_raise_recovery_animtime_quick"		"0.5"
 
 			"melee_lunge_target_range"					"500"
-			"melee_lunge_target_angle"					"15"
+			"melee_lunge_target_angle"					"45"
 
 			"melee_damage_heavyarmor"					"3200"
 			"melee_range"								"300"
-			"melee_anim_1p_number"						"1"			// ACT_VM_MELEE_ATTACK1, 2, or 3
+			"melee_anim_1p_number"						"3"			// ACT_VM_MELEE_ATTACK1, 2, or 3
 			"melee_anim_3p"								"ACT_GESTURE_MELEE_ATTACK2"
 			"damage_flags"								"DF_MELEE | DF_EXPLOSION | DF_CRITICAL | DF_KNOCK_BACK | DF_DOOM_FATALITY"
 			"impact_effect_table"						"40mm_splasher_rounds"

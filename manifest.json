@@ -1,0 +1,10 @@
+{
+    "name": "HurbHavoc",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/Hurbskideez/Hurb.Havoc",
+    "description": "Implements the custom Havoc Titan.",
+    "dependencies": [
+	"northstar-Northstar-1.31.6",
+	"The_Peepeepoopoo_man-Titanframework-2.4.4"
+    ]
+}

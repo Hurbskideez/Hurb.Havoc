@@ -46,11 +46,7 @@
             "RunOn": "( CLIENT || SERVER ) && MP"
         },
         {
-            "Path": "weapons/mp_titanweapon_arc_mine.nut",
-            "RunOn": "( CLIENT || SERVER ) && MP"
-        },
-        {
-            "Path": "weapons/mp_titanweapon_burst_mine.nut",
+            "Path": "weapons/mp_titanweapon_arc_charge.nut",
             "RunOn": "( CLIENT || SERVER ) && MP"
         },
         {

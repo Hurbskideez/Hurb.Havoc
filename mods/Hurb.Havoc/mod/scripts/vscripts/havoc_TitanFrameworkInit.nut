@@ -56,13 +56,13 @@ void function HavocUIInit()
 		Blastshield.image = $"havoc/hud/polarize_wall"
 		Havoc.Left = Blastshield
 
-		ModdedTitanWeaponAbilityData BurstMine
-		BurstMine.custom = true
-		BurstMine.displayName = "#WPN_TITAN_BURST_MINE"
-		BurstMine.weaponName = "mp_titanweapon_burst_mine"
-		BurstMine.description = "#WPN_TITAN_BURST_MINE_DESC"
-		BurstMine.image = $"havoc/menu/arc_mine_menu"
-		Havoc.Mid = BurstMine
+		ModdedTitanWeaponAbilityData ArcCharge
+		ArcCharge.custom = true
+		ArcCharge.displayName = "#WPN_TITAN_ARC_CHARGE"
+		ArcCharge.weaponName = "mp_titanweapon_arc_charge"
+		ArcCharge.description = "#WPN_TITAN_ARC_CHARGE_DESC"
+		ArcCharge.image = $"havoc/menu/arc_charge_menu"
+		Havoc.Mid = ArcCharge
 
 		Havoc.Melee = "melee_titan_punch_havoc"
 
