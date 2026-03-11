@@ -138,7 +138,7 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 		entity mainWeapon = titan.GetMainWeapons()[0]
 		mainWeapon.AllowUse( false )
 
-		int endlessStatusEffectHandle = StatusEffect_AddEndless( titan, eStatusEffect.speed_boost, 0.25 )
+		int endlessStatusEffectHandle = StatusEffect_AddEndless( titan, eStatusEffect.speed_boost, 0.5 )
 		thread BerserkThink( titan, endlessStatusEffectHandle )
 	}
 
