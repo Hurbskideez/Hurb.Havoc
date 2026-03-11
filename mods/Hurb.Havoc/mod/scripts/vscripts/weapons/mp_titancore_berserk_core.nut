@@ -113,7 +113,8 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 	if ( owner.IsPlayer() )
 	{
 		owner.Server_SetDodgePower( 100.0 )
-		owner.SetPowerRegenRateScale( 6.5 )
+		owner.SetPowerRegenRateScale( 10 )
+		owner.SetDodgePowerDelayScale( 0.1 )
 		GivePassive( owner, ePassives.PAS_FUSION_CORE )
 		GivePassive( owner, ePassives.PAS_SHIFT_CORE )
 	}
@@ -220,6 +221,7 @@ void function OnAbilityEnd_Berserk_Core( entity weapon, entity player )
 	if ( player.IsPlayer() )
 	{
 		player.SetPowerRegenRateScale( 1.0 )
+		player.SetDodgePowerDelayScale( 1.0 )
 		EmitSoundOnEntityOnlyToPlayer( player, player, "Titan_Ronin_Sword_Core_Deactivated_1P" )
 		EmitSoundOnEntityExceptToPlayer( player, player, "Titan_Ronin_Sword_Core_Deactivated_3P" )
 		int conversationID = GetConversationIndex( "swordCoreOffline" )
