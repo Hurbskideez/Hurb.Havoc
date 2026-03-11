@@ -117,8 +117,8 @@ WeaponData
 	"grenade_bounce_randomness"						"0.2"
 	"grenade_bounce_extra_vertical_randomness"		"0.2"
 	"grenade_roll_vel_frac_per_second"				"0.1"
-	"projectile_launch_speed"						"3200"
-	"projectile_launch_pitch_offset"				"1"
+	"projectile_launch_speed"						"2650"
+	"projectile_launch_pitch_offset"				"8"
 	"projectile_gravity_scale"						"2.6"
 
 	// Spread
