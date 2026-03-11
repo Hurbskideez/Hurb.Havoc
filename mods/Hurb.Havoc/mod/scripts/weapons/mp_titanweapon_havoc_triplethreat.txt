@@ -19,6 +19,9 @@ WeaponData
 	"pickup_hold_prompt"  							"Hold [USE] [WEAPONNAME]"
 	"pickup_press_prompt" 							"[USE] [WEAPONNAME]"
 	"minimap_reveal_distance"						"32000"
+	"show_grenade_indicator"                        "1"
+	"projectile_ignores_vortex"						"fall"
+
 
 	"damage_flags"									"DF_GIB"
 
