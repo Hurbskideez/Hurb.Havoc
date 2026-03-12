@@ -237,7 +237,7 @@ WeaponData
 		}
 	}
 
-	active_crosshair_count				"4"
+	active_crosshair_count				"3"
 	rui_crosshair_index					"0"
 
 	RUI_CrosshairData
@@ -276,20 +276,6 @@ WeaponData
 		}
 
 		Crosshair_3
-		{
-			"ui"                        "ui/crosshair_grapple_charge"
-            "base_spread"                "0.0"
-            Args
-            {
-                teamColor				crosshair_team_color
-                isFiring                weapon_is_firing
-                chargeStartTime			weapon_script_time_0
-                chargeMaxTime			eWeaponVar.custom_float_0
-				crosshairScaleX          crosshair_movement_x
-            }
-		}
-
-		Crosshair_4
 		{
 			"ui"						"ui/crosshair_tactical"
 			Args

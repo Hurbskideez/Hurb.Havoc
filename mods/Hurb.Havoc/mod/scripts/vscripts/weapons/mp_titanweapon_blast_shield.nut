@@ -23,9 +23,9 @@ const int BLAST_SHIELD_FOV = 120
 const int BLAST_SHIELD_RADIUS = 150
 
 const float BLAST_CHARGE_TIME = 1.5
-const float BLAST_COOLDOWN_TIME = 10.0
-const float BLAST_COOLDOWN_DELAY = 1.0
-const float BLAST_WARNING_TIME = 0.5
+const float BLAST_COOLDOWN_TIME = 0.5
+const float BLAST_COOLDOWN_DELAY = 0.0
+const float BLAST_WARNING_TIME = 0.1
 
 //Titan Push Values
 //Min 600 Max 1200
@@ -266,7 +266,7 @@ bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 {
 	entity weaponOwner = weapon.GetWeaponOwner()
 
-	weapon.EmitWeaponSound("Weapon_EnergySyphon_Charge_3P")
+	weapon.EmitWeaponSound("titan_ability_flamering_launch_3p")
 
 	weapon.SetScriptTime0( Time() )
 
@@ -292,15 +292,18 @@ void function CookBlastShield( entity weapon, entity weaponOwner )
 		function() : ( weapon )
 		{
 			weapon.StopWeaponSound("Weapon_Vortex_Gun.ExplosiveWarningBeep")
+			weapon.StopWeaponSound( "titan_alarm_loop" )
 		}
 	)
 
 	float chargeFrac = 1 - BlastShield_GetCharge( weapon )
     float maxCookTime = chargeFrac * BLAST_CHARGE_TIME
 
-    if ( maxCookTime - BLAST_WARNING_TIME <= 0 )
+    if ( maxCookTime - BLAST_WARNING_TIME < 0 )
     {
-		//weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
+		weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
+		weapon.EmitWeaponSound( "titan_alarm_loop" )
+		weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
 		#if CLIENT
 			FlashChargeCritical_Bar( weapon )
 		#endif
@@ -310,8 +313,9 @@ void function CookBlastShield( entity weapon, entity weaponOwner )
     {
         wait( maxCookTime - BLAST_WARNING_TIME )
 
-		//weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
-
+		weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
+		weapon.EmitWeaponSound( "titan_alarm_loop" )
+		weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
 		#if CLIENT
 			FlashChargeCritical_Bar( weapon )
 		#endif
@@ -333,7 +337,7 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 	printt(weapon.GetScriptTime0())
 	printt(Time() -weapon.GetScriptTime0())
 
-	weapon.StopWeaponSound("Weapon_EnergySyphon_Charge_3P")
+	weapon.StopWeaponSound("titan_ability_flamering_launch_3p")
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
