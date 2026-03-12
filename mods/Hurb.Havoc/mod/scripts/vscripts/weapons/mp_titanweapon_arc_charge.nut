@@ -188,7 +188,8 @@ void function ArcChargeOnDamage( entity ent, var damageInfo )
 		const ARC_TITAN_EMP_DURATION			= 1.5
 		const ARC_TITAN_EMP_FADEOUT_DURATION	= 0.35
 
-		StatusEffect_AddTimed( entToSlow, eStatusEffect.move_slow, 0.2, 1.5, 1.0 )
+		StatusEffect_AddTimed( entToSlow, eStatusEffect.move_slow, 0.35, 1.5, 1.0 )
+		StatusEffect_AddTimed( entToSlow, eStatusEffect.dodge_speed_slow, 0.35, 1.5, 1.0 )
 		StatusEffect_AddTimed( ent, eStatusEffect.emp, 0.5, ARC_TITAN_EMP_DURATION, ARC_TITAN_EMP_FADEOUT_DURATION )
 
 		string tag = ""

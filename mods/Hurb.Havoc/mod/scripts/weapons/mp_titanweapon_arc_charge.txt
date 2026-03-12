@@ -119,7 +119,7 @@ WeaponData
 	"grenade_roll_vel_frac_per_second"				"0.1"
 	"projectile_launch_speed"						"2650"
 	"projectile_launch_pitch_offset"				"8"
-	"projectile_gravity_scale"						"2.6"
+	"projectile_gravity_scale"						"2.2"
 
 	// Spread
 	"spread_stand_hip"  							"0"

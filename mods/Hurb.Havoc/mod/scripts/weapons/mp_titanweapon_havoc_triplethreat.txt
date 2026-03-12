@@ -48,8 +48,8 @@ WeaponData
 		"damage_far_distance" 							"3000"
 		"damage_near_value"   							"200"
 		"damage_far_value"								"200"
-		"damage_near_value_titanarmor"					"200"
-		"damage_far_value_titanarmor" 					"200"
+		"damage_near_value_titanarmor"					"175"
+		"damage_far_value_titanarmor" 					"175"
 
 		"deploy_time" 									"0.8"
 
@@ -109,7 +109,7 @@ WeaponData
 
 	"crosshair"							"crosshair_t"
 	"explosion_damage"								"150"		// 150
-	"explosion_damage_heavy_armor"					"400"		// 150
+	"explosion_damage_heavy_armor"					"375"		// 150
 
 	"explosion_inner_radius"  						"250"
 	"explosionradius" 								"350"

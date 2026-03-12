@@ -9,6 +9,12 @@ global function OnProjectileCollision_weapon_shockwave
 
 const asset SHOCKWAVE_EFFECT = $"exp_triplethreat_refrac"
 
+const float SHOCKWAVE_LOW_DAMAGE_WAVE = 3
+const float SHOCKWAVE_HIGH_DAMAGE_WAVE = 9
+
+const float LOW_DAMAGE_SCALAR = 0.6
+const float HIGH_DAMAGE_SCALAR = 1.0
+
 void function MpTitanweaponShockWave_Init()
 {
  	PrecacheParticleSystem(SHOCKWAVE_EFFECT)
@@ -87,7 +93,7 @@ void function BeginEmpWave( entity projectile, WeaponPrimaryAttackParams attackP
 	projectile.NotSolid()
 	projectile.e.onlyDamageEntitiesOnce = true
 	EmitSoundOnEntity( projectile, "flamewall_start_1p" )
-	waitthread WeaponAttackWaveWithDelay( projectile, 0, projectile, attackParams.pos, attackParams.dir, CreateShockWaveSegment, 0.2 )
+	waitthread WeaponAttackWaveWithDelay( projectile, 0, projectile, attackParams.pos, attackParams.dir, CreateShockWaveSegment, 0.15 )
 	StopSoundOnEntity( projectile, "flamewall_start_1p" )
 	projectile.Destroy()
 }
@@ -97,7 +103,7 @@ bool function CreateShockWaveSegment( entity projectile, int projectileCount, en
 	projectile.SetOrigin( pos )
 
 	float  damageScalar = waveCount / float( projectile.ProjectileGetWeaponInfoFileKeyField( "wave_max_count" ) )
-  	damageScalar = GraphCapped( damageScalar, 0.3, 0.9, 0.8, 1.0 )
+  	damageScalar = GraphCapped(damageScalar, (SHOCKWAVE_LOW_DAMAGE_WAVE / 10), (SHOCKWAVE_HIGH_DAMAGE_WAVE / 10), LOW_DAMAGE_SCALAR, HIGH_DAMAGE_SCALAR)
 
 	int fxId = GetParticleSystemIndex(SHOCKWAVE_EFFECT)
 
