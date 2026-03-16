@@ -4,9 +4,9 @@ untyped
 global function BlastShield_EnableVortexSphere
 global function GetBlastShieldCurrentColor
 
-const BLAST_SHIELD_COLOR_CHARGE_FULL		= <125, 90, 10>	// white cyan
-const BLAST_SHIELD_COLOR_CHARGE_MED		= <130, 85, 10>	// orange
-const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <225, 65, 10>	// red
+const BLAST_SHIELD_COLOR_CHARGE_FULL		= <110, 75, 7>	// white cyan
+const BLAST_SHIELD_COLOR_CHARGE_MED		= <110, 75, 7>	// orange
+const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <195, 50, 10>	// red
 
 //new colours for Wip colour thing
 //180, 160, 120 off-white for higher end of flash

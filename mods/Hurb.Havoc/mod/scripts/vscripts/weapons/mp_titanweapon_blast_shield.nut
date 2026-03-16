@@ -416,7 +416,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 	local muzzleOrigin = weapon.GetAttachmentOrigin( attachmentIndex )
 	expect vector( muzzleOrigin )
 
-	PlayImpactFXTable( muzzleOrigin, weapon.GetOwner(), "exp_frag_grenade" )
+	PlayImpactFXTable( muzzleOrigin, weapon.GetOwner(), "exp_satchel" )
 	#endif
 }
 
