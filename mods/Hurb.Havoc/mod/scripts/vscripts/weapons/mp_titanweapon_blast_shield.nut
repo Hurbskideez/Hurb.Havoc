@@ -438,7 +438,8 @@ void function BlastShield_DamagedEntity( entity victim, var damageInfo )
 	if ( velInDir + pushAmount > maxPush + BLAST_SHIELD_MAX_PUSH_ADD )
 		pushAmount = max( 0.0, maxPush + BLAST_SHIELD_MAX_PUSH_ADD - velInDir )
 
-	victim.SetVelocity( victim.GetVelocity() + pushDir * pushAmount )
+	if(victim.IsTitan() || victim.IsPlayer() ) //we only want to knock back players and titans
+		PushEntWithVelocity( victim, pushDir * pushAmount )
 }
 #endif
 

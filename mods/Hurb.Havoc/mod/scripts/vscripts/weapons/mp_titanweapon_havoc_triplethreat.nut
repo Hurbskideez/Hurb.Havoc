@@ -40,6 +40,11 @@ struct
 		[0.2, 1.5], // right
 		[0.2, -1.5], // left
 	]
+	float[1][TRIPLE_THREAT_MAX_BOLTS] boltSpeedOffsets = [
+		[1.0],
+		[1.2], // right
+		[0.8], // left
+	]
 } file
 
 
