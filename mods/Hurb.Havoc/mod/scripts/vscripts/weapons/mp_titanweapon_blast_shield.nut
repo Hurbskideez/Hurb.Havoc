@@ -17,15 +17,15 @@ global function OnWeaponOwnerChanged_titanweapon_blast_shield
 global function OnWeaponNpcPrimaryAttack_titanweapon_blast_shield
 #endif
 
-const float BLAST_SHIELD_ACTIVATION_COST = 0.1
-const float BLAST_SHIELD_MIN_CHARGE = 0.1
+const float BLAST_SHIELD_DEACTIVATION_COST = 0.1
+const float BLAST_SHIELD_MIN_CHARGE = 0.375 // ( 1.5 / 4 )
 const int BLAST_SHIELD_FOV = 120
 const int BLAST_SHIELD_RADIUS = 150
 
 const float BLAST_CHARGE_TIME = 1.5
 const float BLAST_COOLDOWN_TIME = 0.5
 const float BLAST_COOLDOWN_DELAY = 0.0
-const float BLAST_WARNING_TIME = 0.1
+const float BLAST_WARNING_TIME = 0.0
 
 //Titan Push Values
 //Min 600 Max 1200
@@ -111,7 +111,7 @@ function StartBlastShield( entity weapon )
 	int sphereRadius = BLAST_SHIELD_RADIUS
 	int bulletFOV = BLAST_SHIELD_FOV
 
-	ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST/2 )
+	//ApplyActivationCost( weapon, BLAST_SHIELD_DEACTIVATION_COST )
 
 	CreateVortexSphere( weapon, false, false, sphereRadius, bulletFOV )
 	BlastShield_EnableVortexSphere( weapon )
@@ -341,11 +341,16 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
+	if( !weapon.HasMod("charge_full") )
+	{
+		ApplyActivationCost( weapon, BLAST_SHIELD_DEACTIVATION_COST )
+	}
+
 	#if SERVER
 		weapon.RemoveMod("charge_full")
 	#endif
 
-	//ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
+
 }
 
 void function DelayCooldown(entity weapon, float cooldown, float delay)
@@ -369,7 +374,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	entity owner = weapon.GetWeaponOwner()
 	float maxDistance	= weapon.GetMaxDamageFarDist()
-	float maxAngle = 10.5
+	float maxAngle = 12.5
 
 	array<entity> ignoredEntities 	= [ owner ]
 	int traceMask 					= TRACE_MASK_SHOT
