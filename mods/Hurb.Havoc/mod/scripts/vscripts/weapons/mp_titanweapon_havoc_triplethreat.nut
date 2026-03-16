@@ -40,10 +40,10 @@ struct
 		[0.2, 1.5], // right
 		[0.2, -1.5], // left
 	]
-	float[1][TRIPLE_THREAT_MAX_BOLTS] boltSpeedOffsets = [
-		[1.0],
-		[1.2], // right
-		[0.8], // left
+	float[TRIPLE_THREAT_MAX_BOLTS] boltSpeedOffsets = [
+		1.0,
+		1.1, // right
+		0.9, // left
 	]
 } file
 
@@ -218,6 +218,9 @@ function FireTriple_Threat( entity weapon, WeaponPrimaryAttackParams attackParam
 
 			if (weapon.HasMod("pressurised_chamber"))
 				attackVec *= (1 + (weapon.GetWeaponChargeFraction() / 3))
+
+			if ( inADS )
+				attackVec *= file.boltSpeedOffsets[i]
 
 
 			float fuseTime = RandomFloatRange( MIN_FUSE_TIME, MAX_FUSE_TIME )

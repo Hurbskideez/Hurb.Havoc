@@ -38,8 +38,6 @@ const float BLAST_SHIELD_MAX_PUSH = 1200
 const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 7000
 const float BLAST_SHIELD_MAX_PUSH_ADD = 100 // The maximum amount of speed past push speed it can give the target (if they were moving in the same direction)
 
-const float BLAST_SHIELD_CHARGE_TIME = 1.0 // The charge time for maximum push effect/damage
-
 function MpTitanweaponBlastShield_Init()
 {
 	PrecacheWeapon( "mp_titanweapon_blast_shield" )
