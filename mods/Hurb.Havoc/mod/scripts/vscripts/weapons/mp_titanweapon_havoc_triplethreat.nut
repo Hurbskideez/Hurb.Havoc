@@ -17,19 +17,10 @@ const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
 const MIN_FUSE_TIME = 2.3
 const MAX_FUSE_TIME = 2.7
-//const TRIPLE_THREAT_MAGNETIC_FORCE = 2400
-//const MIN_ROLLING_ROUNDS_FUSE_TIME = 3.2
-//const MAX_ROLLING_ROUNDS_FUSE_TIME = 3.7
 
 global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
-//global const TRIPLE_THREAT_MIN_MINE_FUSE_TIME = 8.2
-//global const TRIPLE_THREAT_MAX_MINE_FUSE_TIME = 8.8
 global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 0.5 //After landing
-//global const TRIPLE_THREAT_MINE_FIELD_TITAN_ONLY = false
-//global const TRIPLE_THREAT_MINE_FIELD_MAX_MINES = 9
-//global const TRIPLE_THREAT_MINE_FIELD_LAUNCH_VELOCITY = 1100
-global const TRIPLE_THREAT_PROX_MINE_RANGE = 300
 
 const TRIPLE_THREAT_MAX_BOLTS = 3
 
@@ -155,10 +146,6 @@ function Triple_ThreatProximityTrigger( entity nade )
 		local entityArray = GetScriptManagedEntArrayWithinCenter( level._proximityTargetArrayID, team, origin, PROX_MINE_RANGE )
 		foreach( entity ent in entityArray )
 		{
-//			if ( TRIPLE_THREAT_MINE_FIELD_TITAN_ONLY )
-				if ( !ent.IsTitan() )
-					continue
-
 			if ( IsAlive( ent ) )
 			{
 				nade.Signal( "ProxMineTrigger" )
@@ -289,7 +276,6 @@ function AirPop( entity grenade, float fuseTime )
 	// Only enter here if the mine stuck to something
 	if ( waitResult != null && waitResult.signal == waitSignal )
 	{
-//		fuseTime = RandomFloatRange( TRIPLE_THREAT_MIN_MINE_FUSE_TIME, TRIPLE_THREAT_MAX_MINE_FUSE_TIME )
 		waitSignal = "ProxMineTrigger"
 		waitResult = WaitSignalTimeout( grenade, (fuseTime - (popDelay + 0.2)), waitSignal )
 
