@@ -224,6 +224,8 @@ WeaponData
 	"sway_move_origin_factor_zoomed"  				"0.03"
 	"sway_gain"   									"15.0"
 
+	"damage_flags"									"DF_GIB"
+
 	// Crosshair
 	"red_crosshair_range" 							"1400"
 

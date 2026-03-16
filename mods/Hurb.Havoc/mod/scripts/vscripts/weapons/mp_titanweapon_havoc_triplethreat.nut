@@ -79,9 +79,6 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 	if( "impactFuse" in projectile.s && projectile.s.impactFuse == true )
 		projectile.GrenadeExplode( Vector( 0,0,0 ) )
 
-	if( hitEnt.GetClassName() == "player" && !hitEnt.IsTitan() )
-		return
-
 	if( !IsValid( projectile ) )
 		return
 

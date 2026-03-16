@@ -20,7 +20,7 @@ WeaponData
 	"pickup_press_prompt" 							"[USE] [WEAPONNAME]"
 	"minimap_reveal_distance"						"32000"
 	"show_grenade_indicator"                        "1"
-	"projectile_ignores_vortex"						"fall"
+	"projectile_ignores_vortex"						"drop"
 
 
 	"damage_flags"									"DF_GIB"

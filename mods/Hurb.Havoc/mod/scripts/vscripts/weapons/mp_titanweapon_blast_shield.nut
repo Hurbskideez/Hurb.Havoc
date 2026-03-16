@@ -372,7 +372,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	entity owner = weapon.GetWeaponOwner()
 	float maxDistance	= weapon.GetMaxDamageFarDist()
-	float maxAngle = 12.5
+	float maxAngle = 16.5
 
 	array<entity> ignoredEntities 	= [ owner ]
 	int traceMask 					= TRACE_MASK_SHOT
@@ -406,7 +406,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 		table damageTable = {
 			origin = result.visiblePosition,
 			force = weapon.GetWeaponSettingFloat( eWeaponVar.impulse_force ) * attackParams.dir,
-			scriptType = DF_RAGDOLL | DF_KNOCK_BACK,
+			scriptType = DF_RAGDOLL | DF_KNOCK_BACK | DF_GIB,
 			damageSourceId = weapon.GetDamageSourceID(),
 			weapon = weapon,
 			hitbox = result.visibleHitbox
