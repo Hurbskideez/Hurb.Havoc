@@ -215,7 +215,7 @@ var function OnWeaponPrimaryAttack_titanweapon_blast_shield( entity weapon, Weap
 
 		shouldExplode = true
 	}
-	DestroyVortexSphereFromVortexWeapon( weapon )
+	EndVortex( weapon )
 	FadeOutSoundOnEntity( weapon, "heat_shield_1p_start", 0.15 )
 	FadeOutSoundOnEntity( weapon, "heat_shield_3p_start", 0.15 )
 
@@ -419,7 +419,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 	local muzzleOrigin = weapon.GetAttachmentOrigin( attachmentIndex )
 	expect vector( muzzleOrigin )
 
-	PlayImpactFXTable( muzzleOrigin, weapon.GetOwner(), "exp_satchel" )
+	PlayImpactFXTable( muzzleOrigin, weapon.GetOwner(), "exp_satchel", SF_ENVEXPLOSION_INCLUDE_ENTITIES )
 	#endif
 }
 

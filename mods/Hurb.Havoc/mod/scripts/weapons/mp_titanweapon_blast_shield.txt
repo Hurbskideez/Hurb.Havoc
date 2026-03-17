@@ -124,15 +124,15 @@ WeaponData
 	"ammo_suck_behavior"							"offhand_weapons"
 
 	// View Kick
-	"viewkick_spring" 								"launcher"
+	"viewkick_spring" 								"titan_40mm"
 
-	"viewkick_pitch_base" 							"-2.0"
+	"viewkick_pitch_base" 							"-8.0"
 	"viewkick_pitch_random"   						"0.0"
 	"viewkick_pitch_softScale"						"1.3"
 	"viewkick_pitch_hardScale"						"2.0"
 
 	"viewkick_yaw_base"   							"0.0"
-	"viewkick_yaw_random" 							"1.0"
+	"viewkick_yaw_random" 							"1.5"
 	"viewkick_yaw_random_innerexclude"				"0.15"
 	"viewkick_yaw_softScale"  						"2.2"
 	"viewkick_yaw_hardScale"  						"3.8"
