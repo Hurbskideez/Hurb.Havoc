@@ -48,7 +48,7 @@ WeaponData
 	"projectile_adjust_to_gun_barrel"				"1"
 
 	// Damage - When Used by Players
-	"damage_type" 									"bullet"
+	"damage_type" 									"burn"
 	"damage_near_distance"							"700"
 	"damage_far_distance" 							"1350"
 	"damage_near_value"   							"120"

@@ -102,7 +102,7 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 
 bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon )
 {
-	weapon.EmitWeaponSound("MegaTurret_Laser_ChargeUp_3P")
+	weapon.EmitWeaponSound("anim_s2s_draconis_viper_kills_bt")
 
 	#if CLIENT
 		if ( !IsFirstTimePredicted() )
@@ -114,7 +114,7 @@ bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon
 
 void function OnWeaponChargeEnd_titanweapon_triple_threat_havoc( entity weapon )
 {
-	weapon.StopWeaponSound("MegaTurret_Laser_ChargeUp_3P")
+	weapon.StopWeaponSound("anim_s2s_draconis_viper_kills_bt")
 	#if CLIENT
 		if ( !IsFirstTimePredicted() )
 			return
