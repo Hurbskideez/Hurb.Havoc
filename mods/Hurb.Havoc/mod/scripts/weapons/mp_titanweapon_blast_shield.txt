@@ -235,7 +235,7 @@ WeaponData
 	{
 		charge_full
 		{
-			"is_burn_mod" 							"1"
+			"is_burn_mod" 							"0"
 		}
 	}
 
