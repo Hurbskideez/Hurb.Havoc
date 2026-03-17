@@ -18,7 +18,7 @@ global function OnWeaponNpcPrimaryAttack_titanweapon_blast_shield
 #endif
 
 const float BLAST_SHIELD_DEACTIVATION_COST = 0.1
-const float BLAST_SHIELD_MIN_CHARGE = 0.375 // ( 1.5 / 4 )
+const float BLAST_SHIELD_MIN_CHARGE = 0.375 // ( Charge Time / Shield Uptime )
 const int BLAST_SHIELD_FOV = 120
 const int BLAST_SHIELD_RADIUS = 150
 

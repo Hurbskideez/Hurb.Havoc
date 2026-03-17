@@ -74,12 +74,12 @@ void function HavocUIInit()
 		Empty.customIcon = true
 		Havoc.passive2Array.append(Empty)
 
-		ModdedPassiveData StuffedCylinder
-		StuffedCylinder.Name = "#GEAR_HAVOC_AMMO"
-		StuffedCylinder.description = "#GEAR_HAVOC_AMMO_DESC"
+		ModdedPassiveData Surcharge
+		Surcharge.Name = "#GEAR_HAVOC_ARCCHARGE"
+		Surcharge.description = "#GEAR_HAVOC_ARCCHARGE_DESC"
 		//PressurisedChamber.image = $""
-		StuffedCylinder.customIcon = true
-		Havoc.passive2Array.append(StuffedCylinder)
+		Surcharge.customIcon = true
+		Havoc.passive2Array.append(Surcharge)
 
 		ModdedPassiveData PressurisedChamber
 		PressurisedChamber.Name = "#GEAR_HAVOC_HYDRAULIC"

@@ -16,6 +16,8 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 	{
 		entity player = GetPetTitanOwner( titan )
 		entity soul = titan.GetTitanSoul()
+		entity weapon
+		array<string> mods
 
 		if (!(IsValid( soul )))
 			return
@@ -26,10 +28,13 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 		{
 			titan.GetMainWeapons()[0].SetMods(["pressurised_chamber"])
         }
-		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_AMMO"] ) )
+		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_ARCCHARGE"] ) )
 		{
-			titan.GetMainWeapons()[0].SetMods(["extended_ammo"])
-			titan.GetMainWeapons()[0].SetWeaponPrimaryClipCount( titan.GetMainWeapons()[0].GetWeaponSettingInt( eWeaponVar.ammo_clip_size ) )
+			weapon = titan.GetOffhandWeapon(OFFHAND_ANTIRODEO)
+			mods = weapon.GetMods()
+			mods.append( "twin_charge" )
+			weapon.SetMods( mods )
+			weapon.SetWeaponPrimaryClipCount( weapon.GetWeaponSettingInt( eWeaponVar.ammo_default_total ) )
         }
         /*if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_SMOKE"] ) )
 		{
