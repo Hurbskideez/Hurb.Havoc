@@ -414,7 +414,7 @@ WeaponData
 	//"projectile_speed_reduction_factor"				"0.5"
 
 	// Crosshair
-	"red_crosshair_range" 							"600"
+	"red_crosshair_range" 							"1800"
 
 
 
@@ -467,13 +467,13 @@ WeaponData
         DefaultArgs
         {
             adjustedSpread                weapon_spread
-            isSprinting                    player_is_sprinting
-            isReloading                    weapon_is_reloading
-            teamColor                    crosshair_team_color
-            chargeFrac                  player_chargeFrac
-            isAmped                        weapon_is_amped
-            crosshairMovementX          crosshair_movement_x
-            crosshairMovementY          crosshair_movement_y
+            isSprinting                   player_is_sprinting
+            isReloading                   weapon_is_reloading
+            teamColor                     crosshair_team_color
+            chargeFrac                    player_chargeFrac
+            isAmped                       weapon_is_amped
+            crosshairMovementX            crosshair_movement_x
+            crosshairMovementY        	  crosshair_movement_y
         }
 
         Crosshair_1
