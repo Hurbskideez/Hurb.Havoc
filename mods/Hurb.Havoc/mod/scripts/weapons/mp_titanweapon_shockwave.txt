@@ -59,11 +59,11 @@ WeaponData
 
 	// Ammo
 	"ammo_display"									"bar"
-	"ammo_stockpile_max"							"600"
-	"ammo_clip_size"   								"600"
-	"ammo_default_total"							"600"
-	"ammo_per_shot"									"600"
-	"ammo_min_to_fire"								"600"
+	"ammo_stockpile_max"							"630"
+	"ammo_clip_size"   								"630"
+	"ammo_default_total"							"630"
+	"ammo_per_shot"									"630"
+	"ammo_min_to_fire"								"630"
 
 	"reload_enabled"								"0"
 
@@ -84,7 +84,7 @@ WeaponData
 	"charge_require_input"							"1"
 
 	// Regen Ammo
-	"regen_ammo_refill_rate"						"50"
+	"regen_ammo_refill_rate"						"45"
 	"regen_ammo_refill_start_delay"					"1.0"
 
 	"projectile_chasecamOffsetUp"					"100"
@@ -96,8 +96,8 @@ WeaponData
 
 	MP_BASE
 	{
-		"damage_near_value"   							"150"
-		"damage_far_value"								"150"
+		"damage_near_value"   							"200"
+		"damage_far_value"								"200"
 		"damage_near_value_titanarmor"					"2100"
 		"damage_far_value_titanarmor"					"2100"
 

@@ -149,7 +149,7 @@ WeaponData
 	"bolt_bounce_frac"								"1.0"
 
 	"projectile_launch_speed"						"1600"
-	"projectile_launch_pitch_offset"				"9"
+	"projectile_launch_pitch_offset"				"8"
 	"projectile_adjust_to_gun_barrel"				"1"
 
 	"grenade_bounce_vel_frac_shallow"				"0.4"
@@ -160,7 +160,7 @@ WeaponData
 	"grenade_roll_vel_frac_per_second"				"0.1"
 
 	// Behavior
-	"fire_rate"   									"1.6"
+	"fire_rate"   									"1.45"
 	"zoom_time_in"									"0.2"
 	"zoom_time_out"   								"0.2"
 	"zoom_fov"										"65"
