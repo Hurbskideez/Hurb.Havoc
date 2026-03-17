@@ -269,8 +269,8 @@ WeaponData
 
 		Crosshair_2
 		{
-			"ui"						"ui/crosshair_shotgun"
-			"base_spread"				"4.0"
+			"ui"						"ui/crosshair_scorch"
+			"base_spread"				"30.0"
 			Args
 			{
 				isFiring				weapon_is_firing
