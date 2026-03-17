@@ -247,7 +247,7 @@ WeaponData
 		DefaultArgs
 		{
 			adjustedSpread				weapon_spread
-			adsFrac 					player_zoomFrac
+			//adsFrac 					//player_zoomFrac
 			isSprinting					player_is_sprinting
 			isReloading					weapon_is_reloading
 			teamColor					crosshair_team_color
