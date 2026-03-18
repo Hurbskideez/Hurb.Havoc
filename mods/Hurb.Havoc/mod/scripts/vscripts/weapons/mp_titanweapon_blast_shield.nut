@@ -34,7 +34,7 @@ const asset BLAST_SHIELD_ABSORB_FX		= $"P_wpn_HeatShield_impact"
 //Pilot Push Values
 //Min 4000 Min 7000
 const float BLAST_SHIELD_MIN_DAMAGE_FRAC = 0.25
-const float BLAST_SHIELD_MIN_PUSH = 600
+const float BLAST_SHIELD_MIN_PUSH = 1200
 const float BLAST_SHIELD_MIN_PUSH_HUMANSIZED = 4000
 const float BLAST_SHIELD_MAX_PUSH = 1200
 const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 7000
