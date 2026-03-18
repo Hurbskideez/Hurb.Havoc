@@ -376,7 +376,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	entity owner = weapon.GetWeaponOwner()
 	float maxDistance	= weapon.GetMaxDamageFarDist()
-	float maxAngle = 16.5
+	float maxAngle = 10.5
 
 	array<entity> ignoredEntities 	= [ owner ]
 	int traceMask 					= TRACE_MASK_SHOT
