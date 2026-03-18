@@ -50,7 +50,7 @@ WeaponData
 	// Damage - When Used by Players
 	"damage_type" 									"burn"
 	"damage_near_distance"							"700"
-	"damage_far_distance" 							"1350"
+	"damage_far_distance" 							"1100"
 	"damage_near_value"   							"120"
 	"damage_far_value"								"30"
 	"damage_near_value_titanarmor"					"1200"
@@ -227,7 +227,7 @@ WeaponData
 	"damage_flags"									"DF_GIB"
 
 	// Crosshair
-	"red_crosshair_range" 							"1400"
+	"red_crosshair_range" 							"1100"
 
 	"custom_float_0" 								"1.5"
 
