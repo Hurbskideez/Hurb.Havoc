@@ -111,7 +111,7 @@ function StartBlastShield( entity weapon )
 	int sphereRadius = BLAST_SHIELD_RADIUS
 	int bulletFOV = BLAST_SHIELD_FOV
 
-	//ApplyActivationCost( weapon, BLAST_SHIELD_DEACTIVATION_COST )
+	ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
 
 	CreateVortexSphere( weapon, false, false, sphereRadius, bulletFOV )
 	BlastShield_EnableVortexSphere( weapon )
@@ -343,7 +343,7 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	if( !weapon.HasMod("charge_full") )
 	{
-		ApplyActivationCost( weapon, BLAST_SHIELD_DEACTIVATION_COST )
+		//ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
 	}
 	else
 		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
