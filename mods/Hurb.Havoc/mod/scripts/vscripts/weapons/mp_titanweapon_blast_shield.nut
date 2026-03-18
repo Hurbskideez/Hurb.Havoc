@@ -27,6 +27,8 @@ const float BLAST_COOLDOWN_TIME = 0.5
 const float BLAST_COOLDOWN_DELAY = 0.0
 const float BLAST_WARNING_TIME = 0.0
 
+const asset BLAST_SHIELD_ABSORB_FX		= $"P_wpn_HeatShield_impact"
+
 //Titan Push Values
 //Min 600 Max 1200
 //Pilot Push Values
@@ -55,12 +57,12 @@ void function OnWeaponOwnerChanged_titanweapon_blast_shield( entity weapon, Weap
 		weapon.s.fxChargingFPControlPoint <- $"wpn_vortex_chargingCP_titan_FP"
 		weapon.s.fxChargingFPControlPointReplay <- $"wpn_vortex_chargingCP_titan_FP_replay"
 		weapon.s.fxChargingControlPoint <- $"wpn_vortex_chargingCP_titan"
-		weapon.s.fxBulletHit <- $"wpn_vortex_shield_impact_titan"
+		weapon.s.fxBulletHit <- BLAST_SHIELD_ABSORB_FX
 
 		weapon.s.fxChargingFPControlPointBurn <- $"wpn_vortex_chargingCP_mod_FP"
 		weapon.s.fxChargingFPControlPointReplayBurn <- $"wpn_vortex_chargingCP_mod_FP_replay"
 		weapon.s.fxChargingControlPointBurn <- $"wpn_vortex_chargingCP_mod"
-		weapon.s.fxBulletHitBurn <- $"wpn_vortex_shield_impact_mod"
+		weapon.s.fxBulletHitBurn <- BLAST_SHIELD_ABSORB_FX
 
 		weapon.s.fxElectricalExplosion <- $"P_impact_exp_emp_med_air"
 
@@ -343,6 +345,8 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 	{
 		ApplyActivationCost( weapon, BLAST_SHIELD_DEACTIVATION_COST )
 	}
+	else
+		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
 
 	#if SERVER
 		weapon.RemoveMod("charge_full")
