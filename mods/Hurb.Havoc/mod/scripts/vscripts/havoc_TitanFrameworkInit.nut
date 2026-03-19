@@ -11,6 +11,7 @@ void function HavocUIInit()
 		Havoc.BaseName = "legion"
 		Havoc.startsAsPrime = true
 		Havoc.passiveDisplayNameOverride = "#TITAN_HAVOC_PASSIVE_TITLE"
+		Havoc.titanReadyMessageOverride = "#HUD_HAVOC_READY"
 		Havoc.difficulty = 1
 		Havoc.speedStat = 1
 		Havoc.damageStat = 2
