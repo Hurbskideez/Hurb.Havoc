@@ -96,8 +96,7 @@ WeaponData
 	"sound_zoom_in"									"Weapon_Triple_Threat.ALT_On"
 	"sound_zoom_out"								"Weapon_Triple_Threat.ALT_Off"
 
-	"low_ammo_sound_name_1"							"MGL_LowAmmo_Shot1"
-	"low_ammo_sound_name_2"							"MGL_LowAmmo_Shot2"
+	"low_ammo_sound_name_1"							"40mm_LowAmmo_Shot1"
 
 	"fx_muzzle_flash_view"							"wpn_muzzleflash_xo_triple_fp"
 	"fx_muzzle_flash_world"							"wpn_muzzleflash_xo_triple"

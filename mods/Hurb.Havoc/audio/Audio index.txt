@@ -1,4 +1,4 @@
-bt_eye_cache_pickup_knife_sheath = HavocTripleThreatFire
-bt_execution_kickshoot = HavocTripleThreatFrag_EXPLO
-Boomtown_GruntCage_DoorOpen = HavocTripleThreatFrag_PHYS
-anim_s2s_draconis_viper_kills_bt = HavocTripleThreat_Windup
+bt_eye_cache_pickup_knife_sheath = TripleThreatFire
+bt_execution_kickshoot = TripleThreatExplosion
+Boomtown_GruntCage_DoorOpen = TripleThreatGrenadeBounce
+anim_s2s_draconis_viper_kills_bt = TripleThreatPressurisedChambersChargeUp
