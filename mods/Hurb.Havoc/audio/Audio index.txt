@@ -1,4 +1,26 @@
-bt_eye_cache_pickup_knife_sheath = TripleThreatFire
+bt_eye_cache_pickup_knife_sheath = TripleThreatFire1p
+buddy_hotdrop_new = TripleThreatFire3p
 bt_execution_kickshoot = TripleThreatExplosion
 Boomtown_GruntCage_DoorOpen = TripleThreatGrenadeBounce
 anim_s2s_draconis_viper_kills_bt = TripleThreatPressurisedChambersChargeUp
+
+//1st Person
+bt_eye_cache_pickup_eye_airrelease
+bt_final_embark
+bt_eye_insert
+bt_power_up
+bt_reunion
+bt_reunion_response_01
+bt_reunion_response_02
+bt_reunion_response_03
+buddy_heavyland_metalvent
+
+//3rd Person
+bt_run_dodge_left
+bt_skyway_cache_drop
+bt_sp_player_1p_dismount
+bt_viper_tackle_setup
+bt_weapon_draw
+buddy_disembark_kneel
+buddy_hotdrop_new
+buddy_hotdrop_2_stand

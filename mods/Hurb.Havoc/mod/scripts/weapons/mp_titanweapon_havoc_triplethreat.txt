@@ -90,9 +90,10 @@ WeaponData
 
 	"projectilemodel" 								"models/weapons/bullets/triple_threat_projectile.mdl"
 
-	"fire_sound_1_player_1p"					"bt_eye_cache_pickup_knife_sheath"
-	"fire_sound_1_player_3p"					"bt_eye_cache_pickup_eye_airrelease"
-	"fire_sound_1_npc"								"bt_weapon_draw"
+	"sound_dryfire"									"titan_dryfire"
+	"fire_sound_1_player_1p"						"bt_eye_cache_pickup_knife_sheath"
+	"fire_sound_1_player_3p"						"buddy_hotdrop_new"
+	"fire_sound_1_npc"								"buddy_hotdrop_new"
 	"sound_zoom_in"									"Weapon_Triple_Threat.ALT_On"
 	"sound_zoom_out"								"Weapon_Triple_Threat.ALT_Off"
 
