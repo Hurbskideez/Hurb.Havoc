@@ -1,6 +1,6 @@
 bt_eye_cache_pickup_knife_sheath = TripleThreatFire1p
 buddy_hotdrop_new = TripleThreatFire3p
-bt_execution_kickshoot = TripleThreatExplosion
+ai_reaper_nukedestruct_explo_3p = TripleThreatExplosion
 Boomtown_GruntCage_DoorOpen = TripleThreatGrenadeBounce
 anim_s2s_draconis_viper_kills_bt = TripleThreatPressurisedChambersChargeUp
 
@@ -24,3 +24,4 @@ bt_weapon_draw
 buddy_disembark_kneel
 buddy_hotdrop_new
 buddy_hotdrop_2_stand
+ai_reaper_nukedestruct_explo_3p

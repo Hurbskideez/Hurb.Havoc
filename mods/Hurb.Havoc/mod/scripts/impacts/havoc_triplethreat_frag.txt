@@ -46,117 +46,118 @@ ImpactTable
 		"6" "P_impact_exp_triplethreat_full"
 		"7" "P_impact_exp_triplethreat_full"
 		"8" "P_impact_exp_triplethreat_full"
-		"9" "impact_puddle"
+		"9" "impact_puddle"					//puddle
 
+		"shieldhit" "P_impact_exp_triplethreat_full"
 		"airburst" "P_impact_exp_triplethreat_full"
 		"critical_hit" "P_impact_exp_triplethreat_full"
 	}
 
 	Sound
 	{
-		"C" "bt_execution_kickshoot"
-		"D" "bt_execution_kickshoot"
-		"E" "bt_execution_kickshoot"
+		"C" "ai_reaper_nukedestruct_explo_3p"
+		"D" "ai_reaper_nukedestruct_explo_3p"
+		"E" "ai_reaper_nukedestruct_explo_3p"
 
-		"F" "bt_execution_kickshoot"
-		"G" "bt_execution_kickshoot"
-		"H" "bt_execution_kickshoot"
+		"F" "ai_reaper_nukedestruct_explo_3p"
+		"G" "ai_reaper_nukedestruct_explo_3p"
+		"H" "ai_reaper_nukedestruct_explo_3p"
 
-		"J" "bt_execution_kickshoot"
-		"K" "bt_execution_kickshoot"
-		"L" "bt_execution_kickshoot"
-		"M" "bt_execution_kickshoot"
-		"N" "bt_execution_kickshoot"
-		"O" "bt_execution_kickshoot"
-		"P" "bt_execution_kickshoot"
+		"J" "ai_reaper_nukedestruct_explo_3p"
+		"K" "ai_reaper_nukedestruct_explo_3p"
+		"L" "ai_reaper_nukedestruct_explo_3p"
+		"M" "ai_reaper_nukedestruct_explo_3p"
+		"N" "ai_reaper_nukedestruct_explo_3p"
+		"O" "ai_reaper_nukedestruct_explo_3p"
+		"P" "ai_reaper_nukedestruct_explo_3p"
 
-		"R" "bt_execution_kickshoot"
-		"S" "bt_execution_kickshoot"
-		"T" "bt_execution_kickshoot"
-		"U" "bt_execution_kickshoot"
+		"R" "ai_reaper_nukedestruct_explo_3p"
+		"S" "ai_reaper_nukedestruct_explo_3p"
+		"T" "ai_reaper_nukedestruct_explo_3p"
+		"U" "ai_reaper_nukedestruct_explo_3p"
 
-		"V" "bt_execution_kickshoot"
-		"W" "bt_execution_kickshoot"
+		"V" "ai_reaper_nukedestruct_explo_3p"
+		"W" "ai_reaper_nukedestruct_explo_3p"
 		"X"	"TitanBubbleShield.Explosive.BulletImpact_3P_vs_3P"
-		"Y" "bt_execution_kickshoot"
-		"Z" "bt_execution_kickshoot"
+		"Y" "ai_reaper_nukedestruct_explo_3p"
+		"Z" "ai_reaper_nukedestruct_explo_3p"
 
 		//"splash" "Water.BulletImpact"
 		//"slime_splash" "Water.BulletImpact"
 
-		"airburst" "bt_execution_kickshoot"
+		"airburst" "ai_reaper_nukedestruct_explo_3p"
 		"shieldhit" "TitanShield.Explosive.BulletImpact_3P_vs_3P"
 	}
 
 	Sound_attacker
 	{
-		"C" "bt_execution_kickshoot"
-		"D" "bt_execution_kickshoot"
-		"E" "bt_execution_kickshoot"
+		"C" "ai_reaper_nukedestruct_explo_3p"
+		"D" "ai_reaper_nukedestruct_explo_3p"
+		"E" "ai_reaper_nukedestruct_explo_3ps"
 
-		"F" "bt_execution_kickshoot"
-		"G" "bt_execution_kickshoot"
-		"H" "bt_execution_kickshoot"
+		"F" "ai_reaper_nukedestruct_explo_3p"
+		"G" "ai_reaper_nukedestruct_explo_3p"
+		"H" "ai_reaper_nukedestruct_explo_3p"
 
-		"J" "bt_execution_kickshoot"
-		"K" "bt_execution_kickshoot"  // mud?
-		"L" "bt_execution_kickshoot"
-		"M" "bt_execution_kickshoot"
-		"N" "bt_execution_kickshoot"	// sand?
-		"O" "bt_execution_kickshoot"
-		"P" "bt_execution_kickshoot"
+		"J" "ai_reaper_nukedestruct_explo_3p"
+		"K" "ai_reaper_nukedestruct_explo_3p"  // mud?
+		"L" "ai_reaper_nukedestruct_explo_3p"
+		"M" "ai_reaper_nukedestruct_explo_3p"
+		"N" "ai_reaper_nukedestruct_explo_3p"	// sand?
+		"O" "ai_reaper_nukedestruct_explo_3p"
+		"P" "ai_reaper_nukedestruct_explo_3p"
 
-		"R" "bt_execution_kickshoot"
-		"S" "bt_execution_kickshoot"
-		"T" "bt_execution_kickshoot"
-		"U" "bt_execution_kickshoot"
+		"R" "ai_reaper_nukedestruct_explo_3p"
+		"S" "ai_reaper_nukedestruct_explo_3p"
+		"T" "ai_reaper_nukedestruct_explo_3p"
+		"U" "ai_reaper_nukedestruct_explo_3p"
 
-		"V" "bt_execution_kickshoot"
-		"W" "bt_execution_kickshoot"
+		"V" "ai_reaper_nukedestruct_explo_3p"
+		"W" "ai_reaper_nukedestruct_explo_3p"
 		"X"	"TitanBubbleShield.Explosive.BulletImpact_1P_vs_3P"
-		"Y" "bt_execution_kickshoot"
-		"Z" "bt_execution_kickshoot"
+		"Y" "ai_reaper_nukedestruct_explo_3p"
+		"Z" "ai_reaper_nukedestruct_explo_3p"
 
 		//"splash" "Water.BulletImpact"
 		//"slime_splash" "Water.BulletImpact"
 
-		"airburst" "bt_execution_kickshoot"
+		"airburst" "ai_reaper_nukedestruct_explo_3p"
 		"shieldhit" "TitanShield.Explosive.BulletImpact_1P_vs_3P"
 	}
 
 	Sound_victim
 	{
-		"C" "bt_execution_kickshoot"
-		"D" "bt_execution_kickshoot"
-		"E" "bt_execution_kickshoot"
+		"C" "ai_reaper_nukedestruct_explo_3p"
+		"D" "ai_reaper_nukedestruct_explo_3p"
+		"E" "ai_reaper_nukedestruct_explo_3p"
 
-		"F" "bt_execution_kickshoot"
-		"G" "bt_execution_kickshoot"
-		"H" "bt_execution_kickshoot"
+		"F" "ai_reaper_nukedestruct_explo_3p"
+		"G" "ai_reaper_nukedestruct_explo_3p"
+		"H" "ai_reaper_nukedestruct_explo_3p"
 
-		"J" "bt_execution_kickshoot"
-		"K" "bt_execution_kickshoot"
-		"L" "bt_execution_kickshoot"
-		"M" "bt_execution_kickshoot"
-		"N" "bt_execution_kickshoot"
-		"O" "bt_execution_kickshoot"
-		"P" "bt_execution_kickshoot"
+		"J" "ai_reaper_nukedestruct_explo_3p"
+		"K" "ai_reaper_nukedestruct_explo_3p"
+		"L" "ai_reaper_nukedestruct_explo_3p"
+		"M" "ai_reaper_nukedestruct_explo_3p"
+		"N" "ai_reaper_nukedestruct_explo_3p"
+		"O" "ai_reaper_nukedestruct_explo_3p"
+		"P" "ai_reaper_nukedestruct_explo_3p"
 
-		"R" "bt_execution_kickshoot"
-		"S" "bt_execution_kickshoot"
-		"T" "bt_execution_kickshoot"
-		"U" "bt_execution_kickshoot"
+		"R" "ai_reaper_nukedestruct_explo_3p"
+		"S" "ai_reaper_nukedestruct_explo_3p"
+		"T" "ai_reaper_nukedestruct_explo_3p"
+		"U" "ai_reaper_nukedestruct_explo_3p"
 
-		"V" "bt_execution_kickshoot"
-		"W" "bt_execution_kickshoot"
+		"V" "ai_reaper_nukedestruct_explo_3p"
+		"W" "ai_reaper_nukedestruct_explo_3p"
 		"X"	"TitanBubbleShield.Explosive.BulletImpact_3P_vs_3P"
-		"Y" "bt_execution_kickshoot"
-		"Z" "bt_execution_kickshoot"
+		"Y" "ai_reaper_nukedestruct_explo_3p"
+		"Z" "ai_reaper_nukedestruct_explo_3p"
 
 		//"splash" "Water.BulletImpact"
 		//"slime_splash" "Water.BulletImpact"
 
-		"airburst" "bt_execution_kickshoot"
+		"airburst" "ai_reaper_nukedestruct_explo_3p"
 		"shieldhit" "TitanShield.Explosive.BulletImpact_3P_vs_1P"
 	}
 
