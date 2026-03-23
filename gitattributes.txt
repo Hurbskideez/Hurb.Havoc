@@ -1,0 +1,5 @@
+/mods/Hurb.Havoc/mod/resource/hurb_havoc_localisation_*.txt text diff working-tree-encoding=UTF-16LE-BOM
+
+
+# Highlight `.gnut` like `.nut` files
+*.gnut linguist-language=Squirrel
