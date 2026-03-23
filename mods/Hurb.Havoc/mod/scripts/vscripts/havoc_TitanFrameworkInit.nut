@@ -38,7 +38,7 @@ void function HavocUIInit()
 		Shockwave.displayName = "#WPN_TITAN_SHOCKWAVE"
 		Shockwave.weaponName = "mp_titanweapon_shockwave"
 		Shockwave.description = "#WPN_TITAN_SHOCKWAVE_LONGDESC"
-		Shockwave.image = $"havoc/menu/shockwave_menu"
+		Shockwave.image = $"havoc/menu/shockwave"
 		Havoc.Right = Shockwave
 
 		ModdedTitanWeaponAbilityData BerserkCore
@@ -62,7 +62,7 @@ void function HavocUIInit()
 		ArcCharge.displayName = "#WPN_TITAN_ARC_CHARGE"
 		ArcCharge.weaponName = "mp_titanweapon_arc_charge"
 		ArcCharge.description = "#WPN_TITAN_ARC_CHARGE_DESC"
-		ArcCharge.image = $"havoc/menu/arc_charge_menu"
+		ArcCharge.image = $"havoc/menu/arc_charge"
 		Havoc.Mid = ArcCharge
 
 		Havoc.Melee = "melee_titan_punch_havoc"

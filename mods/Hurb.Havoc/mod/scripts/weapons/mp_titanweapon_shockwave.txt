@@ -5,7 +5,7 @@ WeaponData
 	"description" 									"#WPN_TITAN_ARC_WAVE_DESC"
 	"longdesc"										"#WPN_TITAN_ARC_WAVE_LONGDESC"
 
-	"menu_icon"										"havoc/menu/shockwave_menu"
+	"menu_icon"										"havoc/menu/shockwave"
 	"hud_icon"										"havoc/hud/shockwave"
 
 	"weaponClass" 									"titan"
