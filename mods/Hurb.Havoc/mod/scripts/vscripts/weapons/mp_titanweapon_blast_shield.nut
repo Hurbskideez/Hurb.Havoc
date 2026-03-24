@@ -40,6 +40,12 @@ const float BLAST_SHIELD_MAX_PUSH = 1200
 const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 7000
 const float BLAST_SHIELD_MAX_PUSH_ADD = 100 // The maximum amount of speed past push speed it can give the target (if they were moving in the same direction)
 
+const VortexIgnoreClassnames = {
+	["mp_titancore_flame_wave"] = true,
+	["mp_ability_grapple"] = true,
+	["mp_ability_shifter"] = true,
+}
+
 function MpTitanweaponBlastShield_Init()
 {
 	PrecacheWeapon( "mp_titanweapon_blast_shield" )
@@ -176,11 +182,9 @@ bool function OnWeaponVortexHitBullet_titanweapon_blast_shield( entity weapon, e
 
 		local impactData = Vortex_CreateImpactEventData( weapon, attacker, origin, damageSourceID, attackerWeaponName, "hitscan" )
 		VortexDrainedByImpact( weapon, attackerWeapon, null, null )
-		if ( impactData.refireBehavior == VORTEX_REFIRE_ABSORB )
-			return true
-		Vortex_SpawnHeatShieldPingFX( weapon, impactData, true )
 
-		return true
+		Vortex_SpawnHeatShieldPingFX( weapon, impactData, true )
+		return TryBlastShieldAbsorb( vortexSphere, attacker, origin, damageSourceID, attackerWeapon, attackerWeaponName, "hitscan", null, null )
 	#endif
 }
 
@@ -197,10 +201,9 @@ bool function OnWeaponVortexHitProjectile_titanweapon_blast_shield( entity weapo
 
 		local impactData = Vortex_CreateImpactEventData( weapon, attacker, contactPos, damageSourceID, weaponName, "projectile" )
 		VortexDrainedByImpact( weapon, projectile, projectile, null )
-		if ( impactData.refireBehavior == VORTEX_REFIRE_ABSORB )
-			return true
+
 		Vortex_SpawnHeatShieldPingFX( weapon, impactData, false )
-		return true
+		return TryBlastShieldAbsorb( vortexSphere, attacker, contactPos, damageSourceID, projectile, weaponName, "projectile", projectile, null )
 	#endif
 }
 
@@ -273,11 +276,11 @@ bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 	if ( weaponOwner.IsPlayer() )
 		StartBlastShield( weapon )
 
-		float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon ))
-		#if SERVER
-			weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
-		#endif
-		thread CookBlastShield( weapon, weaponOwner ) //WIP
+	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon ))
+	#if SERVER
+		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
+	#endif
+	thread CookBlastShield( weapon, weaponOwner ) //WIP
 
 	return true
 }
@@ -453,4 +456,113 @@ void function BlastShield_DamagedEntity( entity victim, var damageInfo )
 bool function OnWeaponAttemptOffhandSwitch_titanweapon_blast_shield( entity weapon )
 {
 	return weapon.GetWeaponChargeFraction() < 1.0 - BLAST_SHIELD_MIN_CHARGE
+}
+
+#if SERVER
+// this function handles all incoming vortex impact events
+bool function TryBlastShieldAbsorb( entity vortexSphere, entity attacker, vector origin, int damageSourceID, entity weapon, string weaponName, string impactType, entity projectile = null, damageType = null )
+{
+	if ( weaponName in VortexIgnoreClassnames )
+		return false
+
+	entity vortexWeapon = vortexSphere.GetOwnerWeapon()
+	entity owner = vortexWeapon.GetWeaponOwner()
+
+	// vortex spheres tag refired projectiles with info about the original projectile for accurate duplication when re-absorbed
+	if ( projectile )
+	{
+
+		// specifically for tether, since it gets moved to the vortex area and can get absorbed in the process, then destroyed
+		if ( !IsValid( projectile ) )
+			return false
+
+		entity projOwner = projectile.GetOwner()
+		if ( IsValid( projOwner ) && projOwner.GetTeam() == owner.GetTeam() )
+			return false
+
+		if ( projectile.proj.hasBouncedOffVortex )
+			return false
+
+		if ( projectile.ProjectileGetWeaponInfoFileKeyField( "projectile_ignores_vortex" ) == "fall_vortex" )
+		{
+			vector velocity = projectile.GetVelocity()
+			vector multiplier = < -0.25, -0.25, -0.25 >
+			velocity = < velocity.x * multiplier.x, velocity.y * multiplier.y, velocity.z * multiplier.z >
+			projectile.SetVelocity( velocity )
+			projectile.proj.hasBouncedOffVortex = true
+			return false
+		}
+
+		// Max projectile stat tracking
+		int projectilesInVortex = 1
+		projectilesInVortex += vortexWeapon.w.vortexImpactData.len()
+
+		if ( IsValid( owner ) && owner.IsPlayer() )
+		{
+		 	var impact_sound_1p = projectile.ProjectileGetWeaponInfoFileKeyField( "vortex_impact_sound_1p" )
+			if ( impact_sound_1p != null )
+				EmitSoundOnEntityOnlyToPlayer( vortexSphere, owner, impact_sound_1p )
+		}
+
+		var impact_sound_3p = projectile.ProjectileGetWeaponInfoFileKeyField( "vortex_impact_sound_3p" )
+		if ( impact_sound_3p != null )
+			EmitSoundAtPosition( TEAM_UNASSIGNED, origin, impact_sound_3p )
+	}
+	else
+	{
+		if ( IsValid( owner ) && owner.IsPlayer() )
+		{
+			var impact_sound_1p = GetWeaponInfoFileKeyField_Global( weaponName, "vortex_impact_sound_1p" )
+			if ( impact_sound_1p != null )
+				EmitSoundOnEntityOnlyToPlayer( vortexSphere, owner, impact_sound_1p )
+		}
+
+		var impact_sound_3p = GetWeaponInfoFileKeyField_Global( weaponName, "vortex_impact_sound_3p" )
+		if ( impact_sound_3p != null )
+			EmitSoundAtPosition( TEAM_UNASSIGNED, origin, impact_sound_3p )
+	}
+
+	local impactData = Vortex_CreateImpactEventData( vortexWeapon, attacker, origin, damageSourceID, weaponName, impactType )
+
+	VortexDrainedByImpact( vortexWeapon, weapon, projectile, damageType )
+	Vortex_NotifyAttackerDidDamage( expect entity( impactData.attacker ), owner, impactData.origin )
+
+	if ( impactData.refireBehavior == VORTEX_REFIRE_ABSORB )
+		return true
+
+	if ( vortexWeapon.GetWeaponClassName() == "mp_titanweapon_heat_shield" )
+		return true
+
+	if ( !Vortex_ScriptCanHandleImpactEvent( impactData ) )
+		return false
+
+	return true
+}
+#endif // SERVER
+
+function Vortex_NotifyAttackerDidDamage( entity attacker, entity vortexOwner, hitPos )
+{
+	if ( !IsValid( attacker ) || !attacker.IsPlayer() )
+		return
+
+	if ( !IsValid( vortexOwner ) )
+		return
+
+	Assert( hitPos )
+
+	attacker.NotifyDidDamage( vortexOwner, 0, hitPos, 0, 0, DAMAGEFLAG_VICTIM_HAS_VORTEX, 0, null, 0 )
+}
+
+function Vortex_ScriptCanHandleImpactEvent( impactData )
+{
+	if ( impactData.refireBehavior == VORTEX_REFIRE_NONE )
+		return false
+
+	if ( !impactData.absorbFX )
+		return false
+
+	if ( impactData.impactType == "projectile" && !impactData.impact_effect_table )
+		return false
+
+	return true
 }
