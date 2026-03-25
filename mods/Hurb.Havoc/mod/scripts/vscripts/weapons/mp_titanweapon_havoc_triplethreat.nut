@@ -232,6 +232,7 @@ function FireTriple_ThreatGrenade( entity weapon, origin, fwd, velocity, playerF
 	{
 		nade.kv.CollideWithOwner = false
 
+		EmitSoundOnEntity( nade, "Weapon_GibberPistol_Grenade_Emitter" )
 		Grenade_Init( nade, weapon )
 		#if SERVER
 			nade.SetOwner( weaponOwner )

@@ -25,3 +25,4 @@ buddy_disembark_kneel
 buddy_hotdrop_new
 buddy_hotdrop_2_stand
 ai_reaper_nukedestruct_explo_3p
+BatteryCrate_Explosion
