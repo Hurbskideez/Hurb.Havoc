@@ -12,7 +12,7 @@ global function OnWeaponNpcPrimaryAttack_titanweapon_triple_threat_havoc
 #endif
 
 const FX_MINE_TRAIL = $"Rocket_Smoke_Large"
-const FX_MINE_LIGHT = $"tower_light_red"
+const FX_MINE_LIGHT = $"P_tt_explosive_light"
 const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
 const MIN_FUSE_TIME = 2.1
@@ -239,6 +239,7 @@ function FireTriple_ThreatGrenade( entity weapon, origin, fwd, velocity, playerF
 			thread EnableCollision( nade )
 			thread AirPop( nade, fuseTime )
 			thread TrapExplodeOnDamage( nade, 50, 0.0, 0.1 )
+			PlayLoopFXOnEntity( FX_MINE_LIGHT, nade )
 		#else
 			SetTeam( nade, weaponOwner.GetTeam() )
 		#endif
