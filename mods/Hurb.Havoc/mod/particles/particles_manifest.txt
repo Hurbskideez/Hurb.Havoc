@@ -417,7 +417,7 @@ particles_manifest
 	"file"		"particles/test_bug.pcf"
 
 	//Havoc
-	"file"		"particles/wpn_xo_triple_threat_pulse.pcf"
+	"file"		"particles/wpn_grenade_tt_light.pcf"
 
 
 	//Used?
