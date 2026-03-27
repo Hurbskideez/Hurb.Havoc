@@ -224,7 +224,7 @@ function FireTriple_Threat( entity weapon, WeaponPrimaryAttackParams attackParam
 		float velocity = TRIPLE_THREAT_LAUNCH_VELOCITY * 1.2
 		float angleAdjustment = 1.5
 
-		if (weapon.HasMod("pressurised_chamber"))
+		if (weapon.HasMod("pas_pressurised_chamber"))
 			angleAdjustment *= (0.8 - (weapon.GetWeaponChargeFraction() / 2))
 
 		for ( int i = 0; i < numShots; i++ )

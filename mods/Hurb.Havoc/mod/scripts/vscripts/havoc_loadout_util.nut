@@ -26,7 +26,7 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 
 		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_HYDRAULIC"] ) )
 		{
-			titan.GetMainWeapons()[0].SetMods(["pressurised_chamber"])
+			titan.GetMainWeapons()[0].SetMods(["pas_pressurised_chamber"])
         }
 		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_ARCCHARGE"] ) )
 		{

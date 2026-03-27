@@ -446,7 +446,7 @@ WeaponData
 		{
 			//nades detonate early when something is nearby
 		}
-		pressurised_chamber
+		pas_pressurised_chamber
 		{
 			"charge_time" 									"0.7"
 			"charge_cooldown_time"                          "0.3"
