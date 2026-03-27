@@ -88,7 +88,7 @@ WeaponData
 	"vortex_absorb_sound"							"Vortex_Shield_AbsorbRocket"
 	"vortex_absorb_sound_1p_vs_3p"					"Vortex_Shield_AbsorbRocket_1P_VS_3P"
 
-	"projectilemodel" 								"models/weapons/bullets/triple_threat_projectile.mdl"
+	"projectilemodel" 								"models/weapons/titan_havoc_triple_threat_grenade/havoc_triple_threat_proj.mdl"
 
 	"sound_dryfire"									"titan_dryfire"
 	"fire_sound_1_player_1p"						"bt_eye_cache_pickup_knife_sheath"
