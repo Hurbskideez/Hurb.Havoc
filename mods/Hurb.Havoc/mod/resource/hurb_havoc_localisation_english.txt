@@ -34,9 +34,9 @@
         "GEAR_HAVOC_HYDRAULIC_DESC"						"Triple Threat can be charged to improve projectile speed and tighten spread."
         "GEAR_HAVOC_HYDRAULIC_LONGDESC"						"Triple Threat can be charged to improve projectile speed and tighten spread."
 
-        "GEAR_HAVOC_ARCCHARGE"         "Surcharge"
-        "GEAR_HAVOC_ARCCHARGE_DESC"         "Arc Charge has two charges."
-        "GEAR_HAVOC_ARCCHARGE_LONGDESC"         "Arc Charge has two charges."
+        "GEAR_HAVOC_ARCCHARGE"         "Energy-Dense Cells"
+        "GEAR_HAVOC_ARCCHARGE_DESC"         "Arc Charge discharges 2 additional times."
+        "GEAR_HAVOC_ARCCHARGE_LONGDESC"         "Arc Charge discharges 2 additional times."
 
         //Misc.
         "DEFAULT_TITAN_HAVOC"						"Havoc"

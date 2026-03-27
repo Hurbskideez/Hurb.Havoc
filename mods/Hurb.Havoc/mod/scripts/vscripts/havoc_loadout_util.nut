@@ -32,7 +32,7 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 		{
 			weapon = titan.GetOffhandWeapon(OFFHAND_ANTIRODEO)
 			mods = weapon.GetMods()
-			mods.append( "twin_charge" )
+			mods.append( "pas_energy_dense_cells" )
 			weapon.SetMods( mods )
 			weapon.SetWeaponPrimaryClipCount( weapon.GetWeaponSettingInt( eWeaponVar.ammo_default_total ) )
         }

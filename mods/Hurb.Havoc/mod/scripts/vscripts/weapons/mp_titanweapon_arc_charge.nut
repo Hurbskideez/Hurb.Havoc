@@ -9,11 +9,9 @@ global function OnWeaponAttemptOffhandSwitch_titanweapon_arc_charge
 global function OnWeaponNpcPrimaryAttack_titanweapon_arc_charge
 #endif // #if SERVER
 
-const FUSE_TIME = 0.5 //Applies once the grenade has stuck to a player.
-const FUSE_TIME_EXTENDED = 5 //Applies once the grenade has stuck to a surface.
+const BURST_COUNT = 5 //Applies once the grenade has stuck to a surface.
+const BURST_COUNT_KIT = 7
 const MINE_TRIGGER_DELAY = 0.5
-
-const STICKY_MINE_FIELD_ACTIVATION_TIME = 0.5 //After landing
 
 const FX_EMP_BODY_HUMAN			= $"P_emp_body_human"
 const FX_EMP_BODY_TITAN			= $"P_emp_body_titan"
@@ -109,15 +107,18 @@ void function OnProjectileCollision_titanweapon_arc_charge( entity projectile, v
 	#if SERVER
 		EmitSoundOnEntity( projectile, "weapon_softball_grenade_attached_3P" )
 
-			thread UpdateArcChargeField(weaponOwner, projectile, origin, 5, 0.85)
+			thread UpdateArcChargeField(weaponOwner, projectile, origin, 0.85)
 			//thread DetonateStickyAfterTime( projectile, 0.85*5, normal )
 	#endif
 }
 
 #if SERVER
 void
-function UpdateArcChargeField(entity owner, entity projectile, vector origin, int burstCount, float delay)
+function UpdateArcChargeField(entity owner, entity projectile, vector origin, float delay)
 {
+	array<string> mods = projectile.ProjectileGetMods()
+	int burstCount = mods.contains( "pas_energy_dense_cells" ) ? BURST_COUNT_KIT : BURST_COUNT
+
 	projectile.EndSignal( "OnDestroy" )
 	float duration = delay * burstCount
 	float endTime = Time() + duration

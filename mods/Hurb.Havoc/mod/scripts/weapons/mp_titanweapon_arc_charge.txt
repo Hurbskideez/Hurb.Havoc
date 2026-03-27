@@ -207,14 +207,9 @@ WeaponData
 
 	Mods
 	{
-		twin_charge
+		pas_energy_dense_cells
 		{
-			"ammo_display"									"bar"
-			"ammo_stockpile_max"							"600"
-			"ammo_clip_size"   								"600"
-			"ammo_default_total"							"600"
-			"ammo_per_shot"									"300"
-			"ammo_min_to_fire"								"300"
+			
 		}
 	}
 
