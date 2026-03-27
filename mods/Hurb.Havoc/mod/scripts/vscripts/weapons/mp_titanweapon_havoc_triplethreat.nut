@@ -139,6 +139,8 @@ void function WaitToMagnetise( entity projectile )
 	}
 	WaitForever()
 }
+#endif
+
 bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon )
 {
 	weapon.EmitWeaponSound("anim_s2s_draconis_viper_kills_bt")
@@ -248,6 +250,8 @@ function FireTriple_Threat( entity weapon, WeaponPrimaryAttackParams attackParam
 			float fuseTime
 			if(weapon.HasMod("pas_long_fuse"))
 				fuseTime = RandomFloatRange( MIN_FUSE_TIME_KIT, MAX_FUSE_TIME_KIT )
+			else
+				fuseTime = RandomFloatRange( MIN_FUSE_TIME, MAX_FUSE_TIME )
 
 			int damageType = damageTypes.explosive
 
