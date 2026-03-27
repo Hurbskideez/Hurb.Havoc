@@ -75,19 +75,26 @@ void function HavocUIInit()
 		Empty.customIcon = true
 		Havoc.passive2Array.append(Empty)
 
-		ModdedPassiveData Surcharge
-		Surcharge.Name = "#GEAR_HAVOC_ARCCHARGE"
-		Surcharge.description = "#GEAR_HAVOC_ARCCHARGE_DESC"
-		//PressurisedChamber.image = $""
-		Surcharge.customIcon = true
-		Havoc.passive2Array.append(Surcharge)
+		ModdedPassiveData BiteTheBullet
+		BiteTheBullet.Name = "#GEAR_HAVOC_TRIPLETHREAT"
+		BiteTheBullet.description = "#GEAR_HAVOC_TRIPLETHREAT_DESC"
+		//BiteTheBullet.image = $""
+		BiteTheBullet.customIcon = true
+		Havoc.passive2Array.append(BiteTheBullet)
 
-		ModdedPassiveData PressurisedChamber
-		PressurisedChamber.Name = "#GEAR_HAVOC_HYDRAULIC"
-		PressurisedChamber.description = "#GEAR_HAVOC_HYDRAULIC_DESC"
-		//PressurisedChamber.image = $""
-		PressurisedChamber.customIcon = true
-		Havoc.passive2Array.append(PressurisedChamber)
+		ModdedPassiveData EnergyDenseCells
+		EnergyDenseCells.Name = "#GEAR_HAVOC_ARCCHARGE"
+		EnergyDenseCells.description = "#GEAR_HAVOC_ARCCHARGE_DESC"
+		//EnergyDenseCells.image = $""
+		EnergyDenseCells.customIcon = true
+		Havoc.passive2Array.append(EnergyDenseCells)
+
+		ModdedPassiveData HydraulicLauncher
+		HydraulicLauncher.Name = "#GEAR_HAVOC_HYDRAULIC"
+		HydraulicLauncher.description = "#GEAR_HAVOC_HYDRAULIC_DESC"
+		//HydraulicLauncher.image = $""
+		HydraulicLauncher.customIcon = true
+		Havoc.passive2Array.append(HydraulicLauncher)
 
 		CreateModdedTitanSimple(Havoc)
 	#endif

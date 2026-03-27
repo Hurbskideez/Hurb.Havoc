@@ -456,6 +456,10 @@ WeaponData
 			
 			active_crosshair_count                    "2"
 		}
+		pas_long_fuse
+		{
+			// Long fuse lol
+		}
 
 	}
 	active_crosshair_count				"1"

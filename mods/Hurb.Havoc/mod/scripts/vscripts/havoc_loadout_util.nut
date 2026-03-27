@@ -36,6 +36,10 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 			weapon.SetMods( mods )
 			weapon.SetWeaponPrimaryClipCount( weapon.GetWeaponSettingInt( eWeaponVar.ammo_default_total ) )
         }
+		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_TRIPLETHREAT"] ) )
+		{
+			titan.GetMainWeapons()[0].SetMods(["pas_long_fuse"])
+        }
         /*if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_SMOKE"] ) )
 		{
 			titan.GetOffhandWeapon(OFFHAND_EQUIPMENT).SetMods(["bring_the_thunder"])

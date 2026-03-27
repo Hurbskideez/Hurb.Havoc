@@ -13,10 +13,14 @@ global function OnWeaponNpcPrimaryAttack_titanweapon_triple_threat_havoc
 
 const FX_MINE_TRAIL = $"Rocket_Smoke_Large"
 const FX_MINE_LIGHT = $"P_tt_explosive_light"
+const FX_MINE_GLOW = $"wpn_grenade_TT_mag"
 const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
 const MIN_FUSE_TIME = 2.1
 const MAX_FUSE_TIME = 2.3
+const MIN_FUSE_TIME_KIT = 3.1
+const MAX_FUSE_TIME_KIT = 3.3
+const MAGNETISE_DELAY = 0.5
 
 global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
@@ -45,6 +49,7 @@ function HavocTripleThreat_Init()
 	PrecacheWeapon("mp_titanweapon_havoc_triplethreat")
 	PrecacheParticleSystem( FX_MINE_TRAIL )
 	PrecacheParticleSystem( FX_MINE_LIGHT )
+	PrecacheParticleSystem( FX_MINE_GLOW )
 	PrecacheParticleSystem( FX_TRIPLE_IGNITION )
 	PrecacheParticleSystem( FX_TRIPLE_IGNITION_BURN )
 
@@ -83,6 +88,16 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 		return
 
 
+	#if SERVER
+	array<string> mods = projectile.ProjectileGetMods()
+	if (projectile.proj.projectileBounceCount == 0 && mods.contains( "pas_long_fuse" ))
+	{
+		thread WaitToMagnetise( projectile )
+	}
+
+	projectile.proj.projectileBounceCount++
+	#endif
+
 	if (hitEnt.GetTeam() != projectile.GetTeam() && !hitEnt.IsWorld())
 	{
 		local normal = Vector( 0, 0, 1 )
@@ -100,6 +115,30 @@ void function OnProjectileCollision_titanweapon_triple_threat_havoc( entity proj
 	}*/
 }
 
+#if SERVER
+void function WaitToMagnetise( entity projectile )
+{
+	projectile.EndSignal( "OnDestroy" )
+
+	if (IsValid( projectile )) //not entirely sure why this is necessary
+	{
+		entity fx = PlayLoopFXOnEntity( FX_MINE_GLOW, projectile )
+		fx.SetStopType( "destroyImmediately" )
+
+		wait MAGNETISE_DELAY
+
+		projectile.InitMagnetic( 1000.0, "Explo_MGL_MagneticAttract" )
+
+		OnThreadEnd(
+		function() : ( fx )
+		{
+			if ( IsValid(fx) )
+				fx.Destroy()
+		}
+		)
+	}
+	WaitForever()
+}
 bool function OnWeaponChargeBegin_titanweapon_triple_threat_havoc( entity weapon )
 {
 	weapon.EmitWeaponSound("anim_s2s_draconis_viper_kills_bt")
@@ -200,14 +239,15 @@ function FireTriple_Threat( entity weapon, WeaponPrimaryAttackParams attackParam
 
 			vector attackVec = attackParams.dir + rightVec + upVec
 
-			if (weapon.HasMod("pressurised_chamber"))
+			if (weapon.HasMod("pas_pressurised_chamber"))
 				attackVec *= (1 + (weapon.GetWeaponChargeFraction() / 3))
 
 			if ( inADS )
 				attackVec *= file.boltSpeedOffsets[i]
 
-
-			float fuseTime = RandomFloatRange( MIN_FUSE_TIME, MAX_FUSE_TIME )
+			float fuseTime
+			if(weapon.HasMod("pas_long_fuse"))
+				fuseTime = RandomFloatRange( MIN_FUSE_TIME_KIT, MAX_FUSE_TIME_KIT )
 
 			int damageType = damageTypes.explosive
 
