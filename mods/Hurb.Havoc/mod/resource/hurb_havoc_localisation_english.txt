@@ -30,13 +30,17 @@
         "WPN_TITAN_BLAST_SHIELD_LONGDESC"						"Blocks incoming fire, cook to detonate on release."
 
         //Kits
-        "GEAR_HAVOC_HYDRAULIC"						"Pressurised Chamber"
-        "GEAR_HAVOC_HYDRAULIC_DESC"						"Triple Threat can be charged to improve projectile speed and tighten spread."
-        "GEAR_HAVOC_HYDRAULIC_LONGDESC"						"Triple Threat can be charged to improve projectile speed and tighten spread."
+        "GEAR_HAVOC_HYDRAULIC"						"Hydraulic Launcher"
+        "GEAR_HAVOC_HYDRAULIC_DESC"						"Triple Threat can charge to improve grenade speed and spread."
+        "GEAR_HAVOC_HYDRAULIC_LONGDESC"						"Triple Threat can charge to improve grenade speed and spread."
 
         "GEAR_HAVOC_ARCCHARGE"         "Energy-Dense Cells"
         "GEAR_HAVOC_ARCCHARGE_DESC"         "Arc Charge discharges 2 additional times."
         "GEAR_HAVOC_ARCCHARGE_LONGDESC"         "Arc Charge discharges 2 additional times."
+
+        "GEAR_HAVOC_TRIPLETHREAT"               "Bite the Bullet"
+        "GEAR_HAVOC_TRIPLETHREAT_DESC"          "Triple Threat's grenades have a longer fuse and magnetise on contact."
+        "GEAR_HAVOC_TRIPLETHREAT_LONGDESC"      "Triple Threat's grenades have a longer fuse and magnetise on contact."
 
         //Misc.
         "DEFAULT_TITAN_HAVOC"						"Havoc"
@@ -57,10 +61,8 @@
         "DEATH_HINT_HAVOC_003"        "Stay away! Blast Shield's explosion knocks back Pilots and Titans."
         "DEATH_HINT_HAVOC_004"        "Too slow? Equip the Turbo Engine kit to shorten Havoc's dash recharge."
         "DEATH_HINT_HAVOC_005"        "Twisted. The Triple Threat's alternate fire launches grenades with a vertical spread."
-        "DEATH_HINT_HAVOC_006"        "Go long! The Pressurised Chamber kit can launch grenades very long distances."
-        "DEATH_HINT_HAVOC_007"        "(Second Kit Hint)"
-
-        
+        "DEATH_HINT_HAVOC_006"        "Go long! The Hydraulic Launcher kit can launch grenades very long distances."
+        "DEATH_HINT_HAVOC_007"        "Corner them! Use the Energy-Dense Cells kit to lock-down enemy pathways."
 
         "MISSING_DEPENDENCY_HEADER" "Missing Dependency!"
         "MISSING_DEPENDENCY_BODY_DISABLED" "^9DC4FF00%s1^ requires that ^9DC4FF00%s2^ is installed and enabled.\n\n^CC303000It seems that ^FF6F6F00%s2^ ^CC303000is installed, but is disabled.^CCCCCC00\n\nWould you like to enable ^9DC4FF00%s2^CCCCCC00?"
