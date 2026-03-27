@@ -16,7 +16,7 @@ const FX_MINE_LIGHT = $"P_tt_explosive_light"
 const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
 const MIN_FUSE_TIME = 2.1
-const MAX_FUSE_TIME = 2.1
+const MAX_FUSE_TIME = 2.3
 
 global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
