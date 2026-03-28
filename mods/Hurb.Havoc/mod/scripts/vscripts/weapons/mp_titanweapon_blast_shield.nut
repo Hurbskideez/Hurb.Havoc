@@ -29,15 +29,8 @@ const float BLAST_WARNING_TIME = 0.0
 
 const asset BLAST_SHIELD_ABSORB_FX		= $"P_wpn_HeatShield_impact"
 
-//Titan Push Values
-//Min 600 Max 1200
-//Pilot Push Values
-//Min 4000 Min 7000
-const float BLAST_SHIELD_MIN_DAMAGE_FRAC = 0.25
-const float BLAST_SHIELD_MIN_PUSH = 1200
-const float BLAST_SHIELD_MIN_PUSH_HUMANSIZED = 4000
 const float BLAST_SHIELD_MAX_PUSH = 1200
-const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 7000
+const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 950
 const float BLAST_SHIELD_MAX_PUSH_ADD = 100 // The maximum amount of speed past push speed it can give the target (if they were moving in the same direction)
 
 const VortexIgnoreClassnames = {
@@ -437,19 +430,25 @@ void function BlastShield_DamagedEntity( entity victim, var damageInfo )
 	if ( !IsValid( attacker ) )
 		return
 
+	//we only want to knock back players and titans, stagger everything else (including AI titans)
+	if(!victim.IsTitan() && !victim.IsPlayer() )
+		return
+
 	entity weapon = DamageInfo_GetWeapon( damageInfo )
-	float minPush = victim.IsTitan() ? BLAST_SHIELD_MIN_PUSH : BLAST_SHIELD_MIN_PUSH_HUMANSIZED
-	float maxPush = victim.IsTitan() ? BLAST_SHIELD_MAX_PUSH : BLAST_SHIELD_MAX_PUSH_HUMANSIZED
-	float damageMultiplier = DamageInfo_GetDamage( damageInfo ) / weapon.GetWeaponSettingInt( eWeaponVar.damage_near_value_titanarmor )
-	float pushAmount = GraphCapped( IsValid( weapon ) ? BlastShield_GetCharge( weapon ) : 0, 0, 1, minPush, maxPush ) * damageMultiplier
+	//Get Push force depending on whether the damaged entity is a titan or not
+	float pushForce = victim.IsTitan() ? BLAST_SHIELD_MAX_PUSH : BLAST_SHIELD_MAX_PUSH_HUMANSIZED
+	//Reduce push force depending on damage dealt
+	float falloffScalar = DamageInfo_GetDamage(damageInfo) / (victim.IsTitan() ? weapon.GetWeaponSettingInt(eWeaponVar.damage_near_value_titanarmor) : weapon.GetWeaponSettingInt(eWeaponVar.damage_near_value))
+	float pushAmount = pushForce * falloffScalar
+	//Get push direction
     vector pushDir = Normalize( victim.GetOrigin() - attacker.GetOrigin() )
 
+	//Get Victim's velocity and adjust to their current velocity
 	float velInDir = victim.GetVelocity().Dot( pushDir )
-	if ( velInDir + pushAmount > maxPush + BLAST_SHIELD_MAX_PUSH_ADD )
-		pushAmount = max( 0.0, maxPush + BLAST_SHIELD_MAX_PUSH_ADD - velInDir )
+	if ( velInDir + pushAmount > pushForce + BLAST_SHIELD_MAX_PUSH_ADD )
+		pushAmount = max( 0.0, pushForce + BLAST_SHIELD_MAX_PUSH_ADD - velInDir )
 
-	if(victim.IsTitan() || victim.IsPlayer() ) //we only want to knock back players and titans
-		PushEntWithVelocity( victim, pushDir * pushAmount )
+	PushEntWithVelocity( victim, pushDir * pushAmount )
 }
 #endif
 
