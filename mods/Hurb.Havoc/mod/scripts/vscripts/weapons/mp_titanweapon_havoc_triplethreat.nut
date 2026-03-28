@@ -120,7 +120,7 @@ void function WaitToMagnetise( entity projectile )
 {
 	projectile.EndSignal( "OnDestroy" )
 
-	if (IsValid( projectile )) //not entirely sure why this is necessary
+	if (IsValid( projectile ))
 	{
 		entity fx = PlayLoopFXOnEntity( FX_MINE_GLOW, projectile )
 		fx.SetStopType( "destroyImmediately" )
@@ -283,7 +283,6 @@ function FireTriple_ThreatGrenade( entity weapon, origin, fwd, velocity, playerF
 			thread EnableCollision( nade )
 			thread AirPop( nade, fuseTime )
 			thread TrapExplodeOnDamage( nade, 50, 0.0, 0.1 )
-			thread PlayGlowEffectDelayed( FX_MINE_LIGHT, nade, 0.3 )
 		#else
 			SetTeam( nade, weaponOwner.GetTeam() )
 		#endif
@@ -298,27 +297,6 @@ function FireTriple_ThreatGrenade( entity weapon, origin, fwd, velocity, playerF
 		return nade
 	}
 }
-
-#if SERVER
-function PlayGlowEffectDelayed( asset particle, entity projectile, float delay = 0 )
-{
-	projectile.EndSignal("OnDestroy")
-
-	wait delay
-	entity fx = PlayLoopFXOnEntity( particle, projectile )
-	fx.SetStopType( "destroyImmediately" )
-
-	WaitForever()
-
-	OnThreadEnd(
-		function() : ( fx )
-		{
-			if ( IsValid(fx) )
-				fx.Destroy()
-		}
-	)
-}
-#endif
 
 function EnableCollision( entity grenade )
 {
