@@ -430,6 +430,15 @@ void function BlastShield_DamagedEntity( entity victim, var damageInfo )
 	if ( !IsValid( attacker ) )
 		return
 
+	//Stagger NPC titans first
+	if ( !victim.IsPlayer() )
+	{
+		if ( victim.IsTitan() && !victim.ContextAction_IsActive() && victim.IsInterruptable() )
+		{
+			thread BlastShield_StaggerTitan( victim )
+		}
+	}
+
 	//we only want to knock back players and titans, stagger everything else (including AI titans)
 	if(!victim.IsTitan() && !victim.IsPlayer() )
 		return
@@ -564,4 +573,27 @@ function Vortex_ScriptCanHandleImpactEvent( impactData )
 		return false
 
 	return true
+}
+
+void function BlastShield_StaggerTitan( entity titan )
+{
+	Assert ( IsNewThread(), "Must be threaded off." )
+	titan.EndSignal( "OnDestroy" )
+
+	OnThreadEnd(
+		function() : ( titan )
+		{
+
+			if ( IsValid( titan ) )
+			{
+				if ( titan.ContextAction_IsBusy() )
+					titan.ContextAction_ClearBusy()
+			}
+		}
+	)
+
+	titan.ContextAction_SetBusy()
+	titan.Anim_ScriptedPlayActivityByName( "ACT_FLINCH_KNOCKBACK_BACK", true, 0.1 )
+
+	wait 2.0
 }
