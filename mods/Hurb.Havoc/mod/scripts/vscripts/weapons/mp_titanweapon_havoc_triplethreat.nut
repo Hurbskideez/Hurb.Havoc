@@ -22,6 +22,8 @@ const MIN_FUSE_TIME_KIT = 3.1
 const MAX_FUSE_TIME_KIT = 3.3
 const MAGNETISE_DELAY = 0.5
 
+const SELF_DAMAGE_SCALAR = 1.0
+
 global const TRIPLE_THREAT_NUM_SHOTS = 3
 global const TRIPLE_THREAT_LAUNCH_VELOCITY = 1200.0
 global const TRIPLE_THREAT_MINE_FIELD_ACTIVATION_TIME = 0.5 //After landing
@@ -370,6 +372,6 @@ void function TripleThreatOnDamage( entity ent, var damageInfo )
 	entity attacker = DamageInfo_GetAttacker( damageInfo )
 
 	if( ent == attacker )
-		DamageInfo_ScaleDamage( damageInfo, 0.5 )
+		DamageInfo_ScaleDamage( damageInfo, SELF_DAMAGE_SCALAR )
 }
 #endif
