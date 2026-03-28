@@ -129,7 +129,7 @@ void function WaitToMagnetise( entity projectile )
 
 		wait MAGNETISE_DELAY
 
-		projectile.InitMagnetic( 1000.0, "Explo_MGL_MagneticAttract" )
+		projectile.InitMagnetic( 1000.0, "Explo_TripleThreat_MagneticAttract" )
 
 		OnThreadEnd(
 		function() : ( fx )
