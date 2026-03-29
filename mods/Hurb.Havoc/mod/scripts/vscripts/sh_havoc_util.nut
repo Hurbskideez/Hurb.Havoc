@@ -28,9 +28,8 @@ void function HavocPrecache()
 		{
 			mp_titanweapon_havoc_triplethreat = "#WPN_HAVOC_TRIPLE_THREAT"
 			mp_titanweapon_shockwave = "#WPN_TITAN_SHOCKWAVE"
-			mp_titanweapon_arc_charge = "#WPN_TITAN_ARC_CHARGE_SHORT"
+			mp_titanweapon_arc_charge = "#WPN_TITAN_ARC_CHARGE"
 			mp_titanweapon_blast_shield = "#WPN_TITAN_BLAST_SHIELD"
-			mp_titanweapon_arc_charge = "#WPN_TITAN_BLAST_SHIELD"
 			melee_titan_punch_havoc = "WPN_MELEE_TITAN_PUNCH_HAVOC"
 		}
 	)
