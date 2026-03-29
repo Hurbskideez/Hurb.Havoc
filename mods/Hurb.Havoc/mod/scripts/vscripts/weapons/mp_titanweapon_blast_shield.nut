@@ -24,7 +24,7 @@ const int BLAST_SHIELD_RADIUS = 150
 
 const float BLAST_CHARGE_TIME = 1.2
 const float BLAST_COOLDOWN_TIME = 0.5
-const float BLAST_COOLDOWN_DELAY = 0.25
+const float BLAST_COOLDOWN_DELAY = 0.5 //HACK delays the application of the Energy Bar visuals until after it hits 0, effectively removing it at full charge
 
 const asset BLAST_SHIELD_ABSORB_FX		= $"P_wpn_HeatShield_impact"
 
