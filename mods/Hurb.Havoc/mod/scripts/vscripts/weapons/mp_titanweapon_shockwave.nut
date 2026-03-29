@@ -121,7 +121,7 @@ bool function CreateShockWaveSegment( entity projectile, int projectileCount, en
 		inflictor, //inflictor
 		pilotDamage,
 		titanDamage,
-		220, // inner radius
+		250, // inner radius
 		250, // outer radius
 		SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT,
 		0, // distanceFromAttacker
