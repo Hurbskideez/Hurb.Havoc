@@ -24,8 +24,7 @@ const int BLAST_SHIELD_RADIUS = 150
 
 const float BLAST_CHARGE_TIME = 1.2
 const float BLAST_COOLDOWN_TIME = 0.5
-const float BLAST_COOLDOWN_DELAY = 0.0
-const float BLAST_WARNING_TIME = 0.0
+const float BLAST_COOLDOWN_DELAY = 0.25
 
 const asset BLAST_SHIELD_ABSORB_FX		= $"P_wpn_HeatShield_impact"
 
@@ -270,9 +269,11 @@ bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 		StartBlastShield( weapon )
 
 	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon ))
+
 	#if SERVER
 		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
 	#endif
+
 	thread CookBlastShield( weapon, weaponOwner ) //WIP
 
 	return true
@@ -287,43 +288,23 @@ void function CookBlastShield( entity weapon, entity weaponOwner )
 	OnThreadEnd(
 		function() : ( weapon )
 		{
-			weapon.StopWeaponSound("Weapon_Vortex_Gun.ExplosiveWarningBeep")
+			weapon.StopWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
 			weapon.StopWeaponSound( "titan_alarm_loop" )
+			weapon.StopWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
 		}
 	)
 
-	float chargeFrac = 1 - BlastShield_GetCharge( weapon )
-    float maxCookTime = chargeFrac * BLAST_CHARGE_TIME
-
-    if ( maxCookTime - BLAST_WARNING_TIME < 0 )
-    {
-		weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
-		weapon.EmitWeaponSound( "titan_alarm_loop" )
-		weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
-		#if CLIENT
-			FlashChargeCritical_Bar( weapon )
-		#endif
-        wait maxCookTime
-    }
-    else
-    {
-        wait( maxCookTime - BLAST_WARNING_TIME )
-
-		weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
-		weapon.EmitWeaponSound( "titan_alarm_loop" )
-		weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
-		#if CLIENT
-			FlashChargeCritical_Bar( weapon )
-		#endif
-
-        wait( BLAST_WARNING_TIME )
-
-		weapon.EmitWeaponSound( "weapon_40mm_burstloader_leveltick_3" )
-    }
+    wait BLAST_CHARGE_TIME
 
 	#if SERVER
 		weapon.AddMod("charge_full")
 	#endif
+
+	weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
+	weapon.EmitWeaponSound( "titan_alarm_loop" )
+	weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
+
+	WaitForever()
 }
 
 void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
@@ -337,28 +318,20 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
-	if( !weapon.HasMod("charge_full") )
-	{
-		//ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
-	}
-	else
+	if( weapon.HasMod("charge_full") )
 		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
 
 	#if SERVER
 		weapon.RemoveMod("charge_full")
 	#endif
-
-
 }
 
 void function DelayCooldown(entity weapon, float cooldown, float delay)
 {
 	entity weaponOwner = weapon.GetWeaponOwner()
-	#if SERVER
-		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", BlastShield_GetCharge(weapon), 0.0)
-	#endif
 
-	wait delay
+	if (weapon.HasMod("charge_full"))
+		wait delay //this threaded delay is critical for the Blast animation to play properly, not entirely sure why
 
 	float timer = cooldown * BlastShield_GetCharge( weapon )
 	#if SERVER
@@ -386,6 +359,10 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 		antilagPlayer = owner
 	}
+
+	#if CLIENT
+		FlashChargeCritical_Bar( weapon )
+	#endif
 
 	// Fires an invisible bullet that does nothing to ping radar
 	weapon.FireWeaponBullet_Special( attackParams.pos, attackParams.dir, 1, 0, true, true, false, true, true, false, true )

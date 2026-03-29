@@ -107,19 +107,11 @@ bool function Havoc_ShouldCreateEnergyBar()
 
 void function FlashChargeCritical_Bar(entity weapon)
 {
-	weapon.EndSignal( "OnDestroy" )
-	weapon.EndSignal( "VortexFired" )
-	weapon.EndSignal( "ChargeEnd" )
-
 	if ( file.havocShieldChargeBarRui == null )
 		return
 
-	while(true){
-		WaitFrame()
-		RuiSetFloat(file.havocShieldChargeBarRui, "energyNeededRatio", BlastShield_GetCharge( weapon ))
-		RuiSetGameTime( file.havocShieldChargeBarRui, "energyNeededFlashStartTime", Time() )
-	}
-
+	RuiSetFloat(file.havocShieldChargeBarRui, "energyNeededRatio", 1.0)
+	RuiSetGameTime( file.havocShieldChargeBarRui, "energyNeededFlashStartTime", Time() )
 }
 #endif
 
