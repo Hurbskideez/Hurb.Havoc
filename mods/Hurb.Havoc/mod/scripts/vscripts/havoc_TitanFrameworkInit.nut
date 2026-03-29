@@ -96,6 +96,13 @@ void function HavocUIInit()
 		HydraulicLauncher.customIcon = true
 		Havoc.passive2Array.append(HydraulicLauncher)
 
+		ModdedPassiveData ExhaustRecycler
+		ExhaustRecycler.Name = "#GEAR_HAVOC_BLASTSHIELD"
+		ExhaustRecycler.description = "#GEAR_HAVOC_BLASTSHIELD_DESC"
+		//ExhaustRecycler.image = $""
+		ExhaustRecycler.customIcon = true
+		Havoc.passive2Array.append(ExhaustRecycler)
+
 		CreateModdedTitanSimple(Havoc)
 	#endif
 }

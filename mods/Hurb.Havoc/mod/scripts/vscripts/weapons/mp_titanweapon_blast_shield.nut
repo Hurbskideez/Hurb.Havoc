@@ -364,6 +364,14 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 		FlashChargeCritical_Bar( weapon )
 	#endif
 
+	if( weapon.HasMod( "pas_blast_speed_boost" ))
+	{
+		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.4, 2.5, 1.0 )
+		#if SERVER
+			owner.Server_SetDodgePower( 100.0 )
+		#endif
+	}
+
 	// Fires an invisible bullet that does nothing to ping radar
 	weapon.FireWeaponBullet_Special( attackParams.pos, attackParams.dir, 1, 0, true, true, false, true, true, false, true )
 

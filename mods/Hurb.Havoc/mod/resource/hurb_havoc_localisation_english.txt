@@ -42,6 +42,10 @@
         "GEAR_HAVOC_TRIPLETHREAT_DESC"          "Triple Threat's grenades have a longer fuse and magnetise on contact."
         "GEAR_HAVOC_TRIPLETHREAT_LONGDESC"      "Triple Threat's grenades have a longer fuse and magnetise on contact."
 
+        "GEAR_HAVOC_BLASTSHIELD"                "Exhaust Recycler"
+        "GEAR_HAVOC_BLASTSHIELD_DESC"           "Blast Shield's explosion enhances movement momentarily. Recharges Dash."
+        "GEAR_HAVOC_BLASTSHIELD_LONGDESC"       "Blast Shield's explosion enhances movement momentarily. Recharges Dash."
+
         //Misc.
         "DEFAULT_TITAN_HAVOC"						"Havoc"
         "MEET_HAVOC"                                   "Meet Havoc"

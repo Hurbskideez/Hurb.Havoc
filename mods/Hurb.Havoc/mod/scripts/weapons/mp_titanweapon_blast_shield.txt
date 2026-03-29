@@ -237,6 +237,10 @@ WeaponData
 		{
 			"is_burn_mod" 							"0"
 		}
+		pas_blast_speed_boost
+		{
+
+		}
 	}
 
 	active_crosshair_count				"2"

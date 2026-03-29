@@ -34,11 +34,17 @@ void function SetHavocTitanLoadout( entity titan, TitanLoadoutDef loadout  )
 			mods = weapon.GetMods()
 			mods.append( "pas_energy_dense_cells" )
 			weapon.SetMods( mods )
-			weapon.SetWeaponPrimaryClipCount( weapon.GetWeaponSettingInt( eWeaponVar.ammo_default_total ) )
         }
 		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_TRIPLETHREAT"] ) )
 		{
 			titan.GetMainWeapons()[0].SetMods(["pas_long_fuse"])
+        }
+		if(SoulHasPassive( soul, ePassives["#GEAR_HAVOC_BLASTSHIELD"] ) )
+		{
+			weapon = titan.GetOffhandWeapon(OFFHAND_SPECIAL)
+			mods = weapon.GetMods()
+			mods.append( "pas_blast_speed_boost" )
+			weapon.SetMods( mods )
         }
         /*if(SoulHasPassive( soul, ePassives["#GEAR_ARCHON_SMOKE"] ) )
 		{
