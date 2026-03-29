@@ -416,8 +416,9 @@ particles_manifest
 	"file"		"particles/bug_repro.pcf"
 	"file"		"particles/test_bug.pcf"
 
+
 	//Havoc
-	"file"		"particles/wpn_grenade_tt_light.pcf"
+	"file"		"particles/wpn_grenade_tt_havoc.pcf"
 
 
 	//Used?

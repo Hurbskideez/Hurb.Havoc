@@ -79,7 +79,7 @@ WeaponData
 	"tracer_effect"   								"weapon_tracers_titandestroyer"
 	"impact_effect_table" 							"havoc_triplethreat_frag"
 	"bounce_effect_table"							"triplethreat_bounce"
-	"projectile_trail_effect_0" 					"wpn_grenade_TT"
+	"projectile_trail_effect_0" 					"wpn_havoc_grenade_TT"
 	"projectile_adjust_to_gun_barrel"				"1"
 	"projectile_airburst_on_death"					"1"
 
@@ -459,6 +459,7 @@ WeaponData
 		pas_long_fuse
 		{
 			// Long fuse lol
+			"projectile_trail_effect_0" 					"wpn_havoc_pas_grenade_TT"
 		}
 
 	}

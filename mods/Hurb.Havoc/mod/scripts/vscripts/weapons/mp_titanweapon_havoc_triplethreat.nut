@@ -12,8 +12,8 @@ global function OnWeaponNpcPrimaryAttack_titanweapon_triple_threat_havoc
 #endif
 
 const FX_MINE_TRAIL = $"Rocket_Smoke_Large"
-const FX_MINE_LIGHT = $"P_tt_explosive_light"
-const FX_MINE_GLOW = $"wpn_grenade_TT_mag"
+//const FX_MINE_LIGHT = $"P_tt_explosive_light"
+const FX_MINE_GLOW = $"TT_havoc_pas_mag_glow"
 const FX_TRIPLE_IGNITION = $"wpn_grenade_TT_activate"
 const FX_TRIPLE_IGNITION_BURN = $"wpn_grenade_TT_activate"
 const MIN_FUSE_TIME = 2.1
@@ -50,7 +50,7 @@ function HavocTripleThreat_Init()
 	RegisterSignal( "ProxMineTrigger" )
 	PrecacheWeapon("mp_titanweapon_havoc_triplethreat")
 	PrecacheParticleSystem( FX_MINE_TRAIL )
-	PrecacheParticleSystem( FX_MINE_LIGHT )
+//	PrecacheParticleSystem( FX_MINE_LIGHT )
 	PrecacheParticleSystem( FX_MINE_GLOW )
 	PrecacheParticleSystem( FX_TRIPLE_IGNITION )
 	PrecacheParticleSystem( FX_TRIPLE_IGNITION_BURN )
