@@ -362,9 +362,9 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	if( weapon.HasMod( "pas_blast_speed_boost" ))
 	{
-		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.4, 2.5, 1.0 )
+		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.35, 2.5, 1.0 )
 		#if SERVER
-			owner.Server_SetDodgePower( 100.0 )
+			//owner.Server_SetDodgePower( 100.0 )
 		#endif
 	}
 
