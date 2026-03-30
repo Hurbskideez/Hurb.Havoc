@@ -233,10 +233,6 @@ WeaponData
 
 	Mods
 	{
-		charge_full
-		{
-			"is_burn_mod" 							"0"
-		}
 		pas_blast_speed_boost
 		{
 

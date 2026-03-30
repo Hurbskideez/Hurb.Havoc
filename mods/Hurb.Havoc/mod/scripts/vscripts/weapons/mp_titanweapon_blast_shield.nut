@@ -296,10 +296,6 @@ void function CookBlastShield( entity weapon, entity weaponOwner )
 
     wait BLAST_CHARGE_TIME
 
-	#if SERVER
-		weapon.AddMod("charge_full")
-	#endif
-
 	weapon.EmitWeaponSound( "Weapon_Vortex_Gun.ExplosiveWarningBeep" )
 	weapon.EmitWeaponSound( "titan_alarm_loop" )
 	weapon.EmitWeaponSound( "weapon_titan_flamethrower_starttrigger_1p" )
@@ -318,19 +314,15 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
-	if( weapon.HasMod("charge_full") )
+	if( BlastShield_GetCharge( weapon ) == 1.0 )
 		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
-
-	#if SERVER
-		weapon.RemoveMod("charge_full")
-	#endif
 }
 
 void function DelayCooldown(entity weapon, float cooldown, float delay)
 {
 	entity weaponOwner = weapon.GetWeaponOwner()
 
-	if (weapon.HasMod("charge_full"))
+	if (BlastShield_GetCharge( weapon ) == 1.0)
 		wait delay //this threaded delay is critical for the Blast animation to play properly, not entirely sure why
 
 	float timer = cooldown * BlastShield_GetCharge( weapon )
