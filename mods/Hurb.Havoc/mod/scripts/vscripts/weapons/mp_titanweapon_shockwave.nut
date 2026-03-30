@@ -15,6 +15,9 @@ const float SHOCKWAVE_HIGH_DAMAGE_WAVE = 9
 const float LOW_DAMAGE_SCALAR = 0.6
 const float HIGH_DAMAGE_SCALAR = 1.0
 
+const float SHAKE_DURATION = 1.0
+const float SHAKE_AMPLITUDE = 180
+
 void function MpTitanweaponShockWave_Init()
 {
  	PrecacheParticleSystem(SHOCKWAVE_EFFECT)
@@ -48,7 +51,6 @@ var function OnWeaponPrimaryAttack_titanweapon_shockwave( entity weapon, WeaponP
 		entity owner = weapon.GetWeaponOwner()
 
 		#if SERVER
-			CreateShake( owner.GetOrigin(), 16, 150, 1.00, 400 )
 			PlayFX( FLIGHT_CORE_IMPACT_FX, owner.GetOrigin() )
 		#endif
 
@@ -114,6 +116,10 @@ bool function CreateShockWaveSegment( entity projectile, int projectileCount, en
 
 	int pilotDamage = int( float( projectile.GetProjectileWeaponSettingInt( eWeaponVar.damage_near_value ) ) * damageScalar )
 	int titanDamage = int( float( projectile.GetProjectileWeaponSettingInt( eWeaponVar.damage_near_value_titanarmor ) ) * damageScalar )
+
+	#if SERVER
+		CreateShake( pos, SHAKE_AMPLITUDE * damageScalar, 80, SHAKE_DURATION, 600 * damageScalar )
+	#endif
 
 	RadiusDamage(
 		pos,

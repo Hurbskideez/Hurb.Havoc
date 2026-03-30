@@ -356,6 +356,10 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 		FlashChargeCritical_Bar( weapon )
 	#endif
 
+	#if SERVER
+		CreateShake(weapon.GetOrigin(), 180, 4, 0.5, 400)
+	#endif
+
 	if( weapon.HasMod( "pas_blast_speed_boost" ))
 	{
 		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.4, 2.5, 1.0 )
