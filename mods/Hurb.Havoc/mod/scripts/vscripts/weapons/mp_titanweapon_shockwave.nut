@@ -69,8 +69,20 @@ var function OnWeaponPrimaryAttack_titanweapon_shockwave( entity weapon, WeaponP
 		#endif
 	}
 
+	#if CLIENT
+		thread ClientScreenShakeDelayed( 10.0, 7.0, 1.0, Vector( 0.0, 0.0, 0.0 ), 0.2 )
+	#endif
+
 	return weapon.GetWeaponSettingInt( eWeaponVar.ammo_min_to_fire )
 }
+
+#if CLIENT
+void function ClientScreenShakeDelayed( float amplitude, float frequency, float duration, vector direction, float delay = 0.0 )
+{
+	wait delay
+	ClientScreenShake( amplitude, frequency, duration, direction )
+}
+#endif
 
 #if SERVER
 var function OnWeaponNpcPrimaryAttack_titanweapon_shockwave( entity weapon, WeaponPrimaryAttackParams attackParams )
