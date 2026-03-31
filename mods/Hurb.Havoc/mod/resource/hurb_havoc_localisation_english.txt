@@ -60,13 +60,13 @@
         "HUD_CORE_ONLINE_OGRE_HAVOC"						"BERSERK CORE ONLINE"
         "HUD_CORE_ONLINE_OGRE_HAVOC_HINT"						"`1%ability 1% `0Activate Berserk Core"
 
-        "DEATH_HINT_HAVOC_001"        "Shock their system. Trap a target with Arc Charge to slow their movement."
+        "DEATH_HINT_HAVOC_001"        "System Shock. Trap a target with Arc Charge to slow their movement."
         "DEATH_HINT_HAVOC_002"        "Line up the shot. Shockwave deals massive damage at long range."
         "DEATH_HINT_HAVOC_003"        "Stay away! Blast Shield's explosion knocks back Pilots and Titans."
         "DEATH_HINT_HAVOC_004"        "Too slow? Equip the Turbo Engine kit to shorten Havoc's dash recharge."
-        "DEATH_HINT_HAVOC_005"        "Twisted. The Triple Threat's alternate fire launches grenades with a vertical spread."
-        "DEATH_HINT_HAVOC_006"        "Go long! The Hydraulic Launcher kit can launch grenades very long distances."
-        "DEATH_HINT_HAVOC_007"        "Corner them! Use the Energy-Dense Cells kit to lock-down enemy pathways."
+        "DEATH_HINT_HAVOC_005"        "Twisted. The Triple Threat's alt-fire launches grenades with a vertical spread."
+        "DEATH_HINT_HAVOC_006"        "Longshot. The Hydraulic Launcher kit can attack enemies at a longer range."
+        "DEATH_HINT_HAVOC_007"        "Corner 'em! Use the Energy-Dense Cells kit to lockdown enemy movement."
 
         "MISSING_DEPENDENCY_HEADER" "Missing Dependency!"
         "MISSING_DEPENDENCY_BODY_DISABLED" "^9DC4FF00%s1^ requires that ^9DC4FF00%s2^ is installed and enabled.\n\n^CC303000It seems that ^FF6F6F00%s2^ ^CC303000is installed, but is disabled.^CCCCCC00\n\nWould you like to enable ^9DC4FF00%s2^CCCCCC00?"
