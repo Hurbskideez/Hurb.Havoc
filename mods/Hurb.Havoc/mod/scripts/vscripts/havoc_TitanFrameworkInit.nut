@@ -78,28 +78,28 @@ void function HavocUIInit()
 		ModdedPassiveData BiteTheBullet
 		BiteTheBullet.Name = "#GEAR_HAVOC_TRIPLETHREAT"
 		BiteTheBullet.description = "#GEAR_HAVOC_TRIPLETHREAT_DESC"
-		//BiteTheBullet.image = $""
+		BiteTheBullet.image = $"havoc/menu/bite_the_bullet"
 		BiteTheBullet.customIcon = true
 		Havoc.passive2Array.append(BiteTheBullet)
 
 		ModdedPassiveData EnergyDenseCells
 		EnergyDenseCells.Name = "#GEAR_HAVOC_ARCCHARGE"
 		EnergyDenseCells.description = "#GEAR_HAVOC_ARCCHARGE_DESC"
-		//EnergyDenseCells.image = $""
+		EnergyDenseCells.image = $"havoc/menu/energy_dense_cells"
 		EnergyDenseCells.customIcon = true
 		Havoc.passive2Array.append(EnergyDenseCells)
 
 		ModdedPassiveData HydraulicLauncher
 		HydraulicLauncher.Name = "#GEAR_HAVOC_HYDRAULIC"
 		HydraulicLauncher.description = "#GEAR_HAVOC_HYDRAULIC_DESC"
-		//HydraulicLauncher.image = $""
+		HydraulicLauncher.image = $"havoc/menu/hydraulic_launcher"
 		HydraulicLauncher.customIcon = true
 		Havoc.passive2Array.append(HydraulicLauncher)
 
 		ModdedPassiveData ExhaustRecycler
 		ExhaustRecycler.Name = "#GEAR_HAVOC_BLASTSHIELD"
 		ExhaustRecycler.description = "#GEAR_HAVOC_BLASTSHIELD_DESC"
-		//ExhaustRecycler.image = $""
+		ExhaustRecycler.image = $"havoc/menu/exhaust_recycler"
 		ExhaustRecycler.customIcon = true
 		Havoc.passive2Array.append(ExhaustRecycler)
 
