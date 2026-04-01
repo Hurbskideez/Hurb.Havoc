@@ -32,6 +32,8 @@ const float BLAST_SHIELD_MAX_PUSH = 1200
 const float BLAST_SHIELD_MAX_PUSH_HUMANSIZED = 950
 const float BLAST_SHIELD_MAX_PUSH_ADD = 100 // The maximum amount of speed past push speed it can give the target (if they were moving in the same direction)
 
+const KIT_SPEEDUP_TIME = 2.5
+
 const VortexIgnoreClassnames = {
 	["mp_titancore_flame_wave"] = true,
 	["mp_ability_grapple"] = true,
@@ -362,9 +364,9 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	if( weapon.HasMod( "pas_blast_speed_boost" ))
 	{
-		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.35, 2.5, 1.0 )
+		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.35, KIT_SPEEDUP_TIME, 1.0 )
 		#if SERVER
-			//owner.Server_SetDodgePower( 100.0 )
+			thread AddExhaustRecyclerThrusters( owner )
 		#endif
 	}
 
@@ -405,6 +407,33 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 }
 
 #if SERVER
+void function AddExhaustRecyclerThrusters( entity player )
+{
+	player.EndSignal( "OnDeath" )
+	player.EndSignal( "TitanEjectionStarted" )
+
+	array<entity> activeFX
+
+	if ( player.LookupAttachment( "THRUST" ) != 0 )
+	{
+		activeFX.append( StartParticleEffectOnEntity_ReturnEntity( player, GetParticleSystemIndex( $"P_xo_jet_fly_large" ), FX_PATTACH_POINT_FOLLOW, player.LookupAttachment( "vent_right" ) ) )
+		activeFX.append( StartParticleEffectOnEntity_ReturnEntity( player, GetParticleSystemIndex( $"P_xo_jet_fly_large" ), FX_PATTACH_POINT_FOLLOW, player.LookupAttachment( "vent_left" ) ) )
+	}
+
+	wait KIT_SPEEDUP_TIME
+
+	OnThreadEnd(
+		function() : ( activeFX )
+		{
+			foreach ( fx in activeFX )
+			{
+				if ( IsValid( fx ) )
+					fx.Destroy()
+			}
+		}
+	)
+}
+
 void function BlastShield_DamagedEntity( entity victim, var damageInfo )
 {
 	entity attacker = DamageInfo_GetAttacker( damageInfo )
