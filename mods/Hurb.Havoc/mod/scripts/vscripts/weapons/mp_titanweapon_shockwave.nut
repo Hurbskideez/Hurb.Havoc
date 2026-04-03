@@ -7,7 +7,7 @@ global function OnWeaponNpcPrimaryAttack_titanweapon_shockwave
 #endif
 global function OnProjectileCollision_weapon_shockwave
 
-const asset SHOCKWAVE_EFFECT = $"exp_triplethreat_refrac"
+const asset SHOCKWAVE_EFFECT = $"exp_shockwave_main"
 
 const float SHOCKWAVE_LOW_DAMAGE_WAVE = 3
 const float SHOCKWAVE_HIGH_DAMAGE_WAVE = 9
@@ -51,7 +51,7 @@ var function OnWeaponPrimaryAttack_titanweapon_shockwave( entity weapon, WeaponP
 		entity owner = weapon.GetWeaponOwner()
 
 		#if SERVER
-			PlayFX( FLIGHT_CORE_IMPACT_FX, owner.GetOrigin() )
+		//	PlayFX( FLIGHT_CORE_IMPACT_FX, owner.GetOrigin() )
 		#endif
 
 		if ( owner.IsPlayer() && PlayerHasPassive( owner, ePassives.PAS_SHIFT_CORE ) )
@@ -124,7 +124,7 @@ bool function CreateShockWaveSegment( entity projectile, int projectileCount, en
   	StartParticleEffectInWorld( fxId, pos, angles )
   	print("Wave " + waveCount + " + ProjOrigin: " + projectile.GetOrigin())
   	PlayImpactFXTable( projectile.GetOrigin(), projectile.GetOwner(), "exp_shockwave_small", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
-  	PlayImpactFXTable( projectile.GetOrigin(), projectile.GetOwner(), "exp_shockwave_large", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
+//  	PlayImpactFXTable( projectile.GetOrigin(), projectile.GetOwner(), "exp_shockwave_large", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
 
 	int pilotDamage = int( float( projectile.GetProjectileWeaponSettingInt( eWeaponVar.damage_near_value ) ) * damageScalar )
 	int titanDamage = int( float( projectile.GetProjectileWeaponSettingInt( eWeaponVar.damage_near_value_titanarmor ) ) * damageScalar )
@@ -163,7 +163,7 @@ bool function CreateMicroShockWaveSegment(vector pos, entity projectile, entity 
   	StartParticleEffectInWorld( fxId, pos, angles )
 
   	PlayImpactFXTable( pos, owner, "exp_shockwave_small", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
-  	PlayImpactFXTable( pos, owner, "exp_shockwave_large", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
+//  	PlayImpactFXTable( pos, owner, "exp_shockwave_large", SF_ENVEXPLOSION_NO_DAMAGEOWNER | SF_ENVEXPLOSION_MASK_BRUSHONLY | SF_ENVEXPLOSION_NO_NPC_SOUND_EVENT )
 
 	int pilotDamage = int( pDamage * damageScalar )
 	int titanDamage = int( pDamage * damageScalar )

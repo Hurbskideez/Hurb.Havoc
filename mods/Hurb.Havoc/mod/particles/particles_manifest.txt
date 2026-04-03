@@ -419,6 +419,7 @@ particles_manifest
 
 	//Havoc
 	"file"		"particles/wpn_grenade_tt_havoc.pcf"
+	"file"		"particles/impact_fx_shockwave_havoc.pcf"
 
 
 	//Used?
