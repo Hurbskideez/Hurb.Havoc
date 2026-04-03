@@ -407,7 +407,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 }
 
 #if SERVER
-void function AddExhaustRecyclerThrusters( entity player )
+void function AddExhaustRecyclerThrusters( entity weapon, entity player )
 {
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "TitanEjectionStarted" )
@@ -418,6 +418,12 @@ void function AddExhaustRecyclerThrusters( entity player )
 	{
 		activeFX.append( StartParticleEffectOnEntity_ReturnEntity( player, GetParticleSystemIndex( $"P_xo_jet_fly_large" ), FX_PATTACH_POINT_FOLLOW, player.LookupAttachment( "vent_right" ) ) )
 		activeFX.append( StartParticleEffectOnEntity_ReturnEntity( player, GetParticleSystemIndex( $"P_xo_jet_fly_large" ), FX_PATTACH_POINT_FOLLOW, player.LookupAttachment( "vent_left" ) ) )
+
+		foreach ( fx in activeFX )
+		{
+			if ( IsValid( fx ) )
+				fx.kv.VisibilityFlags = (ENTITY_VISIBLE_TO_FRIENDLY | ENTITY_VISIBLE_TO_ENEMY)
+		}
 	}
 
 	wait KIT_SPEEDUP_TIME
