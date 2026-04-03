@@ -407,7 +407,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 }
 
 #if SERVER
-void function AddExhaustRecyclerThrusters( entity weapon, entity player )
+void function AddExhaustRecyclerThrusters( entity player )
 {
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "TitanEjectionStarted" )
