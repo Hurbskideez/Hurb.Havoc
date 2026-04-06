@@ -44,6 +44,7 @@ function MpTitanweaponBlastShield_Init()
 {
 	PrecacheWeapon( "mp_titanweapon_blast_shield" )
 	RegisterSignal( "ChargeEnd" )
+	RegisterSignal( "ShieldBlast" )
 
 	#if SERVER
 		AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_blast_shield, BlastShield_DamagedEntity )
@@ -337,6 +338,8 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 {
 	weapon.s.endChargeTime = Time()
 
+	weapon.Signal( "ShieldBlast" )
+
 	entity owner = weapon.GetWeaponOwner()
 	float maxDistance	= weapon.GetMaxDamageFarDist()
 	float maxAngle = 10.5
@@ -364,9 +367,8 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 
 	if( weapon.HasMod( "pas_blast_speed_boost" ))
 	{
-		StatusEffect_AddTimed( owner, eStatusEffect.speed_boost, 0.35, KIT_SPEEDUP_TIME, 1.0 )
 		#if SERVER
-			thread AddExhaustRecyclerThrusters( owner )
+			thread InitExhaustRecycler( owner, weapon )
 		#endif
 	}
 
@@ -407,10 +409,15 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 }
 
 #if SERVER
-void function AddExhaustRecyclerThrusters( entity player )
+void function InitExhaustRecycler( entity player, entity weapon )
 {
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "TitanEjectionStarted" )
+	weapon.EndSignal( "ShieldBlast" )
+
+	array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )
+	settingMods.append( "pas_blast_shield_speed" )
+	player.SetPlayerSettingPosMods( PLAYERPOSE_STANDING, settingMods )
 
 	array<entity> activeFX
 
@@ -426,18 +433,22 @@ void function AddExhaustRecyclerThrusters( entity player )
 		}
 	}
 
-	wait KIT_SPEEDUP_TIME
-
-	OnThreadEnd(
-		function() : ( activeFX )
+	OnThreadEnd( //OnThreadEnd must be registered before the delay
+		function() : ( activeFX, player )
 		{
 			foreach ( fx in activeFX )
 			{
 				if ( IsValid( fx ) )
 					fx.Destroy()
 			}
+
+			array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )
+			settingMods.remove( settingMods.find("pas_blast_shield_speed") )
+			player.SetPlayerSettingPosMods( PLAYERPOSE_STANDING, settingMods )
 		}
 	)
+
+	wait KIT_SPEEDUP_TIME
 }
 
 void function BlastShield_DamagedEntity( entity victim, var damageInfo )
