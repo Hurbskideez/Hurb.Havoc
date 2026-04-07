@@ -6,8 +6,8 @@ WeaponData
 	"description" 									"#WPN_TITAN_VORTEX_SHIELD_DESC"
 	"longdesc"										"#WPN_TITAN_VORTEX_SHIELD_LONGDESC_SP"
 
-	"menu_icon"										"havoc/menu/blast_shield"
-	"hud_icon"										"havoc/hud/blast_shield"
+	"menu_icon"										"havoc/titan_loadout/defensive/blast_shield_menu"
+	"hud_icon"										"havoc/titan_loadout/defensive/blast_shield"
 
 	"hint_type"										"hold"
 

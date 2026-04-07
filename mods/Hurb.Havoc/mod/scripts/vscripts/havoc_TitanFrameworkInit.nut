@@ -5,7 +5,7 @@ void function HavocUIInit()
 	//========================================//-NAMES AND STATS-//========================================//
 		ModdedTitanData Havoc
 		Havoc.Name = "#DEFAULT_TITAN_HAVOC"
-		Havoc.icon = $"havoc/menu/havoc_icon_medium"
+		Havoc.icon = $"havoc/menus/loadout_icons/titans/havoc_icon"
 		Havoc.Description = "#MP_TITAN_LOADOUT_DESC_HAVOC"
 		Havoc.BaseSetFile = "titan_ogre_minigun"
 		Havoc.BaseName = "legion"
@@ -30,7 +30,7 @@ void function HavocUIInit()
 		TripleThreat.displayName = "#WPN_HAVOC_TRIPLE_THREAT"
 		TripleThreat.weaponName = "mp_titanweapon_havoc_triplethreat"
 		TripleThreat.description = "#WPN_HAVOC_TRIPLE_THREAT_LONGDESC"
-		TripleThreat.image = $"havoc/hud/titan_weapon_triplethreat"
+		TripleThreat.image = $"havoc/menus/loadout_icons/titan_weapon/titan_weapon_triplethreat"
 		Havoc.Primary = TripleThreat
 
 		ModdedTitanWeaponAbilityData Shockwave
@@ -38,7 +38,7 @@ void function HavocUIInit()
 		Shockwave.displayName = "#WPN_TITAN_SHOCKWAVE"
 		Shockwave.weaponName = "mp_titanweapon_shockwave"
 		Shockwave.description = "#WPN_TITAN_SHOCKWAVE_LONGDESC"
-		Shockwave.image = $"havoc/menu/shockwave"
+		Shockwave.image = $"havoc/titan_loadout/ordnance/shockwave_menu"
 		Havoc.Right = Shockwave
 
 		ModdedTitanWeaponAbilityData BerserkCore
@@ -54,7 +54,7 @@ void function HavocUIInit()
 		Blastshield.displayName = "#WPN_TITAN_BLAST_SHIELD"
 		Blastshield.weaponName = "mp_titanweapon_blast_shield"
 		Blastshield.description = "#WPN_TITAN_BLAST_SHIELD_LONGDESC"
-		Blastshield.image = $"havoc/hud/polarize_wall"
+		Blastshield.image = $"havoc/titan_loadout/defensive/blast_shield_menu"
 		Havoc.Left = Blastshield
 
 		ModdedTitanWeaponAbilityData ArcCharge
@@ -62,7 +62,7 @@ void function HavocUIInit()
 		ArcCharge.displayName = "#WPN_TITAN_ARC_CHARGE"
 		ArcCharge.weaponName = "mp_titanweapon_arc_charge"
 		ArcCharge.description = "#WPN_TITAN_ARC_CHARGE_DESC"
-		ArcCharge.image = $"havoc/menu/arc_charge"
+		ArcCharge.image = $"havoc/titan_loadout/tactical/titan_tactical_arc_charge_menu"
 		Havoc.Mid = ArcCharge
 
 		Havoc.Melee = "melee_titan_punch_havoc"
@@ -78,28 +78,28 @@ void function HavocUIInit()
 		ModdedPassiveData BiteTheBullet
 		BiteTheBullet.Name = "#GEAR_HAVOC_TRIPLETHREAT"
 		BiteTheBullet.description = "#GEAR_HAVOC_TRIPLETHREAT_DESC"
-		BiteTheBullet.image = $"havoc/menu/bite_the_bullet"
+		BiteTheBullet.image = $"havoc/titan_loadout/passive/havoc_bite_the_bullet"
 		BiteTheBullet.customIcon = true
 		Havoc.passive2Array.append(BiteTheBullet)
 
 		ModdedPassiveData EnergyDenseCells
 		EnergyDenseCells.Name = "#GEAR_HAVOC_ARCCHARGE"
 		EnergyDenseCells.description = "#GEAR_HAVOC_ARCCHARGE_DESC"
-		EnergyDenseCells.image = $"havoc/menu/energy_dense_cells"
+		EnergyDenseCells.image = $"havoc/titan_loadout/passive/havoc_energy_dense_cells"
 		EnergyDenseCells.customIcon = true
 		Havoc.passive2Array.append(EnergyDenseCells)
 
 		ModdedPassiveData HydraulicLauncher
 		HydraulicLauncher.Name = "#GEAR_HAVOC_HYDRAULIC"
 		HydraulicLauncher.description = "#GEAR_HAVOC_HYDRAULIC_DESC"
-		HydraulicLauncher.image = $"havoc/menu/hydraulic_launcher"
+		HydraulicLauncher.image = $"havoc/titan_loadout/passive/havoc_hydraulic_launcher"
 		HydraulicLauncher.customIcon = true
 		Havoc.passive2Array.append(HydraulicLauncher)
 
 		ModdedPassiveData ExhaustRecycler
 		ExhaustRecycler.Name = "#GEAR_HAVOC_BLASTSHIELD"
 		ExhaustRecycler.description = "#GEAR_HAVOC_BLASTSHIELD_DESC"
-		ExhaustRecycler.image = $"havoc/menu/exhaust_recycler"
+		ExhaustRecycler.image = $"havoc/titan_loadout/passive/havoc_exhaust_recycler"
 		ExhaustRecycler.customIcon = true
 		Havoc.passive2Array.append(ExhaustRecycler)
 

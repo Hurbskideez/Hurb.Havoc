@@ -5,8 +5,8 @@ WeaponData
 	"description" 									"#WPN_TITAN_ARC_WAVE_DESC"
 	"longdesc"										"#WPN_TITAN_ARC_WAVE_LONGDESC"
 
-	"menu_icon"										"havoc/menu/shockwave"
-	"hud_icon"										"havoc/hud/shockwave"
+	"menu_icon"										"havoc/titan_loadout/ordnance/shockwave_menu"
+	"hud_icon"										"havoc/titan_loadout/ordnance/shockwave"
 
 	"weaponClass" 									"titan"
 	"weaponType"									"shoulder"

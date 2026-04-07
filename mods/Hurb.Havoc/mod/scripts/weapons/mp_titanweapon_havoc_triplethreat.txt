@@ -9,8 +9,8 @@ WeaponData
 	"leveled_pickup"								"1"
 	"ammo_no_remove_from_stockpile"						"1"
 
-	"menu_icon"										"havoc/hud/titan_weapon_triplethreat"
-	"hud_icon"										"havoc/hud/titan_weapon_triplethreat"
+	"menu_icon"										"havoc/menus/loadout_icons/titan_weapon/titan_weapon_triplethreat"
+	"hud_icon"										"havoc/menus/loadout_icons/titan_weapon/titan_weapon_triplethreat"
 
 	"weaponClass" 									"titan"
 	"weaponSubClass"								"projectile_shotgun"

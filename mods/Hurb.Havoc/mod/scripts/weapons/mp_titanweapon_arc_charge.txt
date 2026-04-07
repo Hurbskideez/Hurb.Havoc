@@ -6,8 +6,8 @@ WeaponData
 	"shortprintname"								"#WPN_TITAN_SHOULDER_STICKY_SHORT"
 	"longdesc"										"#WPN_TITAN_SHOULDER_STICKY_LONGDESC"
 
-	"menu_icon"										"havoc/menu/arc_charge"
-	"hud_icon"										"havoc/hud/arc_charge"
+	"menu_icon"										"havoc/titan_loadout/tactical/titan_tactical_arc_charge_menu"
+	"hud_icon"										"havoc/titan_loadout/tactical/titan_tactical_arc_charge"
 
 	"weaponClass" 									"titan"
 	"weaponType"									"tactical"
