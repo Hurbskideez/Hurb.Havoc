@@ -215,5 +215,15 @@ WeaponData
 		{
 
 		}
+
+		low_recharge
+		{
+			"ammo_display"									"bar"
+			"ammo_stockpile_max"							"10"
+			"ammo_clip_size"   								"10"
+			"ammo_default_total"							"10"
+			"ammo_per_shot"									"10"
+			"ammo_min_to_fire"								"10"
+		}
 	}
 }
