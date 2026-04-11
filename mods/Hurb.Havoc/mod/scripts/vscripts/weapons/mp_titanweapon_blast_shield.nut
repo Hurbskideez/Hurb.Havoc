@@ -277,11 +277,14 @@ bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
 	#endif
 
-	thread CookBlastShield( weapon, weaponOwner ) //WIP
+	#if CLIENT
+		thread CookBlastShield( weapon, weaponOwner ) //WIP
+	#endif
 
 	return true
 }
 
+#if CLIENT
 void function CookBlastShield( entity weapon, entity weaponOwner )
 {
     weaponOwner.EndSignal( "OnDeath" )
@@ -305,6 +308,7 @@ void function CookBlastShield( entity weapon, entity weaponOwner )
 
 	WaitForever()
 }
+#endif
 
 void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 {
