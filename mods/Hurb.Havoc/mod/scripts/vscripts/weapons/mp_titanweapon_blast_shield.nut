@@ -22,7 +22,7 @@ const float BLAST_SHIELD_MIN_CHARGE = 0.4 // ( Charge Time / Shield Uptime ) + B
 const int BLAST_SHIELD_FOV = 120
 const int BLAST_SHIELD_RADIUS = 150
 
-const float BLAST_CHARGE_TIME = 1.2
+global const float BLAST_CHARGE_TIME = 1.2
 const float BLAST_COOLDOWN_TIME = 0.5
 const float BLAST_COOLDOWN_DELAY = 0.5 //HACK delays the application of the Energy Bar visuals until after it hits 0, effectively removing it at full charge
 
@@ -39,6 +39,11 @@ const VortexIgnoreClassnames = {
 	["mp_ability_grapple"] = true,
 	["mp_ability_shifter"] = true,
 }
+
+struct
+{
+	float lastUseTime
+} file
 
 function MpTitanweaponBlastShield_Init()
 {
@@ -78,6 +83,9 @@ void function OnWeaponActivate_titanweapon_blast_shield( entity weapon )
 	weapon.w.startChargeTime = 0.0
 	weapon.s.endChargeTime = 0.0
 
+	//Set Last Use Time
+	file.lastUseTime = Time()
+
 	// just for NPCs (they don't do the deploy event)
 	if ( !weaponOwner.IsPlayer() )
 		StartBlastShield( weapon )
@@ -115,7 +123,7 @@ function StartBlastShield( entity weapon )
 	ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
 
 	CreateVortexSphere( weapon, false, false, sphereRadius, bulletFOV )
-	BlastShield_EnableVortexSphere( weapon )
+	BlastShield_EnableVortexSphere( weapon, file.lastUseTime )
 	weapon.w.startChargeTime = Time()
 
 	#if SERVER
@@ -205,10 +213,10 @@ bool function OnWeaponVortexHitProjectile_titanweapon_blast_shield( entity weapo
 var function OnWeaponPrimaryAttack_titanweapon_blast_shield( entity weapon, WeaponPrimaryAttackParams attackParams )
 {
 	bool shouldExplode = false
-	if (BlastShield_GetCharge(weapon) >= 1)
+	if (BlastShield_GetCharge( weapon, file.lastUseTime ) >= 1)
 	{
 		#if SERVER
-			BlastShield_SetCharge( weapon, 0.0 )
+			BlastShield_SetEnergyBarCharge( weapon, 0.0 )
 		#endif
 		weapon.EmitWeaponSound_1p3p( "incendiary_trap_explode_large", "heat_shield_3p_end" )
 		BlastShield_Blast( weapon, attackParams )
@@ -253,8 +261,7 @@ void function OnClientAnimEvent_titanweapon_blast_shield( entity weapon, string 
 		// This Assert isn't valid because Effect might have been culled
 		// Assert( EffectDoesExist( handle ), "vortex shield OnClientAnimEvent: Couldn't find viewmodel effect handle for vortex muzzle flash effect on client " + GetLocalViewPlayer() )
 
-		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge( weapon ))
-		printt(BlastShield_GetCharge( weapon ))
+		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge( weapon, file.lastUseTime ))
 		EffectSetControlPointVector( handle, 1, colorVec )
 	}
 }
@@ -263,18 +270,18 @@ void function OnClientAnimEvent_titanweapon_blast_shield( entity weapon, string 
 bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 {
 	entity weaponOwner = weapon.GetWeaponOwner()
+	bool isNPC = weaponOwner.IsNPC()
 
 	weapon.EmitWeaponSound("titan_ability_flamering_launch_3p")
-
-	weapon.SetScriptTime0( Time() )
 
 	if ( weaponOwner.IsPlayer() )
 		StartBlastShield( weapon )
 
-	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon ))
+	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon, file.lastUseTime ))
 
 	#if SERVER
-		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
+		if(!isNPC)
+			weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 1.0, timer) //add a proper decay time
 	#endif
 
 	#if CLIENT
@@ -321,20 +328,22 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
-	if( BlastShield_GetCharge( weapon ) == 1.0 )
+	if( BlastShield_GetCharge( weapon, file.lastUseTime ) == 1.0 )
 		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
 }
 
 void function DelayCooldown(entity weapon, float cooldown, float delay)
 {
 	entity weaponOwner = weapon.GetWeaponOwner()
+	bool isNPC = weaponOwner.IsNPC()
 
-	if (BlastShield_GetCharge( weapon ) == 1.0)
+	if (BlastShield_GetCharge( weapon, file.lastUseTime ) == 1.0)
 		wait delay //this threaded delay is critical for the Blast animation to play properly, not entirely sure why
 
-	float timer = cooldown * BlastShield_GetCharge( weapon )
+	float timer = cooldown * BlastShield_GetCharge( weapon, file.lastUseTime )
 	#if SERVER
-		weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 0.0, timer) //add a proper decay time
+		if(!isNPC)
+			weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 0.0, timer) //add a proper decay time
 	#endif
 }
 
@@ -369,7 +378,7 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 		CreateShake(weapon.GetOrigin(), 180, 4, 0.5, 400)
 	#endif
 
-	if( weapon.HasMod( "pas_blast_speed_boost" ))
+	if (weapon.HasMod("pas_blast_speed_boost") && owner.IsPlayer())
 	{
 		#if SERVER
 			thread InitExhaustRecycler( owner, weapon )
@@ -417,6 +426,7 @@ void function InitExhaustRecycler( entity player, entity weapon )
 {
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "TitanEjectionStarted" )
+	player.EndSignal( "DisembarkingTitan" )
 	weapon.EndSignal( "ShieldBlast" )
 
 	array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )

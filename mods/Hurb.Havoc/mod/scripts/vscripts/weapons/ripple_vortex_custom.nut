@@ -16,7 +16,7 @@ const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <115, 120, 85>	// red
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_FULL2MED	= 0.9  // from zero to this fraction, fade between full and medium charge colors
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_MED2EMPTY	= 1.0  // from "full2med" to this fraction, fade between medium and empty charge colors
 
-function BlastShield_EnableVortexSphere( entity vortexWeapon )
+function BlastShield_EnableVortexSphere( entity vortexWeapon, float startTime )
 {
 	string tagname = GetVortexTagName( vortexWeapon )
 	entity weaponOwner = vortexWeapon.GetWeaponOwner()
@@ -76,7 +76,7 @@ function BlastShield_EnableVortexSphere( entity vortexWeapon )
 		if ( fxAlias )
 		{
 			int sphereClientFXHandle = vortexWeapon.PlayWeaponEffectReturnViewEffectHandle( fxAlias, $"", tagname )
-			thread VortexSphereColorUpdate( vortexWeapon, sphereClientFXHandle )
+			thread VortexSphereColorUpdate( vortexWeapon, startTime, sphereClientFXHandle )
 		}
 	}
 	#elseif  SERVER
@@ -96,12 +96,12 @@ function BlastShield_EnableVortexSphere( entity vortexWeapon )
 		if ( fxAlias != $"" )
 			vortexWeapon.PlayWeaponEffect( fxAlias, $"", tagname )
 
-		thread VortexSphereColorUpdate( vortexWeapon )
+		thread VortexSphereColorUpdate( vortexWeapon, startTime )
 	#endif
 }
 
 // sets the RGB color value for the vortex sphere FX based on current charge fraction
-function VortexSphereColorUpdate( entity weapon, sphereClientFXHandle = null )
+function VortexSphereColorUpdate( entity weapon, float startTime, sphereClientFXHandle = null )
 {
 	weapon.EndSignal( "VortexStopping" )
 
@@ -111,7 +111,7 @@ function VortexSphereColorUpdate( entity weapon, sphereClientFXHandle = null )
 	entity weaponOwner = weapon.GetWeaponOwner()
 	while( IsValid( weapon ) && IsValid( weaponOwner ) )
 	{
-		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge(weapon))
+		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge(weapon, startTime))
 
 		// update the world entity that is linked to the world FX playing on the server
 		#if SERVER

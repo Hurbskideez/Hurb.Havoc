@@ -3,7 +3,7 @@ untyped
 global function HavocPrecache
 global function HavocEnergy_Init
 global function BlastShield_GetCharge
-global function BlastShield_SetCharge
+global function BlastShield_SetEnergyBarCharge
 global function OnWeaponPrimaryAttack_titanmelee_havoc_berserker
 
 #if CLIENT
@@ -54,12 +54,12 @@ void function HavocEnergy_Init()
 	#endif
 }
 
-float function BlastShield_GetCharge( entity weapon )
+float function BlastShield_GetCharge( entity weapon, float startTime )
 {
-	return weapon.GetWeaponOwner().GetPlayerNetFloat("coreMeterModifier")
+	return min( 1.0, (Time() - startTime) / BLAST_CHARGE_TIME )
 }
 
-void function BlastShield_SetCharge( entity weapon, float chargeFrac )
+void function BlastShield_SetEnergyBarCharge( entity weapon, float chargeFrac )
 {
 	weapon.GetWeaponOwner().SetPlayerNetFloat( "coreMeterModifier", chargeFrac )
 }
