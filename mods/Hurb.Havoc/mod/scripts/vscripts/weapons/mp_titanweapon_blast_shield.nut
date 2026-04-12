@@ -45,6 +45,8 @@ function MpTitanweaponBlastShield_Init()
 	PrecacheWeapon( "mp_titanweapon_blast_shield" )
 	RegisterSignal( "ChargeEnd" )
 
+	PrecacheParticleSystem( $"wpn_vortex_chargingCP_mod_FP_blast" )
+
 	#if SERVER
 		AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_blast_shield, BlastShield_DamagedEntity )
 	#endif
@@ -54,13 +56,13 @@ void function OnWeaponOwnerChanged_titanweapon_blast_shield( entity weapon, Weap
 {
 	if ( !( "initialized" in weapon.s ) )
 	{
-		weapon.s.fxChargingFPControlPoint <- $"wpn_vortex_chargingCP_titan_FP"
-		weapon.s.fxChargingFPControlPointReplay <- $"wpn_vortex_chargingCP_titan_FP_replay"
+		weapon.s.fxChargingFPControlPoint <- $"wpn_vortex_chargingCP_mod_FP_blast"
+		weapon.s.fxChargingFPControlPointReplay <- $"wpn_vortex_chargingCP_mod_FP_blast"
 		weapon.s.fxChargingControlPoint <- $"wpn_vortex_chargingCP_titan"
 		weapon.s.fxBulletHit <- BLAST_SHIELD_ABSORB_FX
 
-		weapon.s.fxChargingFPControlPointBurn <- $"wpn_vortex_chargingCP_mod_FP"
-		weapon.s.fxChargingFPControlPointReplayBurn <- $"wpn_vortex_chargingCP_mod_FP_replay"
+		weapon.s.fxChargingFPControlPointBurn <- $"wpn_vortex_chargingCP_mod_FP_blast"
+		weapon.s.fxChargingFPControlPointReplayBurn <- $"wpn_vortex_chargingCP_mod_FP_blast"
 		weapon.s.fxChargingControlPointBurn <- $"wpn_vortex_chargingCP_mod"
 		weapon.s.fxBulletHitBurn <- BLAST_SHIELD_ABSORB_FX
 
