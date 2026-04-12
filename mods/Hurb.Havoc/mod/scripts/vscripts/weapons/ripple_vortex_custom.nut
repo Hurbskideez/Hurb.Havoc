@@ -16,7 +16,7 @@ const BLAST_SHIELD_COLOR_CHARGE_EMPTY		= <115, 120, 85>	// red
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_FULL2MED	= 0.9  // from zero to this fraction, fade between full and medium charge colors
 const BLAST_SHIELD_COLOR_CROSSOVERFRAC_MED2EMPTY	= 1.0  // from "full2med" to this fraction, fade between medium and empty charge colors
 
-function BlastShield_EnableVortexSphere( entity vortexWeapon, float startTime )
+function BlastShield_EnableVortexSphere( entity vortexWeapon, var startTime )
 {
 	string tagname = GetVortexTagName( vortexWeapon )
 	entity weaponOwner = vortexWeapon.GetWeaponOwner()
@@ -101,7 +101,7 @@ function BlastShield_EnableVortexSphere( entity vortexWeapon, float startTime )
 }
 
 // sets the RGB color value for the vortex sphere FX based on current charge fraction
-function VortexSphereColorUpdate( entity weapon, float startTime, sphereClientFXHandle = null )
+function VortexSphereColorUpdate( entity weapon, var startTime, sphereClientFXHandle = null )
 {
 	weapon.EndSignal( "VortexStopping" )
 

@@ -54,7 +54,7 @@ void function HavocEnergy_Init()
 	#endif
 }
 
-float function BlastShield_GetCharge( entity weapon, float startTime )
+float function BlastShield_GetCharge( entity weapon, var startTime )
 {
 	return min( 1.0, (Time() - startTime) / BLAST_CHARGE_TIME )
 }

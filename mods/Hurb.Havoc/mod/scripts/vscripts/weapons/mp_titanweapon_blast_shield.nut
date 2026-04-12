@@ -40,11 +40,6 @@ const VortexIgnoreClassnames = {
 	["mp_ability_shifter"] = true,
 }
 
-struct
-{
-	float lastUseTime
-} file
-
 function MpTitanweaponBlastShield_Init()
 {
 	PrecacheWeapon( "mp_titanweapon_blast_shield" )
@@ -73,6 +68,7 @@ void function OnWeaponOwnerChanged_titanweapon_blast_shield( entity weapon, Weap
 		weapon.s.fxElectricalExplosion <- $"P_impact_exp_emp_med_air"
 
 		weapon.s.endChargeTime <- 0.0
+		weapon.s.lastUseTime <- 0.0
 		weapon.s.initialized <- true
 	}
 }
@@ -84,7 +80,7 @@ void function OnWeaponActivate_titanweapon_blast_shield( entity weapon )
 	weapon.s.endChargeTime = 0.0
 
 	//Set Last Use Time
-	file.lastUseTime = Time()
+	weapon.s.lastUseTime = Time()
 
 	// just for NPCs (they don't do the deploy event)
 	if ( !weaponOwner.IsPlayer() )
@@ -123,7 +119,7 @@ function StartBlastShield( entity weapon )
 	ApplyActivationCost( weapon, BLAST_SHIELD_ACTIVATION_COST )
 
 	CreateVortexSphere( weapon, false, false, sphereRadius, bulletFOV )
-	BlastShield_EnableVortexSphere( weapon, file.lastUseTime )
+	BlastShield_EnableVortexSphere( weapon, weapon.s.lastUseTime )
 	weapon.w.startChargeTime = Time()
 
 	#if SERVER
@@ -213,7 +209,7 @@ bool function OnWeaponVortexHitProjectile_titanweapon_blast_shield( entity weapo
 var function OnWeaponPrimaryAttack_titanweapon_blast_shield( entity weapon, WeaponPrimaryAttackParams attackParams )
 {
 	bool shouldExplode = false
-	if (BlastShield_GetCharge( weapon, file.lastUseTime ) >= 1)
+	if (BlastShield_GetCharge( weapon, weapon.s.lastUseTime ) >= 1)
 	{
 		#if SERVER
 			BlastShield_SetEnergyBarCharge( weapon, 0.0 )
@@ -261,7 +257,7 @@ void function OnClientAnimEvent_titanweapon_blast_shield( entity weapon, string 
 		// This Assert isn't valid because Effect might have been culled
 		// Assert( EffectDoesExist( handle ), "vortex shield OnClientAnimEvent: Couldn't find viewmodel effect handle for vortex muzzle flash effect on client " + GetLocalViewPlayer() )
 
-		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge( weapon, file.lastUseTime ))
+		vector colorVec = GetBlastShieldCurrentColor(BlastShield_GetCharge( weapon, weapon.s.lastUseTime ))
 		EffectSetControlPointVector( handle, 1, colorVec )
 	}
 }
@@ -277,7 +273,7 @@ bool function OnWeaponChargeBegin_titanweapon_blast_shield( entity weapon )
 	if ( weaponOwner.IsPlayer() )
 		StartBlastShield( weapon )
 
-	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon, file.lastUseTime ))
+	float timer = BLAST_CHARGE_TIME * (1 - BlastShield_GetCharge( weapon, weapon.s.lastUseTime ))
 
 	#if SERVER
 		if(!isNPC)
@@ -328,7 +324,7 @@ void function OnWeaponChargeEnd_titanweapon_blast_shield( entity weapon )
 
 	thread DelayCooldown(weapon, BLAST_COOLDOWN_TIME, BLAST_COOLDOWN_DELAY)
 
-	if( BlastShield_GetCharge( weapon, file.lastUseTime ) == 1.0 )
+	if( BlastShield_GetCharge( weapon, weapon.s.lastUseTime ) == 1.0 )
 		weapon.PlayWeaponEffect( $"wpn_muzzleflash_arc_cannon_FP", $"wpn_muzzleflash_arc_cannon", "vortex_center")
 }
 
@@ -337,10 +333,10 @@ void function DelayCooldown(entity weapon, float cooldown, float delay)
 	entity weaponOwner = weapon.GetWeaponOwner()
 	bool isNPC = weaponOwner.IsNPC()
 
-	if (BlastShield_GetCharge( weapon, file.lastUseTime ) == 1.0)
+	if (BlastShield_GetCharge( weapon, weapon.s.lastUseTime ) == 1.0)
 		wait delay //this threaded delay is critical for the Blast animation to play properly, not entirely sure why
 
-	float timer = cooldown * BlastShield_GetCharge( weapon, file.lastUseTime )
+	float timer = cooldown * BlastShield_GetCharge( weapon, weapon.s.lastUseTime )
 	#if SERVER
 		if(!isNPC)
 			weaponOwner.SetPlayerNetFloatOverTime("coreMeterModifier", 0.0, timer) //add a proper decay time
