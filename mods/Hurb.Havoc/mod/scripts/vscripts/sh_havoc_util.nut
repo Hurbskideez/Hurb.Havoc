@@ -98,11 +98,14 @@ bool function Havoc_ShouldCreateEnergyBar()
 	if ( mainWeapons.len() == 0 )
 		return false
 
-	/*entity primaryWeapon = mainWeapons[0]
-	if ( primaryWeapon.GetWeaponInfoFileKeyField( "npc_use_check_type" ) != "shared_energy" )
-		return false*/
+	array<entity> offhandWeapons = player.GetOffhandWeapons()
+	foreach ( weapon in offhandWeapons )
+	{
+		if ( weapon.GetWeaponClassName() == "mp_titanweapon_blast_shield" )
+			return true
+	}
 
-	return true //Add proper rules later
+	return false
 }
 
 void function FlashChargeCritical_Bar(entity weapon)
