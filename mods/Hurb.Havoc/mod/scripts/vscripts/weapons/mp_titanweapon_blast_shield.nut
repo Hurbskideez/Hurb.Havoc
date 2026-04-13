@@ -46,6 +46,7 @@ function MpTitanweaponBlastShield_Init()
 	RegisterSignal( "ChargeEnd" )
 
 	PrecacheParticleSystem( $"wpn_vortex_chargingCP_mod_FP_blast" )
+	PrecacheParticleSystem( $"wpn_vortex_chargingCP_mod_blast")
 
 	#if SERVER
 		AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_blast_shield, BlastShield_DamagedEntity )
@@ -58,12 +59,12 @@ void function OnWeaponOwnerChanged_titanweapon_blast_shield( entity weapon, Weap
 	{
 		weapon.s.fxChargingFPControlPoint <- $"wpn_vortex_chargingCP_mod_FP_blast"
 		weapon.s.fxChargingFPControlPointReplay <- $"wpn_vortex_chargingCP_mod_FP_blast"
-		weapon.s.fxChargingControlPoint <- $"wpn_vortex_chargingCP_titan"
+		weapon.s.fxChargingControlPoint <- $"wpn_vortex_chargingCP_mod_blast"
 		weapon.s.fxBulletHit <- BLAST_SHIELD_ABSORB_FX
 
 		weapon.s.fxChargingFPControlPointBurn <- $"wpn_vortex_chargingCP_mod_FP_blast"
 		weapon.s.fxChargingFPControlPointReplayBurn <- $"wpn_vortex_chargingCP_mod_FP_blast"
-		weapon.s.fxChargingControlPointBurn <- $"wpn_vortex_chargingCP_mod"
+		weapon.s.fxChargingControlPointBurn <- $"wpn_vortex_chargingCP_mod_blast"
 		weapon.s.fxBulletHitBurn <- BLAST_SHIELD_ABSORB_FX
 
 		weapon.s.fxElectricalExplosion <- $"P_impact_exp_emp_med_air"
