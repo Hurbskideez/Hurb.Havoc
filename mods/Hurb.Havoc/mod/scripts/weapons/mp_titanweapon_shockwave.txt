@@ -20,7 +20,6 @@ WeaponData
 
 	"OnWeaponPrimaryAttack"							"OnWeaponPrimaryAttack_titanweapon_shockwave"
 	"OnWeaponNpcPrimaryAttack"						"OnWeaponNpcPrimaryAttack_titanweapon_shockwave"
-	"OnProjectileCollision"							"OnProjectileCollision_weapon_shockwave"
 
 	"aimassist_disable_hipfire_humansonly"			"1"
 	"aimassist_disable_ads_humansonly"				"1"

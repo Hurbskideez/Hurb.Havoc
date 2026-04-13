@@ -5,7 +5,6 @@ global function OnWeaponPrimaryAttack_titanweapon_shockwave
 #if SERVER
 global function OnWeaponNpcPrimaryAttack_titanweapon_shockwave
 #endif
-global function OnProjectileCollision_weapon_shockwave
 
 const asset SHOCKWAVE_EFFECT = $"exp_triplethreat_refrac"
 
@@ -23,15 +22,6 @@ void function MpTitanweaponShockWave_Init()
  	PrecacheParticleSystem(SHOCKWAVE_EFFECT)
 
 	PrecacheWeapon( "mp_titanweapon_shockwave" )
-}
-
-	#if SERVER
-		//AddDamageCallbackSourceID( eDamageSourceId.mp_titanweapon_shockwave, ShockWaveOnDamage )
-	#endif
-
-void function OnProjectileCollision_weapon_shockwave( entity projectile, vector pos, vector normal, entity hitEnt, int hitbox, bool isCritical )
-{
-
 }
 
 var function OnWeaponPrimaryAttack_titanweapon_shockwave( entity weapon, WeaponPrimaryAttackParams attackParams )
@@ -324,31 +314,3 @@ void function WeaponAttackWaveWithDelay( entity ent, int projectileCount, entity
 	}
 }
 #endif
-
-void function ShockWaveOnDamage( entity ent, var damageInfo )
-{
-  vector pos = DamageInfo_GetDamagePosition( damageInfo )
-  entity attacker = DamageInfo_GetAttacker( damageInfo )
-  entity inflictor = DamageInfo_GetInflictor( damageInfo )
-  vector origin = DamageInfo_GetDamagePosition( damageInfo )
-
-  if ( ent.IsPlayer() || ent.IsNPC() )
-  {
-    entity entToSlow = ent
-    entity soul = ent.GetTitanSoul()
-
-    if ( soul != null )
-      entToSlow = soul
-
-    if ( DamageInfo_GetDamage( damageInfo ) <= 0 )
-      return
-
-    const ARC_TITAN_EMP_DURATION			= 1.0
-    const ARC_TITAN_EMP_FADEOUT_DURATION	= 0.35
-
-
-    StatusEffect_AddTimed( entToSlow, eStatusEffect.move_slow, 0.5, 1.5, 1.0 )
-    StatusEffect_AddTimed( entToSlow, eStatusEffect.dodge_speed_slow, 0.5, 1.5, 1.0 )
-    StatusEffect_AddTimed( ent, eStatusEffect.emp, 1.0, ARC_TITAN_EMP_DURATION, ARC_TITAN_EMP_FADEOUT_DURATION )
-  }
-}
