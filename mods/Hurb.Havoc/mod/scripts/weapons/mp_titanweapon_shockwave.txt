@@ -35,11 +35,6 @@ WeaponData
 	"projectile_straight_radius_max"				"1"
 
 	"special_3p_attack_anim"						"1"
-	"special_3p_attack_anim_after_charge"			"1"		// play ACT_SPECIAL_ATTACK but after charging is done
-	"play_offhand_charging_anim"  					"0"
-	"offhand_holster_primary"						"1"
-	"hide_holstered_sidearm_when_active"			"1"
-	// "offhand_transition_has_attach_detach_anim_events" "1"
 
 	"clear_fx_on_new_view_model"					"0"
 
@@ -200,7 +195,7 @@ WeaponData
 
 	"cooldown_type"									"ammo_instant"
 
-	"activitymodifier"								"mp_titanweapon_flame_wave"
+	"activitymodifier"								"mp_titanweapon_flame_wall"
 
 	Mods
 	{
