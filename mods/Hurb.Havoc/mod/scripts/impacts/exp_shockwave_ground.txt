@@ -1,0 +1,154 @@
+// "Gamematerial" "effect_name"
+
+
+ImpactTable
+{
+	FX
+	{
+		"C" "exp_shockwave_concrete" // Concrete, rock, porcelain, boulder, gravel, asphalt, brick, concrete_block, plaster
+		"D" "exp_shockwave_dirt"     //Dirt, slipperyslime, snow, carpet, cardboard, floatingstandable, ceiling_tile, papercup
+		"E" "exp_shockwave_metal"	  // metal_titan
+
+		"F" "exp_shockwave_concrete" //flesh
+		"G" "exp_shockwave_concrete"	  //metalgrate, chainlink, chain
+		"H" "exp_shockwave_concrete" //alienflesh
+
+		"J" "exp_shockwave_dirt"	  //grass
+		"K" "exp_shockwave_dirt"		//Mud
+		"L" "exp_shockwave_concrete" //plastic_barrel, plastic_box, item, rubber, rubbertire, jeeptire, slidingrubbertire, brakingrubbertire, slidingrubbertire_front, slidingrubbertire_rear
+		"M" "exp_shockwave_metal" //Default, metal, metal_box, solidmetal, armorflesh, metal_bouncy, slippery_metal, shellcasing_small, shellcasing_large, metal_barrel, floating_metal_barrel, weapon
+		"N" "exp_shockwave_slime" //Slime
+		"O" "exp_shockwave_dirt" //Foliage
+		"P" "exp_shockwave_metal" //Computer
+
+		"R" "exp_shockwave_metal" //metalpanel, grenade, canister
+	  	"S" "exp_shockwave_water" //water, slime
+		"T" "exp_shockwave_concrete" //tile
+		"U" "exp_shockwave_concrete"						//glass_breakable
+
+		"V" "exp_shockwave_metal" //Metal Vent
+		"W" "exp_shockwave_concrete" //Wood, Wood_lowdensity, Wood_Box, Wood_Crate, Wood_Plank, Wood_Solid, Wood_Furniture, Wood_Panel watermelon
+
+		"Y" "exp_shockwave_glass" //glass, brokenglass, glassbottle, pottery
+		"Z" "exp_shockwave_sand"  //sand
+
+		"0" "exp_shockwave_concrete"
+		"1" "exp_shockwave_concrete"
+		"2" "exp_shockwave_concrete"
+		"3" "exp_shockwave_concrete"
+		"4" "exp_shockwave_concrete"
+		"5" "exp_shockwave_concrete"
+		"6" "exp_shockwave_concrete"
+		"7" "exp_shockwave_concrete"
+		"8" "exp_shockwave_concrete"
+		"9" "exp_shockwave_concrete" //puddle
+	}
+	Sound
+	{
+
+		"C" "Wpn_TetherTrap_Explode"
+		"D" "Wpn_TetherTrap_Explode"
+		"E" "Wpn_TetherTrap_Explode"
+
+		"F" "Wpn_TetherTrap_Explode"
+		"G" "Wpn_TetherTrap_Explode"
+		"H" "Wpn_TetherTrap_Explode"
+
+		"J" "Wpn_TetherTrap_Explode"
+		"K" "Wpn_TetherTrap_Explode"
+		"L" "Wpn_TetherTrap_Explode"
+		"M" "Wpn_TetherTrap_Explode"
+		"N" "Wpn_TetherTrap_Explode"
+		"O" "Wpn_TetherTrap_Explode"
+		"P" "Wpn_TetherTrap_Explode"
+
+		"R" "Wpn_TetherTrap_Explode"
+		"S" "Wpn_TetherTrap_Explode"
+		"T" "Wpn_TetherTrap_Explode"
+		"U" "Wpn_TetherTrap_Explode"
+
+		"V" "Wpn_TetherTrap_Explode"
+		"W" "Wpn_TetherTrap_Explode"
+
+		"Y" "Wpn_TetherTrap_Explode"
+		"Z" "Wpn_TetherTrap_Explode"
+
+		"splash" "Wpn_TetherTrap_Explode"
+		"slime_splash" "Wpn_TetherTrap_Explode"
+
+		"airburst" "Wpn_TetherTrap_Explode"
+		"shieldhit" "Wpn_TetherTrap_Explode"
+	}
+
+	Sound_attacker
+	{
+		"C" "Wpn_TetherTrap_Explode"
+		"D" "Wpn_TetherTrap_Explode"
+		"E" "Wpn_TetherTrap_Explode"
+
+		"F" "Wpn_TetherTrap_Explode"
+		"G" "Wpn_TetherTrap_Explode"
+		"H" "Wpn_TetherTrap_Explode"
+
+		"J" "Wpn_TetherTrap_Explode"
+		"K" "Wpn_TetherTrap_Explode"
+		"L" "Wpn_TetherTrap_Explode"
+		"M" "Wpn_TetherTrap_Explode"
+		"N" "Wpn_TetherTrap_Explode"
+		"O" "Wpn_TetherTrap_Explode"
+		"P" "Wpn_TetherTrap_Explode"
+
+		"R" "Wpn_TetherTrap_Explode"
+		"S" "Wpn_TetherTrap_Explode"
+		"T" "Wpn_TetherTrap_Explode"
+		"U" "Wpn_TetherTrap_Explode"
+
+		"V" "Wpn_TetherTrap_Explode"
+		"W" "Wpn_TetherTrap_Explode"
+
+		"Y" "Wpn_TetherTrap_Explode"
+		"Z" "Wpn_TetherTrap_Explode"
+
+		"splash" "Wpn_TetherTrap_Explode"
+		"slime_splash" "Wpn_TetherTrap_Explode"
+
+		"airburst" "Wpn_TetherTrap_Explode
+		"shieldhit" "Wpn_TetherTrap_Explode"
+	}
+
+	Sound_victim
+	{
+		"C" "Wpn_TetherTrap_Explode"
+		"D" "Wpn_TetherTrap_Explode"
+		"E" "Wpn_TetherTrap_Explode"
+
+		"F" "Wpn_TetherTrap_Explode"
+		"G" "Wpn_TetherTrap_Explode"
+		"H" "Wpn_TetherTrap_Explode"
+
+		"J" "Wpn_TetherTrap_Explode"
+		"K" "Wpn_TetherTrap_Explode"
+		"L" "Wpn_TetherTrap_Explode"
+		"M" "Wpn_TetherTrap_Explode"
+		"N" "Wpn_TetherTrap_Explode"
+		"O" "Wpn_TetherTrap_Explode"
+		"P" "Wpn_TetherTrap_Explode"
+
+		"R" "Wpn_TetherTrap_Explode"
+		"S" "Wpn_TetherTrap_Explode"
+		"T" "Wpn_TetherTrap_Explode"
+		"U" "Wpn_TetherTrap_Explode"
+
+		"V" "Wpn_TetherTrap_Explode"
+		"W" "Wpn_TetherTrap_Explode"
+
+		"Y" "Wpn_TetherTrap_Explode"
+		"Z" "Wpn_TetherTrap_Explode"
+
+		"splash" "Wpn_TetherTrap_Explode"
+		"slime_splash" "Wpn_TetherTrap_Explode"
+
+		"airburst" "Wpn_TetherTrap_Explode"
+		"shieldhit" "Wpn_TetherTrap_Explode"
+	}
+}
