@@ -146,7 +146,7 @@ function ArcChargeFieldDamage( entity owner, entity pylon, vector origin )
         owner,									// attacker
         pylon,									// inflictor
         250,					// damage
-        1000,					// damageHeavyArmor
+        400,					// damageHeavyArmor
         100,		// innerRadius
         250,				// outerRadius
         0,			// flags
