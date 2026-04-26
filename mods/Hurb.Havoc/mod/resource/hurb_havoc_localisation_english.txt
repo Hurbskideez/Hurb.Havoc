@@ -16,8 +16,8 @@
 
         "TITANCORE_BERSERK"						"Berserk Core"
         "TITANCORE_BERSERK_SHORT"						"Berserk Core"
-        "TITANCORE_BERSERK_DESC"						"Explosive punches, enhances movement speed."
-        "TITANCORE_BERSERK_LONGDESC"						"Explosive punches, enhances movement speed."
+        "TITANCORE_BERSERK_DESC"						"Concussive punches, enhances movement speed."
+        "TITANCORE_BERSERK_LONGDESC"						"Concussive punches, enhances movement speed."
 
         "WPN_TITAN_SHOCKWAVE"					"Shockwave"
         "WPN_TITAN_SHOCKWAVE_SHORT"					"Shockwave"
