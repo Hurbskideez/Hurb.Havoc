@@ -377,7 +377,8 @@ function BlastShield_Blast( entity weapon, WeaponPrimaryAttackParams attackParam
 	if (weapon.HasMod("pas_blast_speed_boost") && owner.IsPlayer())
 	{
 		#if SERVER
-			thread InitExhaustRecycler( owner, weapon )
+			if (!PlayerHasPassive( owner, ePassives.PAS_BERSERKER ))
+				thread InitExhaustRecycler( owner, weapon )
 		#endif
 	}
 
@@ -423,6 +424,7 @@ void function InitExhaustRecycler( entity player, entity weapon )
 	player.EndSignal( "OnDeath" )
 	player.EndSignal( "TitanEjectionStarted" )
 	player.EndSignal( "DisembarkingTitan" )
+	player.EndSignal( "CoreBegin" )
 	weapon.EndSignal( "ShieldBlast" )
 
 	array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )
