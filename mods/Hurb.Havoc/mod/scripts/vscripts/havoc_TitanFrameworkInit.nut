@@ -7,9 +7,10 @@ void function HavocUIInit()
 		Havoc.Name = "#DEFAULT_TITAN_HAVOC"
 		Havoc.icon = $"havoc/menus/loadout_icons/titans/havoc_icon"
 		Havoc.Description = "#MP_TITAN_LOADOUT_DESC_HAVOC"
-		Havoc.BaseSetFile = "titan_ogre_minigun"
+		Havoc.BaseSetFile = "titan_ogre_legion_prime"
 		Havoc.BaseName = "legion"
 		Havoc.startsAsPrime = true
+		Havoc.altChassisType = frameworkAltChassisMethod.NONE
 		Havoc.passiveDisplayNameOverride = "#TITAN_HAVOC_PASSIVE_TITLE"
 		Havoc.titanReadyMessageOverride = "#HUD_HAVOC_READY"
 		Havoc.difficulty = 1
