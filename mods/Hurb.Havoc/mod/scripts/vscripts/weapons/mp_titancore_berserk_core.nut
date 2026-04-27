@@ -9,43 +9,20 @@ global function OnCoreCharge_Berserk_Core
 global function OnCoreChargeEnd_Berserk_Core
 global function OnAbilityStart_Berserk_Core
 
+const float USE_COST_FRAC = 0.3
+
+const float BERSERK_CORE_MAX_PUSH = 1900
+const float BERSERK_CORE_MAX_PUSH_HUMANSIZED = 1400
+const float BERSERK_CORE_MAX_PUSH_ADD = 100 // The maximum amount of speed past push speed it can give the target (if they were moving in the same direction)
+
 void function Berserk_Core_Init()
 {
 	#if SERVER
-	AddCallback_OnPlayerKilled( SwordCore_OnPlayedOrNPCKilled )
-	AddCallback_OnNPCKilled( SwordCore_OnPlayedOrNPCKilled )
+		AddDamageCallbackSourceID( eDamageSourceId.melee_titan_punch_havoc, BerserkCoreOnDamage )
 	#endif
 
     PrecacheWeapon("mp_titancore_berserk_core")
 }
-
-#if SERVER
-void function SwordCore_OnPlayedOrNPCKilled( entity victim, entity attacker, var damageInfo )
-{
-	if ( !victim.IsTitan() )
-		return
-
-	if ( !attacker.IsPlayer() || !PlayerHasPassive( attacker, ePassives.PAS_SHIFT_CORE ) )
-		return
-
-	entity soul = attacker.GetTitanSoul()
-	if ( !IsValid( soul ) || !SoulHasPassive( soul, ePassives.PAS_RONIN_SWORDCORE ) )
-		return
-
-	float curTime = Time()
-	float highlanderBonus = 8.0
-	float remainingTime = highlanderBonus + soul.GetCoreChargeExpireTime() - curTime
-	float duration = soul.GetCoreUseDuration()
-	float coreFrac = min( 1.0, remainingTime / duration )
-	//Defensive fix for this sometimes resulting in a negative value.
-	if ( coreFrac > 0.0 )
-	{
-		soul.SetTitanSoulNetFloat( "coreExpireFrac", coreFrac )
-		soul.SetTitanSoulNetFloatOverTime( "coreExpireFrac", 0.0, remainingTime )
-		soul.SetCoreChargeExpireTime( remainingTime + curTime )
-	}
-}
-#endif
 
 var function OnWeaponPrimaryAttack_DoNothingBerserk( entity weapon, WeaponPrimaryAttackParams attackParams )
 {
@@ -116,7 +93,7 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 		owner.SetPowerRegenRateScale( 10 )
 		owner.SetDodgePowerDelayScale( 0.1 )
 		GivePassive( owner, ePassives.PAS_FUSION_CORE )
-		GivePassive( owner, ePassives.PAS_SHIFT_CORE )
+		GivePassive( owner, ePassives.PAS_BERSERKER )
 	}
 
 	entity soul = owner.GetTitanSoul()
@@ -249,7 +226,7 @@ void function RestorePlayerWeapons( entity player )
 	if ( player.IsPlayer() )
 	{
 		TakePassive( player, ePassives.PAS_FUSION_CORE )
-		TakePassive( player, ePassives.PAS_SHIFT_CORE )
+		TakePassive( player, ePassives.PAS_BERSERKER )
 
 		soul = GetSoulFromPlayer( player )
 	}
@@ -283,22 +260,70 @@ void function RestorePlayerWeapons( entity player )
 	}
 }
 
-void function Berserk_Core_UseMeter( entity player )
+void function BerserkCoreOnDamage( entity ent, var damageInfo )
 {
-	if ( IsMultiplayer() )
+	printt("I AM RUNNIN")
+	vector pos = DamageInfo_GetDamagePosition( damageInfo )
+	entity attacker = DamageInfo_GetAttacker( damageInfo )
+	entity inflictor = DamageInfo_GetInflictor( damageInfo )
+	vector origin = DamageInfo_GetDamagePosition( damageInfo )
+
+	if (!PlayerHasPassive(attacker, ePassives.PAS_BERSERKER))
 		return
 
+	DamageInfo_SetDamageSourceIdentifier( damageInfo, eDamageSourceId.mp_titancore_berserk_core)
+
+	Berserk_Core_UseMeter( attacker )
+
+	BerserkCoreKnockback( ent, damageInfo )
+}
+
+void function BerserkCoreKnockback( entity victim, var damageInfo )
+{
+	entity attacker = DamageInfo_GetAttacker( damageInfo )
+	if ( !IsValid( attacker ) )
+		return
+
+	/*Stagger NPC titans first
+	if ( !victim.IsPlayer() )
+	{
+		if ( victim.IsTitan() && !victim.ContextAction_IsActive() && victim.IsInterruptable() )
+		{
+			thread BlastShield_StaggerTitan( victim )
+		}
+	}*/
+
+	//we only want to knock back players and titans, stagger everything else (including AI titans)
+	if(!victim.IsTitan() && !victim.IsPlayer() )
+		return
+
+	entity weapon = DamageInfo_GetWeapon( damageInfo )
+	//Get Push force depending on whether the damaged entity is a titan or not
+	float pushForce = victim.IsTitan() ? BERSERK_CORE_MAX_PUSH : BERSERK_CORE_MAX_PUSH_HUMANSIZED
+	//Get push direction
+    vector pushDir = Normalize( victim.GetOrigin() - attacker.GetOrigin() )
+
+	//Get Victim's velocity and adjust to their current velocity
+	float velInDir = victim.GetVelocity().Dot( pushDir )
+	if ( velInDir + pushForce > pushForce + BERSERK_CORE_MAX_PUSH_ADD )
+		pushForce = max( 0.0, pushForce + BERSERK_CORE_MAX_PUSH_ADD - velInDir )
+
+	PushEntWithVelocity( victim, pushDir * pushForce )
+}
+
+void function Berserk_Core_UseMeter( entity player )
+{
 	entity soul = player.GetTitanSoul()
 	float curTime = Time()
 	float remainingTime = soul.GetCoreChargeExpireTime() - curTime
 
 	if ( remainingTime > 0 )
 	{
-		const float USE_TIME = 5
-
-		remainingTime = max( remainingTime - USE_TIME, 0 )
 		float startTime = soul.GetCoreChargeStartTime()
 		float duration = soul.GetCoreUseDuration()
+
+		float useTime = duration * USE_COST_FRAC
+		remainingTime = max( remainingTime - useTime, 0 )
 
 		soul.SetTitanSoulNetFloat( "coreExpireFrac", remainingTime / duration )
 		soul.SetTitanSoulNetFloatOverTime( "coreExpireFrac", 0.0, remainingTime )

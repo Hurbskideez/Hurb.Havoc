@@ -23,28 +23,30 @@ struct
 
 void function HavocPrecache()
 {
-  #if SERVER
+	#if SERVER
 	RegisterWeaponDamageSources(
 		{
 			mp_titanweapon_havoc_triplethreat = "#WPN_HAVOC_TRIPLE_THREAT"
 			mp_titanweapon_shockwave = "#WPN_TITAN_SHOCKWAVE"
 			mp_titanweapon_arc_charge = "#WPN_TITAN_ARC_CHARGE"
 			mp_titanweapon_blast_shield = "#WPN_TITAN_BLAST_SHIELD"
-			melee_titan_punch_havoc = "WPN_MELEE_TITAN_PUNCH_HAVOC"
+			melee_titan_punch_havoc = "#WPN_MELEE_TITAN_PUNCH_HAVOC"
+			mp_titancore_berserk_core = "#TITANCORE_BERSERK"
 		}
 	)
 	#endif
 
-  HavocTripleThreat_Init()
-  MpTitanweaponShockWave_Init()
-  MpTitanweaponArcCharge_Init()
-  MpTitanweaponBlastShield_Init()
-  Havoc_Loadout_Util()
-  PrecacheWeapon("mp_titancore_berserk_core")
-  PrecacheWeapon("melee_titan_punch_havoc")
-  #if CLIENT
-  HavocEnergy_Init()
-  #endif
+	HavocTripleThreat_Init()
+	MpTitanweaponShockWave_Init()
+	MpTitanweaponArcCharge_Init()
+	MpTitanweaponBlastShield_Init()
+	Berserk_Core_Init()
+	Havoc_Loadout_Util()
+	PrecacheWeapon("mp_titancore_berserk_core")
+	PrecacheWeapon("melee_titan_punch_havoc")
+	#if CLIENT
+		HavocEnergy_Init()
+	#endif
 }
 
 void function HavocEnergy_Init()

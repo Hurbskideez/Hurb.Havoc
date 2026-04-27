@@ -47,7 +47,7 @@ WeaponData
 	// Behavior
 	"core_build_time"								"120"
 	"chargeup_time"									"0.75"	// also update ACT_MP_OFFHAND_CHARGING time in qc
-	"passive"										"PAS_SHIFT_CORE"
+	"passive"										"PAS_BERSERKER"
 
 	"readymessage"									"HUD_CORE_ONLINE_OGRE_HAVOC"
 	"readyhint"										"HUD_CORE_ONLINE_OGRE_HAVOC_HINT"
