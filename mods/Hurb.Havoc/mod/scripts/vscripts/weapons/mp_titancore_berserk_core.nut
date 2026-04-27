@@ -116,8 +116,7 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 		entity mainWeapon = titan.GetMainWeapons()[0]
 		mainWeapon.AllowUse( false )
 
-		int endlessStatusEffectHandle = StatusEffect_AddEndless( titan, eStatusEffect.speed_boost, 0.5 )
-		thread BerserkThink( titan, endlessStatusEffectHandle )
+		thread InitBerserkerSpeed( titan )
 	}
 
 	float delay = weapon.GetWeaponSettingFloat( eWeaponVar.charge_cooldown_delay )
@@ -128,28 +127,6 @@ var function OnAbilityStart_Berserk_Core( entity weapon, WeaponPrimaryAttackPara
 }
 
 #if SERVER
-void function BerserkThink( entity player, int endlessStatusEffectHandle )
-{
-	player.EndSignal( "OnDeath" )
-	player.EndSignal( "OnChangedPlayerClass" )
-	player.EndSignal( "CoreEnd" )
-	if ( endlessStatusEffectHandle != 0 )
-		player.EndSignal( "StopEndlessStim" )
-
-	OnThreadEnd(
-		function() : ( player, endlessStatusEffectHandle )
-		{
-			if ( !IsValid( player ) )
-				return
-
-			if ( endlessStatusEffectHandle != 0 )
-				StatusEffect_Stop( player, endlessStatusEffectHandle )
-		}
-	)
-
-	WaitForever()
-}
-
 void function Berserk_Core_End( entity weapon, entity player, float delay )
 {
 	weapon.EndSignal( "OnDestroy" )
@@ -334,5 +311,27 @@ void function Berserk_Core_UseMeter( entity player )
 void function Berserk_Core_UseMeter_NPC( entity npc )
 {
 	Berserk_Core_UseMeter( npc )
+}
+
+void function InitBerserkerSpeed( entity player )
+{
+	player.EndSignal( "OnDeath" )
+	player.EndSignal( "OnChangedPlayerClass" )
+	player.EndSignal( "CoreEnd" )
+
+	array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )
+	settingMods.append( "berserk_core" )
+	player.SetPlayerSettingPosMods( PLAYERPOSE_STANDING, settingMods )
+
+	OnThreadEnd( //OnThreadEnd must be registered before the delay
+		function() : ( player )
+		{
+			array settingMods = player.GetPlayerModsForPos( PLAYERPOSE_STANDING )
+			settingMods.remove( settingMods.find("berserk_core") )
+			player.SetPlayerSettingPosMods( PLAYERPOSE_STANDING, settingMods )
+		}
+	)
+
+	WaitForever()
 }
 #endif
